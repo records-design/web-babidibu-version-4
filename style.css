@@ -258,15 +258,42 @@ ul { list-style: none; }
 
 /* ── IMPACTO */
 .impacto {
-  background: linear-gradient(135deg, #5FA55A 0%, #F6D51F 50%, #FA8925 100%);
-  padding: 80px 48px;
+  background: linear-gradient(120deg, #F6D51F 0%, #FA8925 50%, #FA5457 100%);
+  padding: 72px 48px;
 }
-.impacto-inner { max-width: 1200px; margin: 0 auto; }
-.impacto-title { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: #fff; margin-bottom: 48px; }
-.impacto-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
-.impacto-stat { display: flex; flex-direction: column; gap: 8px; }
-.impacto-num { font-size: clamp(36px, 4vw, 56px); font-weight: 800; color: #fff; line-height: 1; }
-.impacto-label { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.impacto-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+.impacto-label-col { flex-shrink: 0; }
+.impacto-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; color: #fff; line-height: 1.1; }
+.impacto-sub { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 10px; max-width: 140px; line-height: 1.4; }
+.impacto-divider { width: 2px; height: 80px; background: rgba(255,255,255,0.35); flex-shrink: 0; border-radius: 2px; }
+.impacto-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; flex: 1; }
+.impacto-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 28px;
+  border-right: 1px solid rgba(255,255,255,0.25);
+}
+.impacto-stat:last-child { border-right: none; }
+.impacto-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.impacto-num { font-size: clamp(30px, 3vw, 46px); font-weight: 900; color: #fff; line-height: 1; }
+.impacto-lbl { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
 .lanzamientos { background: #fff; }
@@ -435,8 +462,12 @@ ul { list-style: none; }
   .section-inner { padding: 60px 24px; }
   .cards-grid-3 { grid-template-columns: 1fr; gap: 16px; }
   .artists-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
-  .impacto { padding: 60px 24px; }
-  .impacto-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .impacto { padding: 48px 24px; }
+  .impacto-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .impacto-divider { width: 60px; height: 2px; }
+  .impacto-grid { grid-template-columns: repeat(2,1fr); gap: 24px; width: 100%; }
+  .impacto-stat { padding: 0; border-right: none; }
+  .impacto-sub { max-width: 100%; }
   .yt-grid { grid-template-columns: 1fr; }
   .contacto-hero { grid-template-columns: 1fr; padding: 60px 24px 32px; }
   .contacto-hero-illus { display: none; }
