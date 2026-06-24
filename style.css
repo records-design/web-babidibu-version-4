@@ -76,19 +76,27 @@ ul { list-style: none; }
 /* ── HEADER */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: 72px; padding: 0 48px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: transparent;
-  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
-  border-bottom: 1px solid transparent;
+  height: 72px; padding: 0;
+  display: flex; align-items: center;
+  background: rgba(255,243,240,0.6);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  transition: background 0.3s, backdrop-filter 0.3s, transform 0.35s ease, opacity 0.35s ease;
+}
+.header.hide-nav {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
 }
 .header.scrolled {
   background: rgba(250,250,248,0.88);
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
-  border-bottom-color: rgba(0,0,0,0.07);
 }
-.header-logo { height: 44px; width: auto; margin-top: 8px; }
+.header-logo { height: 62px; width: auto; margin-top: 14px; }
 .header-nav { display: flex; gap: 32px; }
 .header-nav a { font-size: 14px; font-weight: 500; color: var(--negro); opacity: 0.7; transition: opacity 0.2s; }
 .header-nav a:hover { opacity: 1; }
@@ -209,28 +217,45 @@ ul { list-style: none; }
   text-transform: uppercase;
   color: var(--gris);
   white-space: nowrap;
+  margin-bottom: 6px;
 }
 .hero-title {
   font-size: clamp(28px, 3.2vw, 52px); font-weight: 900;
   line-height: 1.12; letter-spacing: -0.02em;
 }
-.hero-sub { font-size: clamp(14px, 1.1vw, 17px); font-weight: 400; color: var(--gris); max-width: 420px; }
+.hero-sub { font-size: clamp(14px, 1.1vw, 17px); font-weight: 600; color: var(--gris); max-width: 100%; margin-top: 6px; }
+.hero-stats {
+  display: flex; gap: 28px; margin-top: 4px;
+}
+.hero-stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.hero-stat-num {
+  font-size: clamp(22px, 2vw, 30px); font-weight: 900; line-height: 1;
+  letter-spacing: -0.03em; color: var(--negro);
+}
+.hero-stat-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gris); opacity: 0.7;
+}
 
 /* hero swipe carousel */
 .hero-swipe {
   position: relative;
   width: 100%;
-  height: clamp(280px, 42vh, 420px);
+  height: clamp(320px, 54vh, 520px);
   align-self: center;
 }
+
 .hs-card {
   position: absolute;
   inset: 0;
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 60px 8px color-mix(in srgb, var(--c) 35%, transparent);
   transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s ease;
   will-change: transform, opacity;
+  z-index: 1;
 }
 .hs-card img {
   width: 100%;
@@ -240,13 +265,25 @@ ul { list-style: none; }
 }
 .hs-card span {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  bottom: 18px; left: 18px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--c) 70%, white) 0%,
+    var(--c) 50%,
+    color-mix(in srgb, var(--c) 85%, black) 100%
+  );
   color: #fff;
-  font-size: 18px;
-  font-weight: 800;
-  padding: 48px 24px 24px;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 7px 16px;
   line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  border-radius: 100px;
+  box-shadow:
+    0 6px 16px color-mix(in srgb, var(--c) 55%, transparent),
+    inset 0 1.5px 0 rgba(255,255,255,0.45),
+    inset 0 -2px 0 rgba(0,0,0,0.15);
 }
 
 /* ── QUÉ ES BABIDIBU */
