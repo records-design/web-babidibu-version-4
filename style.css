@@ -488,55 +488,67 @@ section { position: relative; overflow: visible; }
 /* ── IMPACTO */
 .impacto {
   background: linear-gradient(105deg, #FA5457 0%, #FA8925 50%, #F6D51F 100%);
-  padding: 52px 48px;
-  border-radius: 0;
+  padding: 44px 48px;
   margin: 0;
 }
 .impacto-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 2px 1fr;
   align-items: center;
-  gap: 48px;
+  gap: 64px;
 }
-.impacto-label-col { flex-shrink: 0; min-width: 220px; max-width: 260px; display: flex; flex-direction: column; gap: 16px; }
-.impacto-logo { width: 160px; height: auto; filter: brightness(0) invert(1); }
-.impacto-title { font-size: clamp(28px, 3.2vw, 42px); font-weight: 900; color: #fff; line-height: 1.05; }
-.impacto-sub { font-size: clamp(16px, 1.5vw, 20px); color: rgba(255,255,255,0.9); font-weight: 700; line-height: 1.4; margin: 0; }
-.impacto-divider { width: 2px; align-self: stretch; background: rgba(255,255,255,0.4); flex-shrink: 0; border-radius: 2px; }
-.impacto-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; flex: 1; }
+.impacto-label-col { display: flex; flex-direction: column; gap: 16px; }
+.impacto-logo-inline { width: clamp(120px, 12vw, 180px); height: auto; filter: brightness(0) invert(1); }
+.impacto-eyebrow {
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.25;
+  margin: 0;
+}
+.impacto-brand {
+  color: #fff;
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 900;
+  display: block;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.impacto-divider { width: 2px; align-self: stretch; background: rgba(255,255,255,0.35); border-radius: 2px; }
+.impacto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
 .impacto-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  gap: 8px;
   padding: 0 36px;
+  gap: 12px;
   position: relative;
 }
 .impacto-stat:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  right: 0; top: 0; bottom: 0;
   width: 2px;
   background: rgba(255,255,255,0.25);
   border-radius: 2px;
 }
 .impacto-icon {
-  width: 52px; height: 52px;
+  width: 56px; height: 56px;
   border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 6px;
-  background: linear-gradient(160deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.1) 100%);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12),
-              inset 0 1.5px 0 rgba(255,255,255,0.7),
-              inset 0 -2px 0 rgba(0,0,0,0.08);
+  color: var(--ic);
+  background: linear-gradient(160deg, #fff 0%, #f5f5f5 100%);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15), inset 0 1.5px 0 rgba(255,255,255,1), inset 0 -2px 0 rgba(0,0,0,0.06);
 }
 .impacto-num { font-size: clamp(32px, 3.2vw, 50px); font-weight: 900; color: #fff; line-height: 1; }
-.impacto-lbl { font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.95); font-weight: 600; line-height: 1.45; }
+.impacto-lbl { font-size: clamp(13px, 1.1vw, 16px); color: rgba(255,255,255,0.9); font-weight: 600; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
 .lanzamientos { background: linear-gradient(145deg, #F0FFF4 0%, #EDE6FF 100%); }
@@ -738,32 +750,33 @@ section { position: relative; overflow: visible; }
 
 /* ── FOOTER */
 .footer {
-  background: linear-gradient(135deg, #2A1F3D 0%, #1a2a1a 100%);
-  color: #fff;
+  background: #FFF3F0;
+  color: var(--negro);
   padding: 0;
 }
 .footer-inner { max-width: 1200px; margin: 0 auto; padding: 60px 48px 32px; }
-.footer-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(58,63,68,0.12); }
 .footer-brand-col { display: flex; flex-direction: column; gap: 20px; }
 .footer-logo { height: 48px; width: auto; }
-.footer-tagline { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; max-width: 260px; }
+.footer-tagline { font-size: 14px; color: rgba(58,63,68,0.55); line-height: 1.6; margin: 0; max-width: 260px; }
 .footer-socials { display: flex; gap: 10px; }
 .footer-social-btn {
   display: inline-flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; border-radius: 50%;
-  color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(58,63,68,0.6);
+  background: rgba(58,63,68,0.07);
+  border: 1px solid rgba(58,63,68,0.12);
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-.footer-social-btn:hover { background: rgba(255,255,255,0.18); color: #fff; transform: translateY(-2px); }
+.footer-social-btn:hover { background: var(--coral); color: #fff; border-color: var(--coral); transform: translateY(-2px); }
 .footer-links-wrap { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
-.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(58,63,68,0.4); margin-bottom: 16px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 10px; list-style: none; padding: 0; margin: 0; }
-.footer-col a, .footer-col li { font-size: 14px; color: rgba(255,255,255,0.65); transition: color 0.2s; }
-.footer-col a:hover { color: #fff; }
+.footer-col a, .footer-col li { font-size: 14px; color: rgba(58,63,68,0.7); transition: color 0.2s; }
+.footer-col a:hover { color: var(--coral); }
+.footer-contact-link { display: flex; align-items: center; gap: 8px; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); margin: 0; }
+.footer-bottom p { font-size: 13px; color: rgba(58,63,68,0.4); margin: 0; }
 
 /* ── MOBILE */
 @media (max-width: 768px) {
