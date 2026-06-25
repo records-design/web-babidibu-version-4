@@ -332,39 +332,54 @@ ul { list-style: none; }
   gap: 16px;
 }
 .artist-card {
-  border-radius: var(--radius-card); overflow: hidden;
-  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: var(--shadow-card);
-  background: linear-gradient(160deg, var(--g1), var(--g2));
+  border-radius: 24px; overflow: hidden;
+  cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--g1) 30%, transparent),
+              0 2px 8px rgba(0,0,0,0.08);
+  aspect-ratio: 3/4;
 }
-.artist-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+.artist-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 56px color-mix(in srgb, var(--g1) 45%, transparent),
+              0 4px 16px rgba(0,0,0,0.1);
+}
+.artist-card:hover .artist-card-photo { transform: scale(1.06); }
 .artist-card-inner {
-  position: relative; aspect-ratio: 3/4;
-  display: flex; flex-direction: column; align-items: center;
-  padding: 20px 12px 0;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
 }
-.artist-card-logo {
-  width: 80%; max-width: 140px; height: 80px;
-  object-fit: contain; margin-bottom: 8px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
-}
-.artist-card-logo-text {
-  font-size: 16px; font-weight: 800; color: #fff;
-  text-align: center; padding: 8px 0;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+.artist-card-photo-wrap {
+  position: absolute; inset: 0;
 }
 .artist-card-photo {
-  width: 100%; flex: 1; object-fit: cover; object-position: top;
-  margin-top: auto;
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block; transition: transform 0.5s ease;
 }
 .artist-card-footer {
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  display: flex; justify-content: space-between; align-items: center;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 48px 16px 18px;
+  background: linear-gradient(to top,
+    color-mix(in srgb, var(--g1) 90%, black) 0%,
+    color-mix(in srgb, var(--g1) 60%, transparent) 60%,
+    transparent 100%);
+  display: flex; flex-direction: column; gap: 8px;
 }
-.artist-card-name { font-size: 12px; font-weight: 700; color: #fff; }
-.artist-card-cta { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.artist-card-name {
+  font-size: clamp(11px, 1vw, 14px); font-weight: 900; color: #fff;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  line-height: 1.2; white-space: nowrap;
+}
+.artist-card-cta {
+  font-size: 11px; font-weight: 700; white-space: nowrap; align-self: flex-start;
+  color: #fff;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 5px 12px; border-radius: 100px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+}
 
 /* ── ARTIST MODAL */
 .artist-modal {
@@ -397,30 +412,49 @@ ul { list-style: none; }
   width: 100%; height: 100%; object-fit: cover; object-position: top;
 }
 .artist-modal-right {
-  padding: 40px 36px; overflow-y: auto;
-  display: flex; flex-direction: column; gap: 16px;
+  padding: 52px 56px; overflow-y: auto;
+  display: flex; flex-direction: column; justify-content: center; gap: 20px;
 }
-.artist-modal-num { font-size: 13px; font-weight: 700; color: var(--gris); }
-.artist-modal-tags { display: flex; gap: 8px; }
+.artist-modal-num {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(0,0,0,0.2);
+}
+.artist-modal-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .artist-tag {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  padding: 5px 12px; border-radius: 100px;
-  border: 1.5px solid var(--negro); color: var(--negro);
+  font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px;
+  border: 1.5px solid var(--accent); color: var(--accent);
 }
-.artist-modal-logo { max-width: 200px; max-height: 80px; object-fit: contain; }
-.artist-modal-name-text { font-size: 28px; font-weight: 800; }
-.artist-modal-desc { font-size: 15px; color: var(--gris); line-height: 1.7; }
-.spotify-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--gris); margin-bottom: 8px; }
-.artist-modal-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+.artist-modal-logo { max-width: 180px; max-height: 70px; object-fit: contain; }
+.artist-modal-name-text {
+  font-size: clamp(30px, 3.5vw, 52px); font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1.05; color: var(--negro);
+}
+.artist-modal-desc {
+  font-size: 15px; font-weight: 400; line-height: 1.72;
+  color: rgba(13,13,13,0.5); max-width: 420px;
+}
+.spotify-label { display: none; }
+.artist-modal-socials { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+.artist-modal-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 .social-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
-  padding: 10px 16px; border-radius: 100px; border: 1.5px solid rgba(0,0,0,0.15);
-  transition: border-color 0.2s, background 0.2s;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  text-decoration: none;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--sc) 60%, white) 0%, var(--sc) 50%, color-mix(in srgb, var(--sc) 85%, black) 100%);
+  color: #fff;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--sc) 40%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.45),
+              inset 0 -2px 0 rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
 }
-.social-btn:hover { border-color: var(--negro); background: rgba(0,0,0,0.04); }
-.social-btn.ig { color: #E1306C; border-color: #E1306C; }
-.social-btn.yt { color: #FF0000; border-color: #FF0000; }
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--sc) 50%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.45),
+              inset 0 -2px 0 rgba(0,0,0,0.15);
+}
 
 /* ── IMPACTO */
 .impacto {

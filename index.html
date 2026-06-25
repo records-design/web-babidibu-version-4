@@ -146,52 +146,47 @@
     <div class="artists-grid">
       <div class="artist-card" data-artist="chani" style="--g1:#FF6B9D;--g2:#FFD166">
         <div class="artist-card-inner">
-          <img src="imagenes-babidibu-records/logo-chani.png" class="artist-card-logo" alt="El Mundo de Chani">
-          <img src="imagenes-babidibu-records/foto-chani.jpg" class="artist-card-photo" alt="Chani">
-        </div>
-        <div class="artist-card-footer">
-          <span class="artist-card-name">El Mundo de Chani</span>
-          <span class="artist-card-cta">Explorar →</span>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-chani.jpg" class="artist-card-photo" alt="Chani"></div>
+          <div class="artist-card-footer">
+            <span class="artist-card-name">El Mundo de Chani</span>
+            <span class="artist-card-cta">Conocé más →</span>
+          </div>
         </div>
       </div>
       <div class="artist-card" data-artist="trillizas" style="--g1:#8B5CF6;--g2:#60A5FA">
         <div class="artist-card-inner">
-          <img src="imagenes-babidibu-records/logo-trillizas.png" class="artist-card-logo" alt="Las Trillizas de Oro">
-          <img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" class="artist-card-photo" alt="Las Trillizas">
-        </div>
-        <div class="artist-card-footer">
-          <span class="artist-card-name">Las Trillizas de Oro</span>
-          <span class="artist-card-cta">Explorar →</span>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" class="artist-card-photo" alt="Las Trillizas"></div>
+          <div class="artist-card-footer">
+            <span class="artist-card-name">Las Trillizas de Oro</span>
+            <span class="artist-card-cta">Conocé más →</span>
+          </div>
         </div>
       </div>
       <div class="artist-card" data-artist="benito" style="--g1:#F97316;--g2:#FBBF24">
         <div class="artist-card-inner">
-          <div class="artist-card-logo-text">Benito y Tomasa</div>
-          <img src="imagenes-babidibu-records/foto-benito-tomasa.jpg" class="artist-card-photo" alt="Benito y Tomasa">
-        </div>
-        <div class="artist-card-footer">
-          <span class="artist-card-name">Benito y Tomasa</span>
-          <span class="artist-card-cta">Explorar →</span>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-benito-tomasa.jpg" class="artist-card-photo" alt="Benito y Tomasa"></div>
+          <div class="artist-card-footer">
+            <span class="artist-card-name">Benito y Tomasa</span>
+            <span class="artist-card-cta">Conocé más →</span>
+          </div>
         </div>
       </div>
-      <div class="artist-card" data-artist="dani" style="--g1:#FFD166;--g2:#FA8925">
+      <div class="artist-card" data-artist="dani" style="--g1:#F6D51F;--g2:#FA8925">
         <div class="artist-card-inner">
-          <img src="imagenes-babidibu-records/logo-dani.png" class="artist-card-logo" alt="El Rincón de Dani">
-          <img src="imagenes-babidibu-records/foto-dani.jpg" class="artist-card-photo" alt="Dani">
-        </div>
-        <div class="artist-card-footer">
-          <span class="artist-card-name">El Rincón de Dani</span>
-          <span class="artist-card-cta">Explorar →</span>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-dani.jpg" class="artist-card-photo" alt="Dani"></div>
+          <div class="artist-card-footer">
+            <span class="artist-card-name">El Rincón de Dani</span>
+            <span class="artist-card-cta">Conocé más →</span>
+          </div>
         </div>
       </div>
       <div class="artist-card" data-artist="chiquito" style="--g1:#7C3AED;--g2:#A855F7">
         <div class="artist-card-inner">
-          <img src="imagenes-babidibu-records/logo-chiquito.png" class="artist-card-logo" alt="Hola Soy Chiquito">
-          <img src="imagenes-babidibu-records/foto-chiquito.jpg" class="artist-card-photo" alt="Chiquito">
-        </div>
-        <div class="artist-card-footer">
-          <span class="artist-card-name">Hola Soy Chiquito</span>
-          <span class="artist-card-cta">Explorar →</span>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-chiquito.jpg" class="artist-card-photo" alt="Chiquito"></div>
+          <div class="artist-card-footer">
+            <span class="artist-card-name">Hola Soy Chiquito</span>
+            <span class="artist-card-cta">Conocé más →</span>
+          </div>
         </div>
       </div>
     </div>
@@ -501,11 +496,11 @@ revealEls.forEach(el => revealObs.observe(el));
 
 // ── Artist modal
 const artistData = {
-  chani:    { num:'01', tags:['ARTISTA','PERSONAJE'], logo:'imagenes-babidibu-records/logo-chani.png',     photo:'imagenes-babidibu-records/foto-chani.jpg',           desc:'El Mundo de Chani es una franquicia infantojuvenil transmedia que va más allá de un programa: es un ecosistema educativo y musical. Liderado por Chani, conecta con niños a través de la música, el humor y la curiosidad.', spotify:'https://open.spotify.com/embed/track/0aYkMxhxA68e5R76KfJnay', ig:'https://www.instagram.com/elmundodechani/', yt:'https://www.youtube.com/@elmundodechani', g1:'#FF6B9D', g2:'#FFD166' },
-  trillizas:{ num:'02', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/logo-trillizas.png',  photo:'imagenes-babidibu-records/fotos-las-trillizas.jpg',  desc:'Las Trillizas de Oro y El Libro Mágico: aventuras mágicas que estimulan la imaginación de niños y familias.', spotify:'', ig:'https://www.instagram.com/trillizasdeoroyellibromagico/', yt:'https://www.youtube.com/@babidiburecords', g1:'#8B5CF6', g2:'#60A5FA' },
-  benito:   { num:'03', tags:['ARTISTA'],             logo:'',                                             photo:'imagenes-babidibu-records/foto-benito-tomasa.jpg',   desc:'Benito y Tomasa: canciones cotidianas que acompañan historias con humor y ternura.', spotify:'', ig:'https://www.instagram.com/benitoytomasa/', yt:'https://www.youtube.com/@babidiburecords', g1:'#F97316', g2:'#FBBF24' },
-  dani:     { num:'04', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/logo-dani.png',      photo:'imagenes-babidibu-records/foto-dani.jpg',            desc:'El Rincón de Dani: ritmos, colores y mucha música para los más pequeños.', spotify:'', ig:'https://www.instagram.com/elrincondedani/', yt:'https://www.youtube.com/@babidiburecords', g1:'#FFD166', g2:'#FA8925' },
-  chiquito: { num:'05', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/logo-chiquito.png',  photo:'imagenes-babidibu-records/foto-chiquito.jpg',        desc:'Hola Soy Chiquito: ritmos, juegos y canciones para mover el cuerpo y el corazón.', spotify:'', ig:'https://www.instagram.com/chiquito.ok/', yt:'https://www.youtube.com/@chiquitook', g1:'#7C3AED', g2:'#A855F7' }
+  chani:    { num:'01', tags:['ARTISTA','PERSONAJE'], logo:'imagenes-babidibu-records/logo-chani.png',                photo:'imagenes-babidibu-records/foto-chani.jpg',          desc:'El Mundo de Chani es una franquicia infantojuvenil transmedia que va más allá de un programa: es un ecosistema educativo y musical. Liderado por Chani, conecta con niños a través de la música, el humor y la curiosidad.',                                                                                                               spotify:'https://open.spotify.com/embed/track/0aYkMxhxA68e5R76KfJnay', ig:'https://www.instagram.com/elmundodechani/',  tk:'https://www.tiktok.com/@elmundodechani',   yt:'https://www.youtube.com/@ElmundodeChani',  sp:'https://open.spotify.com/intl-es/artist/3HlnSMpliruSWrru0aHSv0', g1:'#FF6B9D', g2:'#FFD166' },
+  trillizas:{ num:'02', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/SVG/logo las trillizas.svg',     photo:'imagenes-babidibu-records/fotos-las-trillizas.jpg', desc:'Proyecto de entretenimiento infantil que celebra el legado de Las Trillizas de Oro a través de música, fantasía y narrativa emocional, combinando live action, un universo mágico y una propuesta visual contemporánea.',                                                                                                                    spotify:'', ig:'https://www.instagram.com/lastrillizasoro/',               tk:'https://www.tiktok.com/@lastrillizasoro',   yt:'https://www.youtube.com/@lastrillizasoro', sp:'https://open.spotify.com/artist/2b9zz2TMaqq9Lp7QFJPf3m',         g1:'#8B5CF6', g2:'#60A5FA' },
+  benito:   { num:'03', tags:['ARTISTA'],             logo:'',                                                         photo:'imagenes-babidibu-records/foto-benito-tomasa.jpg',  desc:'Proyecto de música infantil con ADN rockero que combina canciones originales, personajes entrañables y una propuesta visual y educativa diseñada para inspirar creatividad, diversión y aprendizaje en toda la familia.',                                                                                                               spotify:'https://open.spotify.com/embed/artist/3BfgXChz04eFIUm9lT0BcQ?utm_source=generator', ig:'https://www.instagram.com/benitoytomasa/', tk:'',                                         yt:'https://www.youtube.com/@babidiburecords', sp:'https://open.spotify.com/artist/3BfgXChz04eFIUm9lT0BcQ',          g1:'#F97316', g2:'#FBBF24' },
+  dani:     { num:'04', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/logo-dani.png',                 photo:'imagenes-babidibu-records/foto-dani.jpg',           desc:'Daniella Mastricchio, actriz y cantante argentina, conquistó a una generación como Sol Rivera en Chiquititas. Hoy lidera El Rincón de Dani, un espacio creativo de música, juegos y cuentos, consolidándose como referente del entretenimiento familiar.',                                                                                    spotify:'https://open.spotify.com/embed/artist/3zewHpr4SApL9POIsP7UCo?utm_source=generator', ig:'https://www.instagram.com/elrincondedani/', tk:'https://www.tiktok.com/@elrincondedani',   yt:'https://www.youtube.com/@babidiburecords', sp:'https://open.spotify.com/artist/3zewHpr4SApL9POIsP7UCo',          g1:'#F6D51F', g2:'#FA8925' },
+  chiquito: { num:'05', tags:['ARTISTA'],             logo:'imagenes-babidibu-records/logo-chiquito.png',             photo:'imagenes-babidibu-records/foto-chiquito.jpg',        desc:'Es el mejor amigo virtual de la primera infancia: una marca nativa digital que ofrece contenido dinámico, seguro y estimulante, creando una conexión emocional cercana y de confianza con niños y familias a través del juego, la música y el aprendizaje.',                                                                               spotify:'https://open.spotify.com/embed/artist/28nHReKTbDIqT1xidKL5wu?utm_source=generator', ig:'https://www.instagram.com/chiquito.ok/',    tk:'https://www.tiktok.com/@chiquitook',        yt:'https://www.youtube.com/@chiquitook',      sp:'https://open.spotify.com/artist/28nHReKTbDIqT1xidKL5wu',         g1:'#7C3AED', g2:'#A855F7' }
 };
 const modal = document.getElementById('artistModal');
 document.querySelectorAll('.artist-card').forEach(card => {
@@ -516,16 +511,23 @@ document.querySelectorAll('.artist-card').forEach(card => {
     document.getElementById('artistModalLeft').style.background = `linear-gradient(135deg,${d.g1},${d.g2})`;
     document.getElementById('artistModalPhoto').src = d.photo;
     document.getElementById('artistModalNum').textContent = d.num;
+    document.getElementById('artistModalRight').style.setProperty('--accent', d.g1);
     document.getElementById('artistModalTags').innerHTML = d.tags.map(t=>`<span class="artist-tag">${t}</span>`).join('');
     const logoWrap = document.getElementById('artistModalLogoWrap');
     logoWrap.innerHTML = d.logo ? `<img src="${d.logo}" class="artist-modal-logo" alt="">` : `<p class="artist-modal-name-text">${card.querySelector('.artist-card-name').textContent}</p>`;
     document.getElementById('artistModalDesc').textContent = d.desc;
     const spotifyEl = document.getElementById('artistModalSpotify');
     spotifyEl.innerHTML = d.spotify ? `<p class="spotify-label">ESCUCHÁ EN SPOTIFY</p><iframe style="border-radius:12px" src="${d.spotify}?utm_source=generator" width="100%" height="80" frameBorder="0" allow="autoplay;clipboard-write;encrypted-media;fullscreen;picture-in-picture" loading="lazy"></iframe>` : '';
-    document.getElementById('artistModalSocials').innerHTML = `
-      <a href="${d.ig}" target="_blank" class="social-btn ig"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> INSTAGRAM</a>
-      <a href="${d.yt}" target="_blank" class="social-btn yt"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg> YOUTUBE</a>
-    `;
+    const socials = [
+      { key:'ig', url:d.ig, label:'Instagram', color:'#E1306C', icon:'<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>' },
+      { key:'yt', url:d.yt, label:'YouTube',   color:'#FF0000', icon:'<path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>' },
+      { key:'tk', url:d.tk, label:'TikTok',    color:'#000000', icon:'<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>' },
+      { key:'sp', url:d.sp, label:'Spotify',   color:'#1DB954', icon:'<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>'},
+    ];
+    document.getElementById('artistModalSocials').innerHTML = socials
+      .filter(s => s.url)
+      .map(s => `<a href="${s.url}" target="_blank" rel="noopener" class="social-btn ${s.key}" style="--sc:${s.color}" aria-label="${s.label}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${s.icon}</svg></a>`)
+      .join('');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
