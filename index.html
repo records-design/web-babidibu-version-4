@@ -220,25 +220,22 @@
     <div class="impacto-divider"></div>
     <div class="impacto-grid">
       <div class="impacto-stat">
-        <div class="impacto-icon" style="--ic:#FA5457">
-          <!-- headphones -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        <div class="impacto-icon">
+          <img src="imagenes-babidibu-records/SVG/foto-auris.svg" alt="" class="impacto-icon-img">
         </div>
         <span class="impacto-num">+100</span>
         <span class="impacto-lbl">canciones distribuidas</span>
       </div>
       <div class="impacto-stat">
-        <div class="impacto-icon" style="--ic:#01B4BC">
-          <!-- waveform / bars -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="3" y2="12"/><line x1="6" y1="8" x2="6" y2="16"/><line x1="9" y1="5" x2="9" y2="19"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="15" y1="5" x2="15" y2="19"/><line x1="18" y1="8" x2="18" y2="16"/><line x1="21" y1="12" x2="21" y2="12"/></svg>
+        <div class="impacto-icon">
+          <img src="imagenes-babidibu-records/SVG/foto-onda.svg" alt="" class="impacto-icon-img">
         </div>
         <span class="impacto-num">+50 M</span>
         <span class="impacto-lbl">reproducciones en plataformas</span>
       </div>
       <div class="impacto-stat">
-        <div class="impacto-icon" style="--ic:#5FA55A">
-          <!-- star / award -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" opacity="0.15"/><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="impacto-icon">
+          <img src="imagenes-babidibu-records/SVG/foot-estrell.svg" alt="" class="impacto-icon-img">
         </div>
         <span class="impacto-num">+20 años</span>
         <span class="impacto-lbl">de experiencia en música infantil</span>
@@ -665,6 +662,38 @@ function closeFormModal() {
   formModal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
 }
+// Count-up animation for impacto stats
+(function() {
+  const stats = [
+    { el: document.querySelectorAll('.impacto-num')[0], prefix: '+', suffix: '', target: 100, decimals: 0 },
+    { el: document.querySelectorAll('.impacto-num')[1], prefix: '+', suffix: ' M', target: 50, decimals: 0 },
+    { el: document.querySelectorAll('.impacto-num')[2], prefix: '+', suffix: ' años', target: 20, decimals: 0 },
+  ];
+  let animated = false;
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function runCountUp() {
+    if (animated) return;
+    animated = true;
+    const duration = 3200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = easeOut(progress);
+      stats.forEach(s => {
+        const val = Math.round(ease * s.target);
+        s.el.textContent = s.prefix + val + s.suffix;
+      });
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { runCountUp(); obs.disconnect(); }
+  }, { threshold: 0.4 });
+  const section = document.querySelector('.impacto');
+  if (section) obs.observe(section);
+})();
+
 document.getElementById('openFormModal')?.addEventListener('click', openFormModal);
 document.getElementById('closeFormModal')?.addEventListener('click', closeFormModal);
 document.getElementById('formModalBackdrop')?.addEventListener('click', closeFormModal);

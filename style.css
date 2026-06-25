@@ -487,8 +487,8 @@ section { position: relative; overflow: visible; }
 
 /* ── IMPACTO */
 .impacto {
-  background: linear-gradient(105deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 35%), linear-gradient(105deg, #FA5457 0%, #FA8925 50%, #F6D51F 100%);
-  padding: 28px 48px;
+  background: linear-gradient(105deg, #FFFBE0 0%, #FFF0EF 40%, #FFE4D6 100%);
+  padding: 20px 48px;
   margin: 0;
 }
 .impacto-inner {
@@ -496,15 +496,15 @@ section { position: relative; overflow: visible; }
   margin: 0 auto;
   display: grid;
   grid-template-columns: 180px 2px 1fr;
-  align-items: center;
+  align-items: stretch;
   gap: 44px;
 }
-.impacto-label-col { display: flex; flex-direction: column; gap: 10px; }
-.impacto-logo-inline { width: clamp(90px, 9vw, 140px); height: auto; }
+.impacto-label-col { display: flex; flex-direction: column; justify-content: space-between; }
+.impacto-logo-inline { width: clamp(100px, 10vw, 150px); height: auto; }
 .impacto-eyebrow {
-  font-size: clamp(14px, 1.4vw, 20px);
+  font-size: clamp(17px, 1.7vw, 26px);
   font-weight: 800;
-  color: rgba(255,255,255,0.9);
+  color: var(--coral);
   line-height: 1.25;
   margin: 0;
 }
@@ -516,7 +516,7 @@ section { position: relative; overflow: visible; }
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
-.impacto-divider { width: 2px; align-self: stretch; background: rgba(255,255,255,0.35); border-radius: 2px; }
+.impacto-divider { width: 2px; align-self: stretch; min-height: 80px; background: rgba(58,63,68,0.15); border-radius: 2px; }
 .impacto-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -526,7 +526,7 @@ section { position: relative; overflow: visible; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   padding: 0 20px;
   gap: 10px;
@@ -537,19 +537,16 @@ section { position: relative; overflow: visible; }
   position: absolute;
   right: 0; top: 0; bottom: 0;
   width: 2px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(58,63,68,0.12);
   border-radius: 2px;
 }
 .impacto-icon {
-  width: 52px; height: 52px;
-  border-radius: 14px;
+  width: 68px; height: 68px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--ic);
-  background: linear-gradient(160deg, #fff 0%, #f0f0f0 100%);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.18), inset 0 1.5px 0 rgba(255,255,255,1), inset 0 -2px 0 rgba(0,0,0,0.06);
 }
-.impacto-num { font-size: clamp(24px, 2.4vw, 38px); font-weight: 900; color: #fff; line-height: 1; }
-.impacto-lbl { font-size: clamp(12px, 1vw, 14px); color: rgba(255,255,255,0.9); font-weight: 600; line-height: 1.4; }
+.impacto-icon-img { width: 68px; height: 68px; object-fit: contain; }
+.impacto-num { font-size: clamp(24px, 2.4vw, 38px); font-weight: 900; color: var(--coral); line-height: 1; }
+.impacto-lbl { font-size: clamp(12px, 1vw, 14px); color: var(--negro); font-weight: 600; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
 .lanzamientos { background: linear-gradient(145deg, #F0FFF4 0%, #EDE6FF 100%); }
