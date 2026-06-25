@@ -102,15 +102,41 @@ ul { list-style: none; }
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
 }
 .header-logo { height: 62px; width: auto; margin-top: 14px; }
-.header-nav { display: flex; gap: 32px; }
+.header-nav { display: flex; gap: 32px; align-items: center; }
 .header-nav a { font-size: 14px; font-weight: 500; color: var(--negro); opacity: 0.7; transition: opacity 0.2s; }
 .header-nav a:hover { opacity: 1; }
-.header-login {
-  font-size: 14px; font-weight: 600; color: var(--verde);
-  border: 1.5px solid var(--verde); border-radius: 100px;
-  padding: 8px 20px; transition: background 0.2s, color 0.2s;
+.header-nav .nav-cta-btn {
+  opacity: 1;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--verde) 60%, white) 0%, var(--verde) 50%, color-mix(in srgb, var(--verde) 85%, black) 100%);
+  color: #fff; font-weight: 700; font-size: 13px;
+  padding: 8px 18px; border-radius: 100px;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--verde) 35%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.4),
+              inset 0 -2px 0 rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.header-login:hover { background: var(--verde); color: #fff; }
+.header-nav .nav-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--verde) 45%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.4),
+              inset 0 -2px 0 rgba(0,0,0,0.12);
+}
+.header-login {
+  font-size: 13px; font-weight: 700; color: #fff;
+  border: none; border-radius: 100px;
+  padding: 8px 20px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--coral) 60%, white) 0%, var(--coral) 50%, color-mix(in srgb, var(--coral) 85%, black) 100%);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--coral) 35%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.4),
+              inset 0 -2px 0 rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.header-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--coral) 45%, transparent),
+              inset 0 1.5px 0 rgba(255,255,255,0.4),
+              inset 0 -2px 0 rgba(0,0,0,0.12);
+}
 .menu-btn {
   display: none; background: none; border: none; cursor: pointer;
   font-size: 28px; line-height: 1; color: var(--negro); padding: 4px;
@@ -291,8 +317,16 @@ ul { list-style: none; }
     inset 0 -2px 0 rgba(0,0,0,0.15);
 }
 
+/* ── WAVE SEPARATORS */
+.wave-sep {
+  position: relative; z-index: 2;
+  margin-bottom: -2px; line-height: 0;
+}
+.wave-sep svg { display: block; width: 100%; height: 72px; }
+section { position: relative; overflow: visible; }
+
 /* ── QUÉ ES BABIDIBU */
-.que-es { background: #fff; }
+.que-es { background: #F0FAFB; }
 .cards-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .service-card {
   background: var(--bg); border-radius: var(--radius-card);
@@ -325,7 +359,7 @@ ul { list-style: none; }
 .service-card-line { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
 
 /* ── NUESTROS UNIVERSOS */
-.universos { background: var(--bg); }
+.universos { background: #FFFDF0; }
 .artists-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -436,24 +470,18 @@ ul { list-style: none; }
 }
 .spotify-label { display: none; }
 .artist-modal-socials { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
-.artist-modal-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.artist-modal-socials { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
 .social-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   text-decoration: none;
-  background: linear-gradient(160deg, color-mix(in srgb, var(--sc) 60%, white) 0%, var(--sc) 50%, color-mix(in srgb, var(--sc) 85%, black) 100%);
-  color: #fff;
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--sc) 40%, transparent),
-              inset 0 1.5px 0 rgba(255,255,255,0.45),
-              inset 0 -2px 0 rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
+  background: none; border: none;
+  color: rgba(0,0,0,0.25);
+  transition: color 0.2s, transform 0.2s;
 }
 .social-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--sc) 50%, transparent),
-              inset 0 1.5px 0 rgba(255,255,255,0.45),
-              inset 0 -2px 0 rgba(0,0,0,0.15);
+  color: var(--sc);
+  transform: translateY(-2px);
 }
 
 /* ── IMPACTO */
@@ -498,7 +526,7 @@ ul { list-style: none; }
 .impacto-lbl { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
-.lanzamientos { background: #fff; }
+.lanzamientos { background: #F2FAF2; }
 .yt-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
 .yt-card { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); cursor: pointer; transition: transform 0.2s; }
 .yt-card:hover { transform: translateY(-4px); }
