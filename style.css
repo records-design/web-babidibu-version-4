@@ -502,18 +502,28 @@ section { position: relative; overflow: visible; }
 .impacto-label-col { flex-shrink: 0; min-width: 260px; max-width: 300px; }
 .impacto-title { font-size: clamp(28px, 3.2vw, 42px); font-weight: 900; color: #fff; line-height: 1.05; }
 .impacto-sub { font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 10px; line-height: 1.5; }
-.impacto-divider { width: 2px; height: 80px; background: rgba(255,255,255,0.4); flex-shrink: 0; border-radius: 2px; }
+.impacto-divider { width: 2px; align-self: stretch; background: rgba(255,255,255,0.4); flex-shrink: 0; border-radius: 2px; }
 .impacto-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; flex: 1; }
 .impacto-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 8px;
   padding: 0 36px;
-  border-right: 1px solid rgba(255,255,255,0.25);
+  position: relative;
 }
-.impacto-stat:last-child { border-right: none; }
+.impacto-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 2px;
+}
 .impacto-icon {
   width: 52px; height: 52px;
   border-radius: 16px;
@@ -529,22 +539,33 @@ section { position: relative; overflow: visible; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
 .lanzamientos { background: linear-gradient(145deg, #F0FFF4 0%, #EDE6FF 100%); }
-.yt-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
-.yt-card { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); cursor: pointer; transition: transform 0.2s; }
-.yt-card:hover { transform: translateY(-4px); }
-.yt-thumb-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-.yt-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-.yt-card:hover .yt-thumb { transform: scale(1.03); }
-.yt-play-btn {
-  position: absolute; inset: 0; background: rgba(0,0,0,0.3);
-  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  font-size: 40px; color: #fff;
-  transition: background 0.2s;
+.babidibutv-banner { background: #FFF3F0; padding: 32px 40px; }
+.babidibutv-inner {
+  max-width: 1100px; margin: 0 auto;
+  background: linear-gradient(135deg, #FFFBEA 0%, #FFF3F0 100%);
+  border-radius: 24px;
+  padding: 32px 48px;
+  display: flex; align-items: center; gap: 40px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
 }
-.yt-card:hover .yt-play-btn { background: rgba(0,0,0,0.5); }
-.yt-info { padding: 16px 20px; }
-.yt-artist { display: block; font-size: 13px; font-weight: 600; color: var(--verde); margin-bottom: 4px; }
-.yt-song { display: block; font-size: 16px; font-weight: 700; color: var(--negro); }
+.babidibutv-logo { height: 90px; width: auto; flex-shrink: 0; }
+.babidibutv-desc { flex: 1; font-size: clamp(14px, 1.2vw, 16px); color: rgba(58,63,68,0.7); line-height: 1.65; margin: 0; text-align: center; }
+.babidibutv-btn {
+  flex-shrink: 0;
+  font-size: 15px; font-weight: 700; color: var(--negro); text-decoration: none;
+  padding: 14px 28px; border-radius: 100px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--amarillo) 60%, white) 0%, var(--amarillo) 50%, color-mix(in srgb, var(--amarillo) 85%, black) 100%);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--amarillo) 40%, transparent), inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.babidibutv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px color-mix(in srgb, var(--amarillo) 50%, transparent), inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.1); }
+.lanz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.lanz-item { display: flex; flex-direction: column; gap: 14px; }
+.lanz-video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 14px; overflow: hidden; background: #000; }
+.lanz-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.lanz-meta { display: flex; flex-direction: column; gap: 4px; }
+.lanz-artist { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--turquesa); }
+.lanz-name { font-size: 15px; font-weight: 500; color: var(--negro); letter-spacing: -0.01em; margin: 0; }
 .yt-lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center; padding: 24px;
@@ -566,62 +587,49 @@ section { position: relative; overflow: visible; }
   margin: 0 auto;
   background: linear-gradient(105deg, #FA5457 0%, #FA8925 35%, #F6D51F 65%, #5FA55A 100%);
   border-radius: 28px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 0;
+  gap: 40px;
+  padding: 36px 52px;
   overflow: hidden;
-  min-height: 160px;
-}
-.contacto-pill-title {
-  padding: 40px 40px 40px 48px;
 }
 .contacto-title {
-  font-size: clamp(26px, 3vw, 38px);
+  font-size: clamp(22px, 2.2vw, 30px);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #fff;
-  letter-spacing: -0.01em;
-}
-.contacto-pill-body {
-  padding: 40px 48px;
-  border-left: 1px solid rgba(255,255,255,0.3);
-}
-.contacto-headline {
-  font-size: clamp(16px, 1.8vw, 20px);
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .contacto-body {
-  font-size: 14px;
+  flex: 1;
+  font-size: clamp(14px, 1.1vw, 16px);
   font-weight: 400;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin: 0;
+  border-left: 1px solid rgba(255,255,255,0.3);
+  padding-left: 40px;
 }
 .btn-contacto {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   background: #fff;
   color: var(--negro);
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
   font-size: 15px;
-  padding: 12px 24px;
+  padding: 14px 26px;
   border-radius: 100px;
   border: none;
   cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15), inset 0 1.5px 0 rgba(255,255,255,0.8);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.btn-contacto:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-.contacto-pill-illus {
-  width: 180px;
-  position: relative;
-  align-self: stretch;
-  overflow: visible;
-}
+.btn-contacto:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
 .contacto-illus-img {
   position: absolute;
   bottom: 0;
@@ -761,11 +769,11 @@ section { position: relative; overflow: visible; }
   .impacto-grid { grid-template-columns: repeat(2,1fr); gap: 24px; width: 100%; }
   .impacto-stat { padding: 0; border-right: none; }
   .yt-grid { grid-template-columns: 1fr; }
+  .lanz-grid { grid-template-columns: 1fr; }
   .contacto { padding: 0 16px 60px; }
-  .contacto-pill { grid-template-columns: 1fr; min-height: auto; }
-  .contacto-pill-title { padding: 36px 24px 20px; }
-  .contacto-pill-body { padding: 20px 24px 36px; border-left: none; border-top: 1px solid rgba(255,255,255,0.3); }
-  .contacto-pill-illus { display: none; }
+  .contacto-pill { flex-direction: column; align-items: flex-start; padding: 32px 28px; gap: 20px; }
+  .contacto-title { white-space: normal; }
+  .contacto-body { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; }
   .form-wrap { padding: 0 24px 60px; }
   .artist-modal-inner { grid-template-columns: 1fr; max-height: 95vh; }
   .artist-modal-left { min-height: 280px; }
