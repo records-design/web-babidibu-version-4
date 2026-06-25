@@ -500,7 +500,7 @@ section { position: relative; overflow: visible; }
   gap: 64px;
 }
 .impacto-label-col { display: flex; flex-direction: column; gap: 16px; }
-.impacto-logo-inline { width: clamp(120px, 12vw, 180px); height: auto; filter: brightness(0) invert(1); }
+.impacto-logo-inline { width: clamp(120px, 12vw, 180px); height: auto; background: rgba(255,255,255,0.92); border-radius: 14px; padding: 10px 16px; }
 .impacto-eyebrow {
   font-size: clamp(18px, 1.8vw, 26px);
   font-weight: 800;
