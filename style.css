@@ -477,58 +477,55 @@ section { position: relative; overflow: visible; }
   text-decoration: none; border: none;
   color: #fff;
   background: linear-gradient(160deg, color-mix(in srgb, var(--sc) 55%, white) 0%, var(--sc) 50%, color-mix(in srgb, var(--sc) 88%, black) 100%);
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--sc) 40%, transparent),
-              inset 0 1.5px 0 rgba(255,255,255,0.5),
+  box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.5),
               inset 0 -2px 0 rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
 }
 .social-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--sc) 50%, transparent),
-              inset 0 1.5px 0 rgba(255,255,255,0.5),
-              inset 0 -2px 0 rgba(0,0,0,0.15);
 }
 
 /* ── IMPACTO */
 .impacto {
-  background: linear-gradient(105deg, #FA5457 0%, #FA8925 28%, #F6D51F 55%, #01B4BC 100%);
+  background: linear-gradient(105deg, #FA5457 0%, #FA8925 50%, #F6D51F 100%);
   padding: 52px 48px;
-  border-radius: 24px;
-  margin: 0 40px 0;
+  border-radius: 0;
+  margin: 0;
 }
 .impacto-inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 48px;
 }
-.impacto-label-col { flex-shrink: 0; min-width: 160px; }
-.impacto-title { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: #fff; line-height: 1.1; }
-.impacto-sub { font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 8px; line-height: 1.4; }
-.impacto-divider { width: 2px; height: 72px; background: rgba(255,255,255,0.4); flex-shrink: 0; border-radius: 2px; }
-.impacto-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; flex: 1; }
+.impacto-label-col { flex-shrink: 0; min-width: 180px; }
+.impacto-title { font-size: clamp(28px, 3.2vw, 42px); font-weight: 900; color: #fff; line-height: 1.05; }
+.impacto-sub { font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 10px; line-height: 1.5; }
+.impacto-divider { width: 2px; height: 80px; background: rgba(255,255,255,0.4); flex-shrink: 0; border-radius: 2px; }
+.impacto-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; flex: 1; }
 .impacto-stat {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 0 28px;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 0 36px;
   border-right: 1px solid rgba(255,255,255,0.25);
 }
 .impacto-stat:last-child { border-right: none; }
 .impacto-icon {
-  width: 44px;
-  height: 44px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
   margin-bottom: 6px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.1) 100%);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12),
+              inset 0 1.5px 0 rgba(255,255,255,0.7),
+              inset 0 -2px 0 rgba(0,0,0,0.08);
 }
-.impacto-num { font-size: clamp(30px, 3vw, 46px); font-weight: 900; color: #fff; line-height: 1; }
-.impacto-lbl { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.4; }
+.impacto-num { font-size: clamp(32px, 3.2vw, 50px); font-weight: 900; color: #fff; line-height: 1; }
+.impacto-lbl { font-size: clamp(15px, 1.3vw, 18px); color: rgba(255,255,255,0.95); font-weight: 600; line-height: 1.45; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
 .lanzamientos { background: linear-gradient(145deg, #F0FFF4 0%, #EDE6FF 100%); }
