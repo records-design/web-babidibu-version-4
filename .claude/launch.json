@@ -4,8 +4,8 @@
     {
       "name": "babidibu-v4",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8766"],
-      "port": 8766
+      "runtimeArgs": ["-m", "http.server", "8799"],
+      "port": 8799
     }
   ]
 }

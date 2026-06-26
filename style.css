@@ -53,7 +53,7 @@ ul { list-style: none; }
   background: linear-gradient(160deg, color-mix(in srgb, var(--verde) 60%, white) 0%, var(--verde) 50%, color-mix(in srgb, var(--verde) 85%, black) 100%);
   color: #fff;
   font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 7px 16px; border-radius: 100px; margin-bottom: 16px;
+  padding: 7px 16px; border-radius: 100px; margin-bottom: 28px;
   box-shadow: 0 6px 16px color-mix(in srgb, var(--verde) 40%, transparent),
               inset 0 1.5px 0 rgba(255,255,255,0.4),
               inset 0 -2px 0 rgba(0,0,0,0.12);
@@ -184,8 +184,8 @@ ul { list-style: none; }
   left: var(--x); top: var(--y);
   width: var(--s); height: var(--s);
   pointer-events: none; z-index: 1;
-  animation: var(--a, hdFloat) var(--t, 4.5s) ease-in-out infinite;
-  animation-delay: var(--d);
+  animation: none;
+  transform: rotate(var(--r, 0deg));
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
 }
 /* up-down suave */
@@ -294,27 +294,43 @@ ul { list-style: none; }
   object-fit: cover;
   display: block;
 }
-.hs-card span {
+.hs-card::after {
+  content: '';
   position: absolute;
-  bottom: 18px; left: 18px;
-  background: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--c) 70%, white) 0%,
-    var(--c) 50%,
-    color-mix(in srgb, var(--c) 85%, black) 100%
-  );
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 45%, transparent 100%);
+  pointer-events: none;
+}
+.hs-card-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  right: 22px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.hs-card-bottom span {
   color: #fff;
-  font-size: 14px;
+  font-size: clamp(18px, 2.2vw, 26px);
   font-weight: 900;
-  padding: 7px 16px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.hs-card-bottom em {
+  font-style: normal;
+  background: var(--c);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
   border-radius: 100px;
-  box-shadow:
-    0 6px 16px color-mix(in srgb, var(--c) 55%, transparent),
-    inset 0 1.5px 0 rgba(255,255,255,0.45),
-    inset 0 -2px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--c) 55%, transparent);
 }
 
 /* ── WAVE SEPARATORS */
@@ -360,10 +376,14 @@ section { position: relative; overflow: visible; }
 
 /* ── NUESTROS UNIVERSOS */
 .universos { background: linear-gradient(145deg, #FFFBEA 0%, #FFF3F0 100%); }
+.universos .section-inner { max-width: 1400px; }
 .artists-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 .artist-card {
   border-radius: 24px; overflow: hidden;
@@ -397,7 +417,7 @@ section { position: relative; overflow: visible; }
     color-mix(in srgb, var(--g1) 90%, black) 0%,
     color-mix(in srgb, var(--g1) 60%, transparent) 60%,
     transparent 100%);
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
 }
 .artist-card-name {
   font-size: clamp(11px, 1vw, 14px); font-weight: 900; color: #fff;
@@ -446,8 +466,8 @@ section { position: relative; overflow: visible; }
   width: 100%; height: 100%; object-fit: cover; object-position: top;
 }
 .artist-modal-right {
-  padding: 52px 56px; overflow-y: auto;
-  display: flex; flex-direction: column; justify-content: center; gap: 20px;
+  padding: 32px 40px; overflow-y: hidden;
+  display: flex; flex-direction: column; justify-content: center; gap: 12px;
 }
 .artist-modal-num {
   font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
@@ -459,7 +479,7 @@ section { position: relative; overflow: visible; }
   padding: 5px 14px; border-radius: 100px;
   border: 1.5px solid var(--accent); color: var(--accent);
 }
-.artist-modal-logo { max-width: 300px; max-height: 260px; width: auto; height: auto; object-fit: contain; }
+.artist-modal-logo { max-width: 220px; max-height: 120px; width: auto; height: auto; object-fit: contain; }
 .artist-modal-name-text {
   font-size: clamp(30px, 3.5vw, 52px); font-weight: 900;
   letter-spacing: -0.03em; line-height: 1.05; color: var(--negro);
@@ -569,12 +589,26 @@ section { position: relative; overflow: visible; }
 }
 .babidibutv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px color-mix(in srgb, var(--amarillo) 50%, transparent), inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.1); }
 .lanz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.lanz-item { display: flex; flex-direction: column; gap: 14px; }
-.lanz-video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 14px; overflow: hidden; background: #000; }
+.lanz-item {
+  display: flex; flex-direction: column; gap: 0;
+  background: #fff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+.lanz-video-wrap { position: relative; width: 100%; padding-top: 62%; background: #000; }
 .lanz-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-.lanz-meta { display: flex; flex-direction: column; gap: 4px; }
-.lanz-artist { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--turquesa); }
-.lanz-name { font-size: 15px; font-weight: 500; color: var(--negro); letter-spacing: -0.01em; margin: 0; }
+.lanz-meta {
+  display: flex; flex-direction: row; align-items: center;
+  gap: 14px; padding: 16px 20px 20px;
+}
+.lanz-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: #FFF3CD; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.lanz-info { display: flex; flex-direction: column; gap: 2px; }
+.lanz-name { font-size: 17px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; margin: 0; line-height: 1.2; }
+.lanz-artist { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(58,63,68,0.45); }
 .yt-lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center; padding: 24px;
@@ -776,31 +810,54 @@ section { position: relative; overflow: visible; }
 
 /* ── MOBILE */
 @media (max-width: 768px) {
+  /* Header */
   .header { padding: 0 20px; }
   .header-nav, .header-login { display: none; }
   .menu-btn { display: block; }
-  .hero-content { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
-  .hero-stories { overflow-x: auto; scrollbar-width: none; }
-  .hero-stories::-webkit-scrollbar { display: none; }
-  .hero-story { min-width: 100px; }
-  .section-inner { padding: 60px 24px; }
+
+  /* Hero */
+  .hero-content { display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; padding: 20px 20px 0; }
+  .hero-text { height: auto; justify-content: flex-start; }
+  .hero-swipe { height: 260px; }
+  .hd-svg { display: none; }
+
+  /* Sections */
+  .section-inner { padding: 52px 20px; }
   .cards-grid-3 { grid-template-columns: 1fr; gap: 16px; }
-  .artists-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
-  .impacto { padding: 40px 24px; margin: 0 16px; border-radius: 20px; }
-  .impacto-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .impacto-divider { width: 48px; height: 2px; }
-  .impacto-grid { grid-template-columns: repeat(2,1fr); gap: 24px; width: 100%; }
-  .impacto-stat { padding: 0; border-right: none; }
+
+  /* Universos artist cards */
+  .artists-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .artist-card-name { font-size: 10px; }
+
+  /* Impacto */
+  .impacto-inner { padding: 40px 20px 36px; gap: 28px; }
+  .impacto-grid { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .impacto-stat { padding: 0 10px; }
+  .impacto-stat:not(:last-child)::after { display: none; }
+  .impacto-num { font-size: clamp(20px, 5vw, 28px); }
+  .impacto-lbl { font-size: clamp(10px, 2.5vw, 13px); }
+  .impacto-icon { width: 48px; height: 48px; }
+  .impacto-icon-img { width: 48px; height: 48px; }
+
+  /* Lanzamientos */
   .yt-grid { grid-template-columns: 1fr; }
   .lanz-grid { grid-template-columns: 1fr; }
+
+  /* Contacto */
   .contacto { padding: 0 16px 60px; }
   .contacto-pill { flex-direction: column; align-items: flex-start; padding: 32px 28px; gap: 20px; }
   .contacto-title { white-space: normal; }
   .contacto-body { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; }
-  .form-wrap { padding: 0 24px 60px; }
-  .artist-modal-inner { grid-template-columns: 1fr; max-height: 95vh; }
-  .artist-modal-left { min-height: 280px; }
-  .footer-inner { padding: 40px 24px 24px; }
+  .form-wrap { padding: 0 20px 60px; }
+
+  /* Artist modal */
+  .artist-modal-inner { grid-template-columns: 1fr; height: auto; max-height: 92vh; }
+  .artist-modal-left { min-height: 260px; max-height: 40vh; }
+  .artist-modal-right { padding: 24px 24px 32px; overflow-y: auto; gap: 10px; }
+  .artist-modal-name-text { font-size: clamp(22px, 6vw, 32px); }
+
+  /* Footer */
+  .footer-inner { padding: 40px 20px 24px; }
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
   .footer-links-wrap { grid-template-columns: repeat(2,1fr); gap: 24px; }
 }
