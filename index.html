@@ -53,13 +53,13 @@
 </div>
 
 <section class="hero" id="inicio">
-  <!-- notas musicales -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:1%;  --y:14%; --s:38px; --r:-18deg;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:62%; --s:26px; --r:14deg;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:88%; --y:16%; --s:34px; --r:20deg;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:91%; --y:55%; --s:22px; --r:-14deg;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:44%; --y:16%; --s:20px; --r:10deg;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:6%;  --y:82%; --s:28px; --r:-22deg;">
+  <!-- notas musicales — colores del logo via hue-rotate -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:4%;  --y:16%; --s:38px; --r:-18deg; filter:hue-rotate(160deg) saturate(1.4);">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:62%; --s:26px; --r:14deg;  filter:hue-rotate(220deg) saturate(1.2);">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:88%; --y:16%; --s:34px; --r:20deg;  filter:hue-rotate(80deg) saturate(1.5) brightness(1.1);">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:91%; --y:55%; --s:22px; --r:-14deg; filter:hue-rotate(50deg) saturate(1.8) brightness(1.1);">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:44%; --y:16%; --s:20px; --r:10deg;  filter:hue-rotate(310deg) saturate(1.6);">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:6%;  --y:82%; --s:28px; --r:-22deg; filter:hue-rotate(130deg) saturate(1.3) brightness(0.95);">
   <!-- esferas -->
   <img src="imagenes-babidibu-records/esfera amarilla.svg" class="hd-svg" style="--x:10%; --y:28%; --s:14px; --d:0.4s; --r:0deg; --a:hdPulse; --t:4.2s">
   <img src="imagenes-babidibu-records/esfera coral.svg"    class="hd-svg" style="--x:3%;  --y:48%; --s:20px; --d:0s;   --r:0deg; --a:hdBob;   --t:3.8s">
@@ -107,10 +107,10 @@
 
 <section class="que-es" id="que-es">
   <div class="section-inner section-inner--center">
-    <div class="section-label-pill">¿Qué es BABIDIBU?</div>
-    <h2 class="section-title">Acompañamos proyectos desde la idea hasta que llegan al corazón de niños, niñas y familias</h2>
+    <div class="section-label-pill reveal">¿Qué es BABIDIBU?</div>
+    <h2 class="section-title reveal reveal-delay-1">Acompañamos proyectos desde la idea hasta que llegan al corazón de niños, niñas y familias</h2>
     <div class="cards-grid-3">
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-1">
         <div class="service-card-img"><img src="imagenes-babidibu-records/nota musical.svg" alt="Música" class="service-card-svg"></div>
         <div class="service-card-body">
           <h3>Música</h3>
@@ -118,7 +118,7 @@
           <div class="service-card-line" style="background:var(--verde)"></div>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-2">
         <div class="service-card-img"><img src="imagenes-babidibu-records/claqueta.svg" alt="Contenido" class="service-card-svg"></div>
         <div class="service-card-body">
           <h3>Contenido</h3>
@@ -126,7 +126,7 @@
           <div class="service-card-line" style="background:var(--turquesa)"></div>
         </div>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-3">
         <div class="service-card-img"><img src="imagenes-babidibu-records/star.svg" alt="Desarrollo de marcas" class="service-card-svg"></div>
         <div class="service-card-body">
           <h3>Desarrollo de marcas</h3>
@@ -141,10 +141,10 @@
 
 <section class="universos" id="universos">
   <div class="section-inner section-inner--center">
-    <div class="section-label-pill">Nuestros universos</div>
-    <h2 class="section-title">Cada proyecto musical es un mundo único.</h2>
+    <div class="section-label-pill reveal">Nuestros universos</div>
+    <h2 class="section-title reveal reveal-delay-1">Cada proyecto musical es un mundo único.</h2>
     <div class="artists-grid">
-      <div class="artist-card" data-artist="trillizas" style="--g1:#8B5CF6;--g2:#60A5FA">
+      <div class="artist-card reveal reveal-delay-1" data-artist="trillizas" style="--g1:#8B5CF6;--g2:#60A5FA">
         <div class="artist-card-inner">
           <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foot-trillizas2.png" class="artist-card-photo" alt="Las Trillizas"></div>
           <div class="artist-card-footer">
@@ -153,7 +153,7 @@
           </div>
         </div>
       </div>
-      <div class="artist-card" data-artist="chani" style="--g1:#FF6B9D;--g2:#FFD166">
+      <div class="artist-card reveal reveal-delay-2" data-artist="chani" style="--g1:#FF6B9D;--g2:#FFD166">
         <div class="artist-card-inner">
           <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-chani.png" class="artist-card-photo" alt="Chani"></div>
           <div class="artist-card-footer">
@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="artist-card" data-artist="benito" style="--g1:#F97316;--g2:#FBBF24">
+      <div class="artist-card reveal reveal-delay-3" data-artist="benito" style="--g1:#F97316;--g2:#FBBF24">
         <div class="artist-card-inner">
           <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-benitoytomasa.png" class="artist-card-photo" alt="Benito y Tomasa"></div>
           <div class="artist-card-footer">
@@ -171,7 +171,7 @@
           </div>
         </div>
       </div>
-      <div class="artist-card" data-artist="dani" style="--g1:#F6D51F;--g2:#FA8925">
+      <div class="artist-card reveal reveal-delay-4" data-artist="dani" style="--g1:#F6D51F;--g2:#FA8925">
         <div class="artist-card-inner">
           <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foot-el rincon de dani.png" class="artist-card-photo" alt="Dani"></div>
           <div class="artist-card-footer">
@@ -180,7 +180,7 @@
           </div>
         </div>
       </div>
-      <div class="artist-card" data-artist="chiquito" style="--g1:#7C3AED;--g2:#A855F7">
+      <div class="artist-card reveal reveal-delay-2" data-artist="chiquito" style="--g1:#7C3AED;--g2:#A855F7">
         <div class="artist-card-inner">
           <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foto-soychiquito.png" class="artist-card-photo" alt="Chiquito"></div>
           <div class="artist-card-footer">
@@ -213,26 +213,26 @@
 
 <section class="impacto" id="impacto">
   <div class="impacto-inner">
-    <div class="impacto-header">
+    <div class="impacto-header reveal">
       <span class="section-label-pill impacto-pill">Nuestro impacto</span>
       <h2 class="impacto-title">Música que llega lejos<br>y permanece.</h2>
     </div>
     <div class="impacto-grid">
-      <div class="impacto-stat">
+      <div class="impacto-stat reveal reveal-delay-1">
         <div class="impacto-icon">
           <img src="imagenes-babidibu-records/SVG/foto-auriculares.svg" alt="" class="impacto-icon-img" style="width:100px;height:100px">
         </div>
         <span class="impacto-num">+100</span>
         <span class="impacto-lbl">canciones distribuidas</span>
       </div>
-      <div class="impacto-stat">
+      <div class="impacto-stat reveal reveal-delay-2">
         <div class="impacto-icon">
           <img src="imagenes-babidibu-records/SVG/foto-sonido.svg" alt="" class="impacto-icon-img">
         </div>
         <span class="impacto-num">+50M</span>
         <span class="impacto-lbl">reproducciones en plataformas</span>
       </div>
-      <div class="impacto-stat">
+      <div class="impacto-stat reveal reveal-delay-3">
         <div class="impacto-icon">
           <img src="imagenes-babidibu-records/SVG/foto star.svg" alt="" class="impacto-icon-img">
         </div>
@@ -246,11 +246,11 @@
 
 <section class="lanzamientos" id="lanzamientos">
   <div class="section-inner">
-    <div class="section-header-inline" style="margin-bottom:36px;">
+    <div class="section-header-inline reveal" style="margin-bottom:36px;">
       <h2 class="section-title-inline">Últimos lanzamientos</h2>
     </div>
     <div class="lanz-grid">
-      <div class="lanz-item">
+      <div class="lanz-item reveal reveal-delay-1">
         <div class="lanz-video-wrap">
           <iframe src="https://www.youtube.com/embed/3z8yO5MOOAk" title="La Sirenita — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -259,7 +259,7 @@
           <p class="lanz-name">La Sirenita / Cuentos infantiles</p>
         </div>
       </div>
-      <div class="lanz-item">
+      <div class="lanz-item reveal reveal-delay-2">
         <div class="lanz-video-wrap">
           <iframe src="https://www.youtube.com/embed/WV40kNYnLxY" title="Vamos Vamos Argentina — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -268,7 +268,7 @@
           <p class="lanz-name">Vamos Vamos Argentina</p>
         </div>
       </div>
-      <div class="lanz-item">
+      <div class="lanz-item reveal reveal-delay-3">
         <div class="lanz-video-wrap">
           <iframe src="https://www.youtube.com/embed/XhBg5kpoj8E" title="Manualidades Argentina — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -298,7 +298,7 @@
 </section>
 
 <section class="contacto" id="contacto">
-  <div class="contacto-pill">
+  <div class="contacto-pill reveal">
     <h2 class="contacto-title">¿Tenés un<br>proyecto infantil?</h2>
     <p class="contacto-body">Somos un equipo con <strong>más de 20 años</strong> desarrollando proyectos infantiles y familiares. Música, creatividad y estrategia para construir marcas con <strong style="white-space:nowrap">propósito y proyección internacional.</strong></p>
     <button type="button" class="btn-contacto" id="openFormModal">Envianos tu proyecto →</button>
@@ -701,6 +701,17 @@ document.getElementById('openFormModal')?.addEventListener('click', openFormModa
 document.getElementById('closeFormModal')?.addEventListener('click', closeFormModal);
 document.getElementById('formModalBackdrop')?.addEventListener('click', closeFormModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFormModal(); });
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
