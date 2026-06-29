@@ -87,13 +87,11 @@
 
     </div>
     <div class="hero-swipe" id="heroSwipe">
-      <div class="hs-card" style="--c:#F6D51F"><img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" alt="Trillizas de Oro"><div class="hs-card-bottom"><span>Las Trillizas de Oro</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
+      <div class="hs-card" style="--c:#F6D51F"><img src="imagenes-babidibu-records/fotos trillis, hero.png" alt="Trillizas de Oro"><div class="hs-card-bottom"><span>Las Trillizas de Oro</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
       <div class="hs-card" style="--c:#01B4BC"><img src="imagenes-babidibu-records/foto-chani.png" alt="El Mundo de Chani"><div class="hs-card-bottom"><span>El Mundo de Chani</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
       <div class="hs-card" style="--c:#FA5457"><img src="imagenes-babidibu-records/foto-benitoytomasa.png" alt="Benito y Tomasa"><div class="hs-card-bottom"><span>Benito y Tomasa</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
-      <div class="hs-card" style="--c:#F6D51F"><img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" alt="Trillizas de Oro"><div class="hs-card-bottom"><span>Las Trillizas de Oro</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
       <div class="hs-card" style="--c:#FA8925"><img src="imagenes-babidibu-records/foot-el rincon de dani.png" alt="El Rincón de Dani"><div class="hs-card-bottom"><span>El Rincón de Dani</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
-      <div class="hs-card" style="--c:#F6D51F"><img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" alt="Trillizas de Oro"><div class="hs-card-bottom"><span>Las Trillizas de Oro</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
-      <div class="hs-card" style="--c:#5FA55A"><img src="imagenes-babidibu-records/foto-soychiquito.png" alt="Chiquito de Ahora"><div class="hs-card-bottom"><span>Hola, soy chiquito</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
+      <div class="hs-card" style="--c:#5FA55A"><img src="imagenes-babidibu-records/foto-soychiquito.png" alt="Chiquito de Ahora"><div class="hs-card-bottom"><span>Hola, soy Chiquito</span><div class="hs-card-icon"><img src="imagenes-babidibu-records/SVG/nota musical 2.svg" alt=""></div></div></div>
     </div>
   </div>
   <div class="wave-sep"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#EDE6FF"/></svg></div>
@@ -140,7 +138,7 @@
     <div class="artists-grid">
       <div class="artist-card" data-artist="trillizas" style="--g1:#8B5CF6;--g2:#60A5FA">
         <div class="artist-card-inner">
-          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/fotos-las-trillizas.jpg" class="artist-card-photo" alt="Las Trillizas"></div>
+          <div class="artist-card-photo-wrap"><img src="imagenes-babidibu-records/foot-trillizas2.png" class="artist-card-photo" alt="Las Trillizas"></div>
           <div class="artist-card-footer">
             <span class="artist-card-name">Las Trillizas de Oro</span>
             <span class="artist-card-cta">Conocé más →</span>
@@ -620,28 +618,63 @@ document.getElementById('formSuccessReset')?.addEventListener('click', () => {
   closeFormModal();
 });
 
-// Hero crossfade carousel
+// Hero stacked-deck carousel
 (function() {
   const wrap = document.getElementById('heroSwipe');
   if (!wrap) return;
   const cards = Array.from(wrap.querySelectorAll('.hs-card'));
   const n = cards.length;
   let current = 0;
+  let animating = false;
 
-  cards.forEach((card, i) => {
-    card.style.transition = 'opacity 0.8s ease';
-    card.style.opacity = i === 0 ? '1' : '0';
-    card.style.zIndex = i === 0 ? '2' : '1';
-  });
+  const STACK = [
+    { tx:  '0px',  ty:  '0px',  scale: 1,    rot:  '0deg',  opacity: 1,    z: 10 },
+    { tx: '16px',  ty: '14px',  scale: 0.93, rot:  '3.5deg', opacity: 1,    z: 9  },
+    { tx: '28px',  ty: '24px',  scale: 0.86, rot:  '7deg',  opacity: 0.55, z: 8  },
+  ];
+
+  function applyStack(animate) {
+    cards.forEach((card, i) => {
+      const slot = (i - current + n) % n;
+      const s = slot < STACK.length ? STACK[slot] : null;
+      card.style.transition = animate
+        ? 'transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s ease'
+        : 'none';
+      if (s) {
+        card.style.transform = `translate(${s.tx}, ${s.ty}) scale(${s.scale}) rotate(${s.rot})`;
+        card.style.opacity = String(s.opacity);
+        card.style.zIndex  = String(s.z);
+      } else {
+        card.style.transform = `translate(28px, 24px) scale(0.86) rotate(7deg)`;
+        card.style.opacity = '0';
+        card.style.zIndex  = '1';
+      }
+    });
+  }
+
+  applyStack(false);
 
   setInterval(() => {
-    const prev = current;
-    current = (current + 1) % n;
-    cards[prev].style.opacity = '0';
-    cards[prev].style.zIndex = '1';
-    cards[current].style.opacity = '1';
-    cards[current].style.zIndex = '2';
-  }, 2800);
+    if (animating) return;
+    animating = true;
+
+    const frontCard = cards[current];
+    frontCard.style.transition = 'transform 0.5s cubic-bezier(0.55,0,0.1,1), opacity 0.4s ease';
+    frontCard.style.transform = 'translate(-110%, -4%) scale(0.85) rotate(-8deg)';
+    frontCard.style.opacity   = '0';
+
+    setTimeout(() => {
+      current = (current + 1) % n;
+      // silently move outgoing card to back position
+      frontCard.style.transition = 'none';
+      frontCard.style.transform  = 'translate(28px, 24px) scale(0.86) rotate(7deg)';
+      frontCard.style.opacity    = '0';
+      frontCard.style.zIndex     = '1';
+      // animate remaining cards into new positions
+      applyStack(true);
+      setTimeout(() => { animating = false; }, 700);
+    }, 420);
+  }, 3200);
 })();
 
 // Form modal
