@@ -42,9 +42,7 @@ ul { list-style: none; }
 }
 .btn-outline:hover { border-color: var(--negro); background: rgba(0,0,0,0.04); }
 
-/* ── Reveal animation */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ── Reveal animation — ver definición al final del archivo */
 
 /* ── Section commons */
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
@@ -102,8 +100,8 @@ ul { list-style: none; }
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
 }
 .header-logo { height: 56px; width: auto; margin-top: 0; }
-.header-nav { display: flex; gap: 32px; align-items: center; }
-.header-nav a { font-size: 14px; font-weight: 500; color: var(--negro); opacity: 0.7; transition: color 0.2s, opacity 0.2s, font-weight 0.2s; }
+.header-nav { display: flex; gap: 20px; align-items: center; }
+.header-nav a { font-size: 13px; font-weight: 500; color: var(--negro); opacity: 0.7; transition: color 0.2s, opacity 0.2s, font-weight 0.2s; }
 .header-nav a:hover { opacity: 1; font-weight: 800; }
 .header-nav a:nth-child(1):hover { color: var(--verde); }
 .header-nav a:nth-child(2):hover { color: var(--turquesa); }
@@ -596,19 +594,32 @@ section { position: relative; overflow: visible; }
   padding: 32px 24px;
   gap: 10px;
   position: relative;
-  background: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.impacto-stat:nth-child(1) { border-top: 4px solid var(--coral); }
-.impacto-stat:nth-child(2) { border-top: 4px solid var(--turquesa); }
-.impacto-stat:nth-child(3) { border-top: 4px solid var(--verde); }
+.impacto-stat:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.11); }
+.impacto-stat:nth-child(1) {
+  background: color-mix(in srgb, var(--coral) 8%, white);
+  border-top: 4px solid var(--coral);
+}
+.impacto-stat:nth-child(2) {
+  background: color-mix(in srgb, var(--turquesa) 8%, white);
+  border-top: 4px solid var(--turquesa);
+}
+.impacto-stat:nth-child(3) {
+  background: color-mix(in srgb, var(--verde) 8%, white);
+  border-top: 4px solid var(--verde);
+}
+.impacto-stat:nth-child(1) .impacto-num { color: var(--coral); }
+.impacto-stat:nth-child(2) .impacto-num { color: var(--turquesa); }
+.impacto-stat:nth-child(3) .impacto-num { color: var(--verde); }
 .impacto-icon {
   width: 72px; height: 72px;
   display: flex; align-items: center; justify-content: center;
 }
 .impacto-icon-img { width: 72px; height: 72px; object-fit: contain; }
-.impacto-num { font-size: clamp(36px, 3.5vw, 56px); font-weight: 900; color: var(--coral); line-height: 1; }
+.impacto-num { font-size: clamp(36px, 3.5vw, 56px); font-weight: 900; line-height: 1; }
 .impacto-lbl { font-size: clamp(14px, 1.2vw, 17px); color: var(--negro); font-weight: 800; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
@@ -994,3 +1005,40 @@ section { position: relative; overflow: visible; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Babidibu TV popup */
+.bbtv-modal {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.bbtv-modal.open { opacity: 1; pointer-events: all; }
+.bbtv-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+}
+.bbtv-card {
+  position: relative; z-index: 1;
+  background: #fff; border-radius: 28px;
+  padding: 48px 40px 40px;
+  max-width: 480px; width: 90%;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.22);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.bbtv-modal.open .bbtv-card { transform: translateY(0) scale(1); }
+.bbtv-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
+  width: 36px; height: 36px; font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.bbtv-close:hover { background: rgba(0,0,0,0.14); }
+.bbtv-logo { max-width: 200px; height: auto; }
+.bbtv-desc {
+  font-size: 15px; line-height: 1.55; color: rgba(58,63,68,0.65);
+  text-align: center; margin: 0;
+}
