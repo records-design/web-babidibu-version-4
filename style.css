@@ -359,11 +359,11 @@ section { position: relative; overflow: visible; }
 
 /* ── QUÉ ES BABIDIBU */
 .que-es {
-  background-color: #EDE6FF;
-  background-image: radial-gradient(circle, rgba(95,165,90,0.18) 1.5px, transparent 1.5px),
-                    radial-gradient(circle, rgba(246,213,31,0.22) 1.5px, transparent 1.5px);
-  background-size: 28px 28px, 56px 56px;
-  background-position: 0 0, 14px 14px;
+  background-image: radial-gradient(circle, rgba(95,165,90,0.15) 1.5px, transparent 1.5px),
+                    radial-gradient(circle, rgba(246,213,31,0.18) 1.5px, transparent 1.5px),
+                    linear-gradient(175deg, #EDE6FF 0%, #f5f0ff 60%, #fff 100%);
+  background-size: 28px 28px, 56px 56px, 100% 100%;
+  background-position: 0 0, 14px 14px, 0 0;
 }
 .que-es .section-label-pill {
   background: linear-gradient(160deg, color-mix(in srgb, var(--turquesa) 60%, white) 0%, var(--turquesa) 50%, color-mix(in srgb, var(--turquesa) 85%, black) 100%);
