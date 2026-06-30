@@ -899,9 +899,9 @@ section { position: relative; overflow: visible; }
 /* ── MOBILE */
 @media (max-width: 768px) {
   /* Header */
-  .header { padding: 0 20px; }
-  .header-inner { justify-content: space-between; position: relative; }
-  .header-logo { height: 44px; }
+  .header { padding: 0 20px; height: 64px; }
+  .header-inner { justify-content: space-between; align-items: center; position: relative; }
+  .header-logo { height: 38px; }
   .header-nav, .header-login { display: none; }
   .menu-btn {
     display: flex; align-items: center; justify-content: center;
