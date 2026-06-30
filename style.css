@@ -64,6 +64,76 @@ ul { list-style: none; }
 }
 .section-cta-center { text-align: center; margin-top: 48px; }
 
+/* Squiggle underline en títulos */
+@keyframes squiggleDraw {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+@keyframes floatDecor {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(6deg); }
+}
+@keyframes floatDecorAlt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-6px) rotate(-8deg); }
+}
+.title-squiggle {
+  position: relative;
+  display: inline;
+}
+.title-squiggle::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;
+  height: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+}
+.reveal.visible .title-squiggle::after,
+.visible .title-squiggle::after,
+.title-squiggle::after {
+  animation: squiggleDraw 0.6s cubic-bezier(0.34,1.2,0.64,1) 0.5s both;
+}
+/* Decorativos flotantes junto a títulos */
+.title-deco {
+  position: absolute;
+  pointer-events: none;
+}
+.title-deco--star {
+  width: 22px; height: 22px;
+  animation: floatDecor 3.5s ease-in-out infinite;
+}
+.title-deco--dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  animation: floatDecorAlt 4s ease-in-out infinite;
+}
+.title-deco--swoosh {
+  width: 36px; height: 28px;
+  animation: floatDecor 4.5s ease-in-out infinite;
+}
+.section-title-wrap {
+  position: relative;
+  display: block;
+}
+.title-squiggle--coral::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,7 C25,1 50,9 75,5 C100,1 125,9 150,5 C170,2 185,8 200,5' fill='none' stroke='%23FA5457' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.title-squiggle--turquesa::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,7 C25,1 50,9 75,5 C100,1 125,9 150,5 C170,2 185,8 200,5' fill='none' stroke='%2301B4BC' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.title-squiggle--amarillo::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,7 C25,1 50,9 75,5 C100,1 125,9 150,5 C170,2 185,8 200,5' fill='none' stroke='%23F6D51F' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.title-squiggle--verde::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,7 C25,1 50,9 75,5 C100,1 125,9 150,5 C170,2 185,8 200,5' fill='none' stroke='%235FA55A' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
 .section-inner--center { text-align: center; }
 .section-inner--center .section-label-pill { margin-left: auto; margin-right: auto; }
 .section-inner--center .section-title { margin-left: auto; margin-right: auto; }
@@ -655,7 +725,26 @@ section { position: relative; overflow: visible; }
 .impacto-lbl { font-size: clamp(14px, 1.2vw, 16px); color: var(--gris); font-weight: 700; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
-.lanzamientos { background: #FFFBEA; }
+.lanzamientos {
+  background-color: #EDFAF1;
+  background-image:
+    linear-gradient(rgba(255,251,234,0.9) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,251,234,0.9) 1px, transparent 1px);
+  background-size: 32px 32px;
+  position: relative;
+  margin-top: -72px;
+  z-index: 1;
+}
+.lanzamientos::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 72px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 72' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,36 C240,0 480,72 720,36 C960,0 1200,72 1440,36 L1440,0 L0,0 Z' fill='%23ffffff'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.lanzamientos .section-inner { position: relative; z-index: 2; }
 .lanz-pill {
   background: linear-gradient(160deg, color-mix(in srgb, #FA8925 60%, white) 0%, #FA8925 50%, color-mix(in srgb, #FA8925 85%, black) 100%);
   box-shadow: 0 6px 16px color-mix(in srgb, #FA8925 40%, transparent),
