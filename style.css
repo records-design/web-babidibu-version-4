@@ -695,7 +695,7 @@ section { position: relative; overflow: visible; }
 }
 
 /* ── CONTACTO */
-.contacto { background: linear-gradient(145deg, #FFF3F0 0%, #F5EEFF 100%); padding: 12px 40px 80px; }
+.contacto { background: #FFF3F0; padding: 12px 40px 80px; }
 .contacto-pill {
   position: relative;
   max-width: 1200px;
