@@ -690,6 +690,7 @@ section { position: relative; overflow: visible; }
 /* ── CONTACTO */
 .contacto { background: linear-gradient(145deg, #FFF3F0 0%, #F5EEFF 100%); padding: 0 40px 80px; }
 .contacto-pill {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   background: linear-gradient(105deg, #FA5457 0%, #FA8925 25%, #F6D51F 50%, #5FA55A 75%, #01B4BC 100%);
@@ -869,8 +870,7 @@ section { position: relative; overflow: visible; }
   background: #FFF3F0;
   color: var(--negro);
   padding: 0;
-  border-top: 5px solid transparent;
-  border-image: linear-gradient(90deg, var(--coral) 0%, var(--naranja) 25%, var(--amarillo) 50%, var(--verde) 75%, var(--turquesa) 100%) 1;
+  border-top: none;
 }
 .footer-inner { max-width: 1200px; margin: 0 auto; padding: 60px 48px 32px; }
 .footer-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(58,63,68,0.12); }
