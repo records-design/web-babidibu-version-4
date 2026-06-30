@@ -361,7 +361,7 @@ section { position: relative; overflow: visible; }
 .que-es {
   background-image: radial-gradient(circle, rgba(95,165,90,0.15) 1.5px, transparent 1.5px),
                     radial-gradient(circle, rgba(246,213,31,0.18) 1.5px, transparent 1.5px),
-                    linear-gradient(180deg, #EDE6FF 0%, #f5f0ff 55%, #FFFBEA 100%);
+                    linear-gradient(180deg, #EDE6FF 0%, #f0ecff 100%);
   background-size: 28px 28px, 56px 56px, 100% 100%;
   background-position: 0 0, 14px 14px, 0 0;
 }
