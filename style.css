@@ -617,7 +617,7 @@ section { position: relative; overflow: visible; }
 .impacto-stat:nth-child(2) .impacto-icon { background: color-mix(in srgb, var(--turquesa) 14%, white); }
 .impacto-stat:nth-child(3) .impacto-icon { background: color-mix(in srgb, var(--verde) 14%, white); }
 .impacto-icon-img { width: 64px; height: 64px; object-fit: contain; }
-.impacto-num { font-size: clamp(40px, 4vw, 64px); font-weight: 900; line-height: 1; }
+.impacto-num { font-size: clamp(40px, 4vw, 64px); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; min-width: 120px; display: block; }
 .impacto-stat:nth-child(1) .impacto-num { color: var(--coral); }
 .impacto-stat:nth-child(2) .impacto-num { color: var(--turquesa); }
 .impacto-stat:nth-child(3) .impacto-num { color: var(--verde); }
@@ -662,18 +662,13 @@ section { position: relative; overflow: visible; }
 .lanz-video-wrap { position: relative; width: 100%; padding-top: 62%; background: #000; }
 .lanz-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .lanz-meta {
-  display: flex; flex-direction: row; align-items: center;
-  gap: 14px; padding: 14px 16px 16px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 4px; padding: 12px 16px 16px;
 }
-.lanz-icon {
-  width: 44px; height: 44px; border-radius: 12px;
-  background: #FFF3CD; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-}
-.lanz-info { display: flex; flex-direction: column; gap: 2px; }
-.lanz-name { font-size: 17px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; margin: 0; line-height: 1.2; }
-.lanz-artist { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(58,63,68,0.45); }
+.lanz-icon { display: none; }
+.lanz-info { display: contents; }
+.lanz-artist { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(58,63,68,0.4); }
+.lanz-name { font-size: 16px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; margin: 0; line-height: 1.25; }
 .yt-lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center; padding: 24px;
@@ -693,7 +688,7 @@ section { position: relative; overflow: visible; }
 .contacto-pill {
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(105deg, #FA5457 0%, #FA8925 35%, #F6D51F 65%, #5FA55A 100%);
+  background: linear-gradient(105deg, #FA5457 0%, #FA8925 25%, #F6D51F 50%, #5FA55A 75%, #01B4BC 100%);
   background-size: 200% 200%;
   border-radius: 28px;
   display: flex;
