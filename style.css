@@ -412,8 +412,9 @@ section { position: relative; overflow: visible; }
 .service-card-line { position: absolute; bottom: 0; left: 12px; right: 12px; height: 8px; border-radius: 8px 8px 0 0; }
 
 /* ── NUESTROS UNIVERSOS */
-.universos { background: linear-gradient(145deg, #FFFBEA 0%, #FFF3F0 100%); }
-.universos .section-inner { max-width: 1400px; }
+.universos { background: linear-gradient(145deg, #FFFBEA 0%, #FFF3F0 100%); position: relative; overflow: hidden; }
+.universos .section-inner { max-width: 1400px; position: relative; z-index: 2; }
+.universos .hd-svg { z-index: 0; }
 .artists-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
