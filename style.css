@@ -900,12 +900,12 @@ section { position: relative; overflow: visible; }
 @media (max-width: 768px) {
   /* Header */
   .header { padding: 0 20px; }
-  .header-inner { justify-content: center; position: relative; }
-  .header-logo { height: 48px; }
+  .header-inner { justify-content: space-between; position: relative; }
+  .header-logo { height: 44px; }
   .header-nav, .header-login { display: none; }
   .menu-btn {
     display: flex; align-items: center; justify-content: center;
-    position: absolute; right: 0;
+    position: static;
     background: var(--coral); color: #fff;
     border-radius: 12px; padding: 8px 10px;
   }
