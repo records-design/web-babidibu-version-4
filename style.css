@@ -695,7 +695,7 @@ section { position: relative; overflow: visible; }
 }
 
 /* ── CONTACTO */
-.contacto { background: linear-gradient(145deg, #FFF3F0 0%, #F5EEFF 100%); padding: 0 40px 80px; }
+.contacto { background: linear-gradient(145deg, #FFF3F0 0%, #F5EEFF 100%); padding: 12px 40px 80px; }
 .contacto-pill {
   position: relative;
   max-width: 1200px;
@@ -713,10 +713,10 @@ section { position: relative; overflow: visible; }
 }
 .contacto-pill::after {
   content: '';
-  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.22) 50%, transparent 80%);
-  transform: skewX(-15deg);
-  transition: left 0.55s ease;
+  position: absolute; top: 0; left: -120%; width: 80%; height: 100%;
+  background: linear-gradient(105deg, transparent 10%, rgba(255,255,255,0.15) 50%, transparent 90%);
+  transform: skewX(-10deg);
+  transition: left 0.7s ease;
   pointer-events: none;
 }
 .contacto-pill:hover::after { left: 160%; }
