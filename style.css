@@ -958,14 +958,15 @@ section { position: relative; overflow: visible; }
   .artist-card-footer { padding: 48px 20px 20px; }
 
   /* Impacto */
-  .impacto-inner { padding: 110px 20px 36px; gap: 20px; }
-  .impacto-grid { grid-template-columns: 1fr; gap: 0; }
-  .impacto-stat { padding: 28px 20px; }
+  .impacto-inner { padding: 136px 12px 36px; gap: 16px; }
+  .impacto-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .impacto-stat { padding: 24px 16px; }
   .impacto-stat:not(:last-child)::after { display: none; }
-  .impacto-num { font-size: clamp(40px, 10vw, 52px); }
-  .impacto-lbl { font-size: 14px; }
-  .impacto-icon { width: 64px; height: 64px; }
-  .impacto-icon-img { width: 56px; height: 56px; }
+  .impacto-stat:last-child { grid-column: 1 / -1; }
+  .impacto-num { font-size: clamp(36px, 9vw, 48px); }
+  .impacto-lbl { font-size: 13px; }
+  .impacto-icon { width: 60px; height: 60px; }
+  .impacto-icon-img { width: 52px; height: 52px; }
 
   /* Lanzamientos */
   .yt-grid { grid-template-columns: 1fr; }
