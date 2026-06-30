@@ -137,9 +137,13 @@ ul { list-style: none; }
 }
 .menu-btn {
   display: none; background: none; border: none; cursor: pointer;
-  font-size: 28px; line-height: 1; color: var(--negro); padding: 4px;
+  color: var(--negro); padding: 4px; line-height: 0;
 }
-.menu-btn-char { display: block; transition: transform 0.3s; }
+.menu-btn-icon { display: block; transition: transform 0.3s; }
+.menu-btn .bar { transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+.menu-open .menu-btn .bar1 { transform: translateY(5px) rotate(45deg); }
+.menu-open .menu-btn .bar2 { opacity: 0; }
+.menu-open .menu-btn .bar3 { transform: translateY(-5px) rotate(-45deg); }
 
 /* ── MENU OVERLAY */
 .menu-overlay {
@@ -624,7 +628,7 @@ section { position: relative; overflow: visible; }
 .impacto-lbl { font-size: clamp(14px, 1.2vw, 16px); color: var(--gris); font-weight: 700; line-height: 1.4; }
 
 /* ── ÚLTIMOS LANZAMIENTOS */
-.lanzamientos { background: linear-gradient(135deg, #FFFBEA 0%, #FFF3F0 100%); }
+.lanzamientos { background: #FFFBEA; }
 .lanz-pill {
   background: linear-gradient(160deg, color-mix(in srgb, #FA8925 60%, white) 0%, #FA8925 50%, color-mix(in srgb, #FA8925 85%, black) 100%);
   box-shadow: 0 6px 16px color-mix(in srgb, #FA8925 40%, transparent),
@@ -896,12 +900,21 @@ section { position: relative; overflow: visible; }
 @media (max-width: 768px) {
   /* Header */
   .header { padding: 0 20px; }
+  .header-inner { justify-content: center; position: relative; }
+  .header-logo { height: 48px; }
   .header-nav, .header-login { display: none; }
-  .menu-btn { display: block; }
+  .menu-btn {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; right: 0;
+    background: var(--coral); color: #fff;
+    border-radius: 12px; padding: 8px 10px;
+  }
+  .menu-btn .bar { fill: #fff; }
 
   /* Hero */
   .hero-content { display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; padding: 20px 20px 0; }
   .hero-text { height: auto; justify-content: flex-start; }
+  .hero-title { font-size: 28px; }
   .hero-swipe { height: 260px; }
   .hd-svg { display: none; }
 
