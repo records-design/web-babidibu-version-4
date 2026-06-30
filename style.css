@@ -900,7 +900,7 @@ section { position: relative; overflow: visible; }
 @media (max-width: 768px) {
   /* Header */
   .header { padding: 0 20px; height: 64px; }
-  .header-inner { justify-content: space-between; align-items: center; position: relative; }
+  .header-inner { justify-content: space-between; align-items: center; position: relative; padding: 0; width: 100%; }
   .header-logo { height: 38px; }
   .header-nav, .header-login { display: none; }
   .menu-btn {
