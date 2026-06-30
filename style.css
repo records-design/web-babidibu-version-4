@@ -260,6 +260,18 @@ ul { list-style: none; }
   transform: rotate(var(--r, 0deg));
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
 }
+.hero-instrument {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: var(--s);
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(var(--r, 0deg));
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.13));
+  animation: var(--a, hdFloat) var(--t, 5s) ease-in-out infinite var(--d, 0s);
+  opacity: 0.92;
+}
 /* up-down suave */
 @keyframes hdFloat {
   0%, 100% { transform: rotate(var(--r, 0deg)) translateY(0); }
