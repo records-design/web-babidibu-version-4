@@ -744,7 +744,7 @@ section { position: relative; overflow: visible; }
   pointer-events: none;
   z-index: 1;
 }
-.lanzamientos .section-inner { position: relative; z-index: 2; }
+.lanzamientos .section-inner { position: relative; z-index: 2; padding-top: 110px; padding-bottom: 100px; }
 .lanz-pill {
   background: linear-gradient(160deg, color-mix(in srgb, #FA8925 60%, white) 0%, #FA8925 50%, color-mix(in srgb, #FA8925 85%, black) 100%);
   box-shadow: 0 6px 16px color-mix(in srgb, #FA8925 40%, transparent),
@@ -1230,4 +1230,57 @@ section { position: relative; overflow: visible; }
 .bbtv-desc {
   font-size: 15px; line-height: 1.55; color: rgba(58,63,68,0.65);
   text-align: center; margin: 0;
+}
+
+/* Equalizador */
+@keyframes eqBounce {
+  0%, 100% { transform: scaleY(0.2); }
+  50%       { transform: scaleY(1); }
+}
+.bbtv-eq {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+  height: 36px;
+}
+.bbtv-bar {
+  display: block;
+  width: 6px;
+  height: var(--h, 60%);
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--coral) 0%, var(--naranja) 50%, var(--amarillo) 100%);
+  transform-origin: bottom;
+  animation: eqBounce 0.8s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+
+/* Notas flotantes del popup */
+@keyframes bbtvNote {
+  0%   { transform: translateY(0) rotate(-10deg) scale(1); opacity: 0.7; }
+  50%  { transform: translateY(-14px) rotate(8deg) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) rotate(-10deg) scale(1); opacity: 0.7; }
+}
+.bbtv-note {
+  position: absolute;
+  pointer-events: none;
+  width: 28px;
+  opacity: 0.8;
+}
+.bbtv-note--1 {
+  top: 18px; left: 18px;
+  filter: hue-rotate(310deg) saturate(1.6);
+  animation: bbtvNote 3.2s ease-in-out infinite;
+}
+.bbtv-note--2 {
+  top: 14px; right: 22px;
+  width: 22px;
+  filter: hue-rotate(50deg) saturate(1.8);
+  animation: bbtvNote 2.8s ease-in-out infinite 0.5s;
+}
+.bbtv-note--3 {
+  bottom: 60px; right: 16px;
+  width: 20px;
+  filter: hue-rotate(160deg) saturate(1.4);
+  animation: bbtvNote 3.6s ease-in-out infinite 1s;
 }
