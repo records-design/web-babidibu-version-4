@@ -268,9 +268,9 @@ ul { list-style: none; }
   pointer-events: none;
   z-index: 1;
   transform: rotate(var(--r, 0deg));
-  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.13));
-  animation: var(--a, hdFloat) var(--t, 5s) ease-in-out infinite var(--d, 0s);
-  opacity: 0.92;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12));
+  animation: none;
+  opacity: 0.95;
 }
 /* up-down suave */
 @keyframes hdFloat {
