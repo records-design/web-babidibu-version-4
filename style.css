@@ -787,8 +787,8 @@ section { position: relative; overflow: visible; }
 .lanzamientos {
   background-color: #EDFAF1;
   background-image:
-    linear-gradient(rgba(255,251,234,0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,251,234,0.28) 1px, transparent 1px);
+    linear-gradient(rgba(180,210,185,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180,210,185,0.22) 1px, transparent 1px);
   background-size: 32px 32px;
   position: relative;
   margin-top: -72px;
@@ -908,14 +908,40 @@ section { position: relative; overflow: visible; }
 }
 .babidibutv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px color-mix(in srgb, var(--amarillo) 50%, transparent), inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.1); }
 .lanz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ── Microinteracciones premium ───────────────────────────────── */
+
+/* Flotación permanente — baked con el depth offset de cada card */
+@keyframes lanzCardFloat {
+  0%, 100% { transform: translateY(var(--depth, 0px)); }
+  50%       { transform: translateY(calc(var(--depth, 0px) - 5px)); }
+}
+
 .lanz-item {
   display: flex; flex-direction: column; gap: 0;
   background: #fff; border-radius: 16px; overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), box-shadow 0.35s ease;
+  animation: lanzCardFloat 6s ease-in-out infinite;
+  will-change: transform;
 }
-.lanz-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.13); }
-.lanz-video-wrap { position: relative; width: 100%; padding-top: 62%; background: #000; }
+
+/* Stagger de flotación — solo delay, sin offset vertical */
+.lanz-item:nth-child(1) { animation-delay: 0s; }
+.lanz-item:nth-child(2) { animation-delay: -2.2s; }
+.lanz-item:nth-child(3) { animation-delay: -4.4s; }
+
+/* Hover premium — Apple TV / Netflix feel */
+.lanz-item:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 24px 48px rgba(0,0,0,0.14),
+    0 8px 20px rgba(0,0,0,0.06),
+    0 0 0 1px rgba(255,255,255,0.9);
+}
+
+/* Sin zoom de video — la card completa es la que se mueve */
+.lanz-video-wrap { position: relative; width: 100%; padding-top: 62%; background: #000; overflow: hidden; }
 .lanz-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .lanz-meta {
   display: flex; flex-direction: column; align-items: flex-start;

@@ -59,58 +59,46 @@
 
 <section class="hero" id="inicio">
   <!-- ── 5 INSTRUMENTOS MARCO ──────────────────────────────────── -->
-  <img src="imagenes-babidibu-records/auriculares.svg"  class="hero-instrument" style="--x:3%;   --y:18%; --s:118px; --r:-14deg;">
-  <img src="imagenes-babidibu-records/pianito.svg"     class="hero-instrument" style="--x:85%;  --y:17%; --s:100px; --r:-8deg; transform: rotate(-8deg) scaleX(-1); z-index:3;">
-  <img src="imagenes-babidibu-records/nube.svg"         class="hero-instrument" style="--x:52%;  --y:79%; --s:110px; --r:-3deg;">
-  <img src="imagenes-babidibu-records/mic.svg"          class="hero-instrument" style="--x:43%;  --y:74%; --s:82px; --r:16deg;">
+  <img src="imagenes-babidibu-records/auriculares.svg"  class="hero-instrument" style="--x:0%;   --y:13%; --s:118px; --r:-14deg;">
+  <img src="imagenes-babidibu-records/nube.svg"         class="hero-instrument" style="--x:44%;  --y:11%; --s:110px; --r:-3deg;">
+  <img src="imagenes-babidibu-records/mic.svg"          class="hero-instrument" style="--x:84%;  --y:12%; --s:112px; --r:16deg; z-index:3;">
   <img src="imagenes-babidibu-records/pianito.svg"      class="hero-instrument" style="--x:1%;   --y:71%; --s:108px; --r:6deg;">
-  <img src="imagenes-babidibu-records/amplificador.svg" class="hero-instrument" style="--x:90%;  --y:72%; --s:96px;  --r:8deg; z-index:3;">
+  <img src="imagenes-babidibu-records/amplificador.svg" class="hero-instrument" style="--x:84%;  --y:70%; --s:96px;  --r:8deg; z-index:3;">
 
   <!--
-    NOTAS MUSICALES — 4 clusters en negative space real (14 notas)
-    Solo zonas verificadas sin contenido:
-    Cluster A: franja izquierda extrema (x:0-7%, y:32-66%) — entre borde y texto
-    Cluster B: bottom-left (x:15-30%, y:80-91%) — bajo subtítulo, derecha del pianito
-    Cluster C: bottom-center (x:33-48%, y:83-91%) — bajo el mic
-    Cluster D: bottom-right (x:65-86%, y:83-91%) — entre nube y amplificador
-    Colores: coral=hue310, turquesa=hue160, amarillo=hue50, verde=hue100, rosa=hue330
+    NOTAS MUSICALES — partículas distribuidas como marco:
+    Colores Babidibu: coral=hue310, turquesa=hue160, amarillo=hue50, verde=hue100, rosa=hue330
+    Zonas: margen-izq | top cerca nube | der frente card (z3) | bottom cerca onda
+    Badge está en x:12-35%, y:22-27% — notas no tocan esa zona
   -->
 
-  <!-- Cluster A — franja izquierda (entre borde izquierdo y el texto del título) -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:35%; --s:36px; --r:16deg;  filter:hue-rotate(100deg) saturate(1.4); opacity:.78;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:1%;  --y:52%; --s:26px; --r:-22deg; filter:hue-rotate(310deg) saturate(1.5); opacity:.64;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:4%;  --y:44%; --s:19px; --r:8deg;   filter:hue-rotate(160deg) saturate(1.4) blur(1px); opacity:.48;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:1%;  --y:64%; --s:23px; --r:-14deg; filter:hue-rotate(330deg) saturate(1.6); opacity:.55;">
+  <!-- Margen izquierdo — fuera del área de texto (x<10%) -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:16%; --s:38px; --r:-16deg; filter:hue-rotate(310deg) saturate(1.5); opacity:.72;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:3%;  --y:36%; --s:44px; --r:12deg;  filter:hue-rotate(160deg) saturate(1.4); opacity:.75;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:57%; --s:36px; --r:-8deg;  filter:hue-rotate(100deg) saturate(1.4); opacity:.65;">
 
-  <!-- Cluster B — bottom-left (bajo subtítulo, a la derecha del pianito) -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:17%; --y:81%; --s:40px; --r:-18deg; filter:hue-rotate(50deg)  saturate(1.7); opacity:.76;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:27%; --y:87%; --s:29px; --r:20deg;  filter:hue-rotate(160deg) saturate(1.4); opacity:.60;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:21%; --y:89%; --s:20px; --r:-28deg; filter:hue-rotate(310deg) saturate(1.5) blur(1px); opacity:.44;">
+  <!-- Top — arriba cerca de los instrumentos, sin tocar textos -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:22%; --y:14%; --s:42px; --r:-12deg; filter:hue-rotate(330deg) saturate(1.6); opacity:.70;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:57%; --y:12%; --s:38px; --r:10deg;  filter:hue-rotate(50deg)  saturate(1.7); opacity:.68;">
 
-  <!-- Cluster C — bottom-center (bajo el mic en x:43% y:74-83%) -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:34%; --y:84%; --s:38px; --r:14deg;  filter:hue-rotate(330deg) saturate(1.6); opacity:.72;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:44%; --y:89%; --s:27px; --r:-16deg; filter:hue-rotate(100deg) saturate(1.4); opacity:.56;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:39%; --y:91%; --s:19px; --r:24deg;  filter:hue-rotate(50deg)  saturate(1.7) blur(1px); opacity:.42;">
+  <!-- Derecha — z-index:3 para flotar frente a la card -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:91%; --y:30%; --s:42px; --r:-14deg; filter:hue-rotate(160deg) saturate(1.4); opacity:.70; z-index:3;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:90%; --y:58%; --s:36px; --r:18deg;  filter:hue-rotate(310deg) saturate(1.5); opacity:.65; z-index:3;">
 
-  <!-- Cluster D — bottom-right (entre nube x:52-64% y:79-91% y amplificador x:90% y:72-84%) -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:66%; --y:84%; --s:42px; --r:-20deg; filter:hue-rotate(160deg) saturate(1.4); opacity:.78;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:76%; --y:88%; --s:30px; --r:16deg;  filter:hue-rotate(310deg) saturate(1.5); opacity:.62;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:83%; --y:85%; --s:21px; --r:-10deg; filter:hue-rotate(100deg) saturate(1.4) blur(1px); opacity:.46;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:72%; --y:91%; --s:17px; --r:28deg;  filter:hue-rotate(50deg)  saturate(1.7) blur(1.5px); opacity:.38;">
+  <!-- Bottom — cerca de la onda violeta -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:14%; --y:82%; --s:36px; --r:14deg;  filter:hue-rotate(50deg)  saturate(1.7); opacity:.62;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:40%; --y:85%; --s:34px; --r:-10deg; filter:hue-rotate(100deg) saturate(1.4); opacity:.60;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:68%; --y:83%; --s:38px; --r:8deg;   filter:hue-rotate(330deg) saturate(1.6); opacity:.62;">
 
+  <!-- Acento sutil — muy pequeño, blur leve, casi invisible -->
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:31%; --y:14%; --s:28px; --r:20deg;  filter:hue-rotate(160deg) saturate(1.3) blur(0.6px); opacity:.50;">
 
   <!-- Partículas (esferas pequeñas) -->
   <img src="imagenes-babidibu-records/esfera amarilla.svg" class="hd-svg" style="--x:10%; --y:26%; --s:10px; --r:0deg; opacity:.60;">
   <img src="imagenes-babidibu-records/esfera coral.svg"    class="hd-svg" style="--x:93%; --y:44%; --s:12px; --r:0deg; opacity:.65;">
   <img src="imagenes-babidibu-records/esfera amarilla.svg" class="hd-svg" style="--x:52%; --y:88%; --s:9px;  --r:0deg; opacity:.55;">
-
-  <!-- Estrellitas mini -->
-  <img src="imagenes-babidibu-records/estrella coral.svg"  class="hd-svg" style="--x:75%; --y:26%; --s:14px; --r:-8deg;  opacity:.55;">
-  <img src="imagenes-babidibu-records/estrella verde.svg"  class="hd-svg" style="--x:6%;  --y:47%; --s:13px; --r:12deg;  opacity:.55;">
-  <img src="imagenes-babidibu-records/estrella.svg"        class="hd-svg" style="--x:22%; --y:72%; --s:12px; --r:-15deg; opacity:.50;">
-  <img src="imagenes-babidibu-records/estrella coral.svg"  class="hd-svg" style="--x:62%; --y:19%; --s:13px; --r:20deg;  opacity:.52;">
-  <img src="imagenes-babidibu-records/estrella verde.svg"  class="hd-svg" style="--x:87%; --y:66%; --s:11px; --r:-6deg;  opacity:.50; z-index:3;">
-  <img src="imagenes-babidibu-records/estrella.svg"        class="hd-svg" style="--x:32%; --y:88%; --s:12px; --r:10deg;  opacity:.48;">
+  <img src="imagenes-babidibu-records/estrella.svg"        class="hd-svg" style="--x:28%; --y:17%; --s:12px; --r:6deg;  opacity:.50;">
+  <img src="imagenes-babidibu-records/estrella coral.svg"  class="hd-svg" style="--x:75%; --y:26%; --s:11px; --r:-8deg; opacity:.50;">
 
   <div class="hero-content">
     <div class="hero-text">
@@ -119,9 +107,9 @@
         Creamos <span class="c-coral">canciones</span>,<br>
         <span class="c-turquesa">personajes</span> y <span class="c-turquesa">universos</span><br>
         que hacen crecer a las<br>
-        <span class="c-coral">nuevas generaciones.</span>
+        <span class="c-coral">nuevas generaciones</span>
       </h1>
-      <p class="hero-sub">Sello discográfico, distribuidora y estudio creativo especializado en proyectos infantiles de calidad para los más pequeños de la familia.</p>
+      <p class="hero-sub">Sello discográfico, distribuidora y estudio creativo especializado en proyectos infantiles de calidad para los más pequeños de la familia</p>
 
     </div>
     <div class="hero-swipe" id="heroSwipe">
@@ -315,7 +303,7 @@
 
 <section class="lanzamientos" id="lanzamientos">
   <div class="section-inner">
-    <div style="margin-bottom:36px;">
+    <div style="margin-bottom:56px;">
       <div class="section-title-wrap">
         <h2 class="section-title reveal" style="margin-bottom:0">Últimos <span class="title-squiggle title-squiggle--verde">lanzamientos</span></h2>
         <img src="imagenes-babidibu-records/estrella verde.svg" class="title-deco title-deco--star" style="top:-16px;right:-24px;animation-delay:0s;">
