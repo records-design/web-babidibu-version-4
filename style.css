@@ -1343,9 +1343,68 @@ section { position: relative; overflow: visible; }
 .form-modal-close:hover { background: rgba(0,0,0,0.12); }
 .form-modal .form-wrap { padding: 48px 40px 40px; }
 @media (max-width: 768px) {
-  .form-modal { padding: 12px; align-items: flex-end; }
-  .form-modal-card { max-height: 92vh; border-radius: 20px 20px 0 0; }
-  .form-modal .form-wrap { padding: 32px 20px 28px; }
+  /* Bottom sheet — sin transform para evitar saltos con teclado iOS */
+  .form-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .form-modal-card {
+    max-height: 90dvh;          /* dvh respeta el teclado virtual */
+    height: auto;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    transform: translateY(100%);  /* empieza abajo del viewport */
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .form-modal.open .form-modal-card {
+    transform: translateY(0);
+  }
+  .form-modal-close {
+    top: 14px;
+    right: 16px;
+  }
+  .form-modal .form-wrap {
+    padding: 24px 20px 32px;
+  }
+  .form-header {
+    margin-bottom: 20px;
+  }
+  .form-heading {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .form-intro {
+    font-size: 14px;
+  }
+  .wizard-progress {
+    margin-bottom: 24px;
+  }
+  .wizard-step-label {
+    font-size: 12px;
+  }
+  .wizard-panel-label {
+    margin-bottom: 16px;
+  }
+  .form-field {
+    margin-bottom: 14px;
+  }
+  .form-field input,
+  .form-field textarea {
+    font-size: 16px;  /* evita zoom automático en iOS */
+  }
+  .form-field textarea {
+    min-height: 80px;
+  }
+  .wizard-nav {
+    margin-top: 20px;
+  }
+  .btn-wizard-next, .btn-wizard-back {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
 }
 
 /* ── Scroll reveal */
