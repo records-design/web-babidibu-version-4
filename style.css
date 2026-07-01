@@ -1367,43 +1367,74 @@ section { position: relative; overflow: visible; }
     right: 16px;
   }
   .form-modal .form-wrap {
-    padding: 24px 20px 32px;
+    padding: 20px 20px 24px;
   }
   .form-header {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
   .form-heading {
-    font-size: 24px;
-    margin-bottom: 6px;
+    font-size: 20px;
+    margin-bottom: 4px;
   }
   .form-intro {
-    font-size: 14px;
+    font-size: 13px;
+    display: none;
   }
   .wizard-progress {
-    margin-bottom: 24px;
-  }
-  .wizard-step-label {
-    font-size: 12px;
-  }
-  .wizard-panel-label {
     margin-bottom: 16px;
   }
+  .wizard-step-label {
+    font-size: 11px;
+  }
+  .wizard-step-dot {
+    width: 20px;
+    height: 20px;
+  }
+  .wizard-panel-label {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
   .form-field {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+  }
+  .form-field label {
+    margin-bottom: 5px;
+    font-size: 12px;
   }
   .form-field input,
   .form-field textarea {
     font-size: 16px;  /* evita zoom automático en iOS */
+    padding: 10px 14px;
   }
   .form-field textarea {
-    min-height: 80px;
+    min-height: 70px;
+  }
+  .form-upload {
+    padding: 16px 16px;
+    margin-bottom: 12px;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .form-upload-icon {
+    font-size: 22px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .form-upload-text {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .form-upload-formats {
+    font-size: 11px;
   }
   .wizard-nav {
-    margin-top: 20px;
+    margin-top: 14px;
   }
   .btn-wizard-next, .btn-wizard-back {
     font-size: 14px;
-    padding: 12px 20px;
+    padding: 11px 18px;
   }
 }
 
