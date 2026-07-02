@@ -28,7 +28,7 @@
       <a href="#" id="bbtvNavLink">Babidibu TV</a>
       <a href="#contacto">Presentar proyecto</a>
     </nav>
-    <a href="#" class="header-login">Login</a>
+    <button class="header-login" id="openLoginModal">Dashboard de Artistas</button>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
       <svg class="menu-btn-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect class="bar bar1" x="3" y="6" width="18" height="2.2" rx="1.1" fill="currentColor"/>
@@ -48,6 +48,7 @@
       <li><span class="menu-num">( _04 )</span><a href="#lanzamientos" class="menu-link">Novedades</a></li>
       <li><span class="menu-num">( _05 )</span><a href="#contacto" class="menu-link">Contacto</a></li>
     </ul>
+    <button class="menu-dashboard-btn" id="openLoginModalMobile">Dashboard de Artistas</button>
   </nav>
   <div class="menu-bottom">
     <div class="menu-social">
@@ -59,11 +60,13 @@
 
 <section class="hero" id="inicio">
   <!-- ── 5 INSTRUMENTOS MARCO ──────────────────────────────────── -->
-  <img src="imagenes-babidibu-records/auriculares.svg"  class="hero-instrument" style="--x:0%;   --y:13%; --s:118px; --r:-14deg;">
-  <img src="imagenes-babidibu-records/nube.svg"         class="hero-instrument" style="--x:44%;  --y:11%; --s:110px; --r:-3deg;">
-  <img src="imagenes-babidibu-records/mic.svg"          class="hero-instrument" style="--x:84%;  --y:12%; --s:112px; --r:16deg; z-index:3;">
-  <img src="imagenes-babidibu-records/pianito.svg"      class="hero-instrument" style="--x:1%;   --y:71%; --s:108px; --r:6deg;">
-  <img src="imagenes-babidibu-records/amplificador.svg" class="hero-instrument" style="--x:84%;  --y:70%; --s:96px;  --r:8deg; z-index:3;">
+  <img src="imagenes-babidibu-records/auriculares.svg"        class="hero-instrument" style="--x:2%;   --y:12%; --s:152px; --r:-14deg;">
+  <img src="imagenes-babidibu-records/nube.svg"              class="hero-instrument" style="--x:44%;  --y:10%; --s:142px; --r:-3deg;">
+  <img src="imagenes-babidibu-records/mic.svg"               class="hero-instrument" style="--x:84%;  --y:10%; --s:146px; --r:16deg; z-index:3;">
+  <img src="imagenes-babidibu-records/pianito.svg"           class="hero-instrument" style="--x:1%;   --y:70%; --s:126px; --r:6deg;">
+  <img src="imagenes-babidibu-records/osito.svg"             class="hero-instrument" style="--x:23%;  --y:76%; --s:82px;  --r:-7deg;">
+  <img src="imagenes-babidibu-records/pleta de colore .svg"  class="hero-instrument" style="--x:51%;  --y:81%; --s:92px;  --r:11deg;">
+  <img src="imagenes-babidibu-records/amplificador.svg"      class="hero-instrument" style="--x:84%;  --y:68%; --s:130px; --r:8deg; z-index:3;">
 
   <!--
     NOTAS MUSICALES — partículas distribuidas como marco:
@@ -73,8 +76,8 @@
   -->
 
   <!-- Margen izquierdo — fuera del área de texto (x<10%) -->
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:33%; --s:38px; --r:-16deg; filter:hue-rotate(310deg) saturate(1.5); opacity:.72;">
-  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:3%;  --y:36%; --s:44px; --r:12deg;  filter:hue-rotate(160deg) saturate(1.4); opacity:.75;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:42%; --s:38px; --r:-16deg; filter:hue-rotate(310deg) saturate(1.5); opacity:.72;">
+  <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:3%;  --y:48%; --s:44px; --r:12deg;  filter:hue-rotate(160deg) saturate(1.4); opacity:.75;">
   <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="hd-svg" style="--x:2%;  --y:57%; --s:36px; --r:-8deg;  filter:hue-rotate(100deg) saturate(1.4); opacity:.65;">
 
   <!-- Top — arriba cerca de los instrumentos, sin tocar textos -->
@@ -388,6 +391,30 @@
     <button type="button" class="btn-contacto" id="openFormModal">Envianos tu proyecto →</button>
   </div>
 </section>
+
+<!-- ── MODAL LOGIN ─────────────────────────────────────────────── -->
+<div class="login-modal" id="loginModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="login-modal-backdrop" id="loginModalBackdrop"></div>
+  <div class="login-modal-card">
+    <button class="login-modal-close" id="closeLoginModal" aria-label="Cerrar">✕</button>
+    <div class="login-modal-logo">
+      <img src="imagenes-babidibu-records/logo nuevo babidibu .png" alt="Babidibu Records" style="height:56px; width:auto;">
+    </div>
+    <h2 class="login-modal-title">Dashboard de Artistas</h2>
+    <p class="login-modal-sub">Ingresá con tu cuenta para acceder a tu panel.</p>
+    <form class="login-form" id="loginForm" novalidate>
+      <div class="form-field">
+        <label>Usuario</label>
+        <input type="text" name="usuario" placeholder="Tu usuario o email" autocomplete="username">
+      </div>
+      <div class="form-field">
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-login">Ingresar →</button>
+    </form>
+  </div>
+</div>
 
 <div class="form-modal" id="formModal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="form-modal-backdrop" id="formModalBackdrop"></div>
@@ -799,6 +826,31 @@ document.getElementById('formSuccessReset')?.addEventListener('click', () => {
 
 // Form modal
 const formModal = document.getElementById('formModal');
+// ── Login modal
+const loginModal = document.getElementById('loginModal');
+function openLoginModal() {
+  loginModal.classList.add('open');
+  loginModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeLoginModal() {
+  loginModal.classList.remove('open');
+  loginModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.getElementById('openLoginModal')?.addEventListener('click', openLoginModal);
+document.getElementById('openLoginModalMobile')?.addEventListener('click', () => {
+  menuOverlay.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuOverlay.setAttribute('aria-hidden', 'true');
+  openLoginModal();
+});
+document.getElementById('closeLoginModal')?.addEventListener('click', closeLoginModal);
+document.getElementById('loginModalBackdrop')?.addEventListener('click', closeLoginModal);
+document.getElementById('loginContactLink')?.addEventListener('click', e => {
+  e.preventDefault(); closeLoginModal(); openFormModal();
+});
+
 function openFormModal() {
   formModal.classList.add('open');
   formModal.setAttribute('aria-hidden', 'false');
@@ -812,7 +864,7 @@ function closeFormModal() {
 document.getElementById('openFormModal')?.addEventListener('click', openFormModal);
 document.getElementById('closeFormModal')?.addEventListener('click', closeFormModal);
 document.getElementById('formModalBackdrop')?.addEventListener('click', closeFormModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeFormModal(); closeBbtvModal(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeFormModal(); closeBbtvModal(); closeLoginModal(); } });
 
 /* ── Babidibu TV popup */
 function openBbtvModal() {
