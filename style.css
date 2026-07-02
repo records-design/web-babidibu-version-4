@@ -253,7 +253,7 @@ ul { list-style: none; }
   bottom: 200px; right: -20px;
   filter: blur(40px);
 }
-.menu-overlay > * { position: relative; z-index: 1; }
+.menu-overlay > *:not(.menu-halo-yellow) { position: relative; z-index: 1; }
 
 .menu-close {
   position: absolute; top: 18px; right: 18px;
