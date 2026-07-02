@@ -789,7 +789,7 @@ section { position: relative; overflow: visible; }
 .impacto-stat:nth-child(2) .impacto-icon { background: color-mix(in srgb, var(--turquesa) 14%, white); }
 .impacto-stat:nth-child(3) .impacto-icon { background: color-mix(in srgb, var(--verde) 14%, white); }
 .impacto-icon-img { width: 64px; height: 64px; object-fit: contain; }
-.impacto-num { font-size: clamp(40px, 4vw, 64px); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; min-width: 120px; display: block; }
+.impacto-num { font-size: clamp(40px, 4vw, 64px); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; width: 100%; display: block; text-align: center; }
 .impacto-stat:nth-child(1) .impacto-num { color: var(--coral); }
 .impacto-stat:nth-child(2) .impacto-num { color: var(--turquesa); }
 .impacto-stat:nth-child(3) .impacto-num { color: var(--verde); }

@@ -65,7 +65,7 @@
   <img src="imagenes-babidibu-records/mic.svg"               class="hero-instrument" style="--x:84%;  --y:10%; --s:146px; --r:16deg; z-index:3;">
   <img src="imagenes-babidibu-records/pianito.svg"           class="hero-instrument" style="--x:1%;   --y:70%; --s:148px; --r:6deg;">
   <img src="imagenes-babidibu-records/osito.svg"             class="hero-instrument" style="--x:23%;  --y:76%; --s:82px;  --r:-7deg;">
-  <img src="imagenes-babidibu-records/pleta de colore .svg"  class="hero-instrument" style="--x:51%;  --y:81%; --s:92px;  --r:11deg;">
+  <img src="imagenes-babidibu-records/pleta de colore .svg"  class="hero-instrument" style="--x:51%;  --y:81%; --s:112px; --r:11deg;">
   <img src="imagenes-babidibu-records/amplificador.svg"      class="hero-instrument" style="--x:84%;  --y:68%; --s:130px; --r:8deg; z-index:3;">
 
   <!--
@@ -601,6 +601,7 @@ const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
 }, { threshold: 0.1 });
 revealEls.forEach(el => revealObs.observe(el));
+
 
 // ── Counter animation
 function animateCounter(el) {
