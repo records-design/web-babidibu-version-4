@@ -1273,10 +1273,10 @@ section { position: relative; overflow: visible; }
   .menu-open .menu-btn .bar3 { transform: translateY(-5.1px) rotate(-45deg); }
   .menu-overlay { padding: 56px 8vw 36px; justify-content: space-between; }
   .menu-nav { display: flex; flex-direction: column; gap: 0; }
-  .menu-links { gap: 6px; justify-content: flex-start; flex: none; }
+  .menu-links { gap: 22px; justify-content: flex-start; flex: none; }
   .menu-link { font-size: clamp(28px, 8.5vw, 44px); gap: 14px; }
   .menu-dot { width: 7px; height: 7px; }
-  .menu-dashboard-btn { margin-top: 20px; margin-bottom: 52px; }
+  .menu-dashboard-btn { margin-top: 28px; margin-bottom: 52px; }
   .menu-bottom { margin-top: 0; }
 
   /* Hero */
