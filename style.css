@@ -1268,9 +1268,10 @@ section { position: relative; overflow: visible; }
   }
   .menu-btn .bar { fill: #fff; transform-origin: center; }
   .menu-btn-icon { width: 22px; height: 22px; }
-  .menu-open .menu-btn .bar1 { transform: translateY(4.9px) rotate(45deg); }
-  .menu-open .menu-btn .bar2 { opacity: 0; transform: scaleX(0); }
-  .menu-open .menu-btn .bar3 { transform: translateY(-5.1px) rotate(-45deg); }
+  .menu-open .menu-btn .bar1 { transform: none; }
+  .menu-open .menu-btn .bar2 { opacity: 1; transform: none; }
+  .menu-open .menu-btn .bar3 { transform: none; }
+  .header.hide-nav { transform: none; opacity: 1; }
   .menu-overlay { padding: 56px 8vw 36px; justify-content: space-between; }
   .menu-nav { display: flex; flex-direction: column; gap: 0; }
   .menu-links { gap: 22px; justify-content: flex-start; flex: none; }
