@@ -1246,14 +1246,15 @@ section { position: relative; overflow: visible; }
   .artist-modal { padding: 0; align-items: flex-end; }
   .artist-modal-inner {
     grid-template-columns: 1fr;
-    grid-template-rows: 58vw 1fr;
-    height: 92vh; max-height: 92vh;
+    grid-template-rows: auto auto;
+    height: auto; max-height: 92vh;
     border-radius: 20px 20px 0 0;
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-  .artist-modal-left { min-height: 58vw; max-height: 58vw; overflow: hidden; }
-  .artist-modal-photo { object-fit: cover; object-position: center 10%; width: 100%; height: 100%; }
+  .artist-modal-left { height: 72vw; overflow: hidden; }
+  .artist-modal-photo { object-fit: cover; object-position: center top; width: 100%; height: 100%; }
   .artist-modal-right {
     padding: 20px 20px 28px;
     overflow-y: auto;
