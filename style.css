@@ -219,8 +219,9 @@ ul { list-style: none; }
 /* ── MENU OVERLAY */
 .menu-overlay {
   position: fixed; inset: 0; z-index: 99;
-  background: rgba(250,250,248,0.97);
-  backdrop-filter: blur(16px);
+  background: rgba(250,250,248,0.75);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
   padding: 100px 8vw 40px;
   display: flex; flex-direction: column; gap: 0;
   opacity: 0; pointer-events: none; transform: translateY(-8px);
@@ -238,8 +239,8 @@ ul { list-style: none; }
 }
 .menu-link:hover { opacity: 0.75; }
 .menu-dot {
-  display: inline-block; width: 10px; height: 10px;
-  border-radius: 50%; flex-shrink: 0;
+  display: block; width: 11px; height: 11px;
+  border-radius: 50%; flex-shrink: 0; flex-grow: 0;
 }
 .menu-link--coral    { color: var(--coral);    } .menu-link--coral    .menu-dot { background: var(--coral); }
 .menu-link--verde    { color: var(--verde);    } .menu-link--verde    .menu-dot { background: var(--verde); }
