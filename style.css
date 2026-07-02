@@ -177,6 +177,7 @@ ul { list-style: none; }
 .header-nav a:nth-child(2):hover { color: var(--turquesa); }
 .header-nav a:nth-child(3):hover { color: var(--naranja); }
 .header-nav a:nth-child(4):hover { color: var(--coral); }
+.header-nav a:nth-child(5):hover { color: var(--verde); }
 .header-nav .nav-cta-btn {
   opacity: 1;
   background: linear-gradient(160deg, color-mix(in srgb, var(--verde) 60%, white) 0%, var(--verde) 50%, color-mix(in srgb, var(--verde) 85%, black) 100%);
