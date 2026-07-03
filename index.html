@@ -514,6 +514,7 @@
           <input type="hidden" name="archivo_url" id="ucFileUrl">
           <input type="hidden" name="archivo_nombre" id="ucFileName">
           <input type="hidden" name="virustotal_scan" id="ucVtResult">
+          <span id="ucVtDisplay" style="font-size:13px;margin-top:6px;display:block;min-height:18px;"></span>
         </div>
         <div class="form-field"><label>Spotify</label><input type="url" name="spotify" placeholder="Ej: https://open.spotify.com/artist/..."></div>
         <div class="form-field"><label>YouTube</label><input type="url" name="youtube" placeholder="Ej: https://youtube.com/@tucanal"></div>
@@ -817,11 +818,12 @@ document.addEventListener('click', e => {
         const url  = 'https://1pjy13a80e.ucarecd.net/' + data.file + '/';
         urlField.value  = url;
         nameField.value = file.name;
-        const vtUrl = 'https://www.virustotal.com/gui/search/' + encodeURIComponent(url);
-        if (vtField) vtField.value = vtUrl;
-        progress.style.display = 'none';
-        done.style.display = '';
-        doneName.textContent = file.name;
+        if (vtField) vtField.value = '';
+        progress.style.display = '';
+        fill.style.width = '100%';
+        label.textContent = 'Escaneando archivo...';
+        done.style.display = 'none';
+        scanWithVT(url, file.name);
       } else {
         reset();
         alert('Error al subir el archivo. Intentá de nuevo.');
@@ -832,6 +834,59 @@ document.addEventListener('click', e => {
   }
 
   const vtField = document.getElementById('ucVtResult');
+  const VT_WORKER = 'https://vt-proxy.babidibu-records.workers.dev';
+
+  function scanWithVT(fileUrl, fileName) {
+    fetch(VT_WORKER, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'scan', url: fileUrl })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var id = data.data && data.data.id;
+      if (!id) { finishScan('No se pudo escanear', fileName); return; }
+      pollVT(id, fileName, 0);
+    })
+    .catch(function() { finishScan('Error de conexión', fileName); });
+  }
+
+  function pollVT(id, fileName, attempts) {
+    if (attempts > 12) { finishScan('Tiempo agotado', fileName); return; }
+    fetch(VT_WORKER, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'result', id: id })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var status = data.data && data.data.attributes && data.data.attributes.status;
+      if (status === 'completed') {
+        var stats = data.data.attributes.stats;
+        var malicious = stats.malicious || 0;
+        var suspicious = stats.suspicious || 0;
+        var total = (stats.harmless||0) + malicious + suspicious + (stats.undetected||0);
+        var result = malicious > 0
+          ? '⚠️ ALERTA: ' + malicious + '/' + total + ' motores detectaron amenazas'
+          : suspicious > 0
+            ? '⚠️ Sospechoso: ' + suspicious + '/' + total + ' motores'
+            : '✓ Limpio — ' + total + ' motores analizados';
+        finishScan(result, fileName);
+      } else {
+        setTimeout(function() { pollVT(id, fileName, attempts + 1); }, 4000);
+      }
+    })
+    .catch(function() { finishScan('Error al obtener resultado', fileName); });
+  }
+
+  function finishScan(result, fileName) {
+    if (vtField) vtField.value = result;
+    progress.style.display = 'none';
+    done.style.display = '';
+    doneName.textContent = fileName;
+    var resultSpan = document.getElementById('ucVtDisplay');
+    if (resultSpan) resultSpan.textContent = result;
+  }
 
   zone.addEventListener('click', function(e) {
     if (e.target === remove || remove.contains(e.target)) { reset(); return; }
