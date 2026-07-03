@@ -513,6 +513,7 @@
           </div>
           <input type="hidden" name="archivo_url" id="ucFileUrl">
           <input type="hidden" name="archivo_nombre" id="ucFileName">
+          <input type="hidden" name="virustotal" id="ucVtResult">
         </div>
         <div class="form-field"><label>Spotify</label><input type="url" name="spotify" placeholder="Ej: https://open.spotify.com/artist/..."></div>
         <div class="form-field"><label>YouTube</label><input type="url" name="youtube" placeholder="Ej: https://youtube.com/@tucanal"></div>
@@ -816,9 +817,10 @@ document.addEventListener('click', e => {
         const url  = 'https://1pjy13a80e.ucarecd.net/' + data.file + '/';
         urlField.value  = url;
         nameField.value = file.name;
-        progress.style.display = 'none';
-        done.style.display = '';
-        doneName.textContent = file.name;
+        label.textContent = 'Escaneando archivo...';
+        progress.style.display = '';
+        fill.style.width = '100%';
+        scanWithVirusTotal(url, file.name);
       } else {
         reset();
         alert('Error al subir el archivo. Intentá de nuevo.');
@@ -826,6 +828,59 @@ document.addEventListener('click', e => {
     });
     xhr.addEventListener('error', function() { reset(); alert('Error de red. Intentá de nuevo.'); });
     xhr.send(fd);
+  }
+
+  const VT_KEY = 'bee2f4d3b5d88f60b7574657db5fa0d8ca7906cb02e9c8866ef637257b10c1fa';
+  const vtField = document.getElementById('ucVtResult');
+
+  function scanWithVirusTotal(fileUrl, fileName) {
+    var body = new URLSearchParams();
+    body.append('url', fileUrl);
+    fetch('https://www.virustotal.com/api/v3/urls', {
+      method: 'POST',
+      headers: { 'x-apikey': VT_KEY, 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var analysisId = data.data && data.data.id;
+      if (!analysisId) { finishScan('No se pudo escanear', fileName); return; }
+      pollVT(analysisId, fileName, 0);
+    })
+    .catch(function() { finishScan('Error de escaneo', fileName); });
+  }
+
+  function pollVT(id, fileName, attempts) {
+    if (attempts > 10) { finishScan('Tiempo de escaneo agotado', fileName); return; }
+    fetch('https://www.virustotal.com/api/v3/analyses/' + id, {
+      headers: { 'x-apikey': VT_KEY }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var status = data.data && data.data.attributes && data.data.attributes.status;
+      if (status === 'completed') {
+        var stats = data.data.attributes.stats;
+        var malicious = stats.malicious || 0;
+        var suspicious = stats.suspicious || 0;
+        var total = (stats.harmless || 0) + malicious + suspicious + (stats.undetected || 0);
+        var result = malicious > 0
+          ? '⚠️ ALERTA: ' + malicious + '/' + total + ' motores detectaron amenazas'
+          : suspicious > 0
+            ? '⚠️ Sospechoso: ' + suspicious + '/' + total + ' motores'
+            : '✓ Limpio (' + total + ' motores analizados)';
+        finishScan(result, fileName);
+      } else {
+        setTimeout(function() { pollVT(id, fileName, attempts + 1); }, 4000);
+      }
+    })
+    .catch(function() { finishScan('Error al obtener resultado', fileName); });
+  }
+
+  function finishScan(result, fileName) {
+    if (vtField) vtField.value = result;
+    progress.style.display = 'none';
+    done.style.display = '';
+    doneName.textContent = fileName + ' — ' + result;
   }
 
   zone.addEventListener('click', function(e) {
