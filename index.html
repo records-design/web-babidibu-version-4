@@ -798,7 +798,7 @@ document.addEventListener('click', e => {
 
     const fd = new FormData();
     fd.append('UPLOADCARE_PUB_KEY', UPLOADCARE_PK);
-    fd.append('UPLOADCARE_STORE', '1');
+    fd.append('UPLOADCARE_STORE', 'auto');
     fd.append('file', file);
 
     const xhr = new XMLHttpRequest();
