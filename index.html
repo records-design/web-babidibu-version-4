@@ -879,9 +879,9 @@ document.addEventListener('click', e => {
         var suspicious = stats.suspicious || 0;
         var total = (stats.harmless||0) + malicious + suspicious + (stats.undetected||0);
         var result = malicious > 0
-          ? '⚠️ ALERTA: ' + malicious + '/' + total + ' motores'
-          : suspicious > 0 ? '⚠️ Sospechoso: ' + suspicious + '/' + total
-          : '✓ Limpio — ' + total + ' motores';
+          ? '✕ No permitido: ' + malicious + '/' + total + ' motores detectaron amenazas'
+          : suspicious > 0 ? '✕ Sospechoso: ' + suspicious + '/' + total + ' motores'
+          : '✓ Check — ' + total + ' motores';
         finishScan(url, name, result);
       } else {
         setTimeout(function() { pollVT(id, url, name, attempts + 1); }, 4000);
