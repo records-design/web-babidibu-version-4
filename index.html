@@ -495,6 +495,7 @@
         <p class="wizard-panel-label">03 — Material y enlaces</p>
         <div class="form-field">
           <label>Subí tu material <span style="font-weight:400;opacity:0.6;">(MP3 · WAV · MP4 · PDF · ZIP)</span></label>
+          <div class="uc-file-list" id="ucFileList"></div>
           <div class="uc-upload-zone" id="ucUploadZone">
             <div class="uc-upload-inner" id="ucUploadInner">
               <span class="uc-upload-icon">↑</span>
@@ -505,16 +506,8 @@
               <div class="uc-progress-bar"><div class="uc-progress-fill" id="ucProgressFill"></div></div>
               <span class="uc-progress-label" id="ucProgressLabel">Subiendo...</span>
             </div>
-            <div class="uc-upload-done" id="ucDone" style="display:none;">
-              <span class="uc-done-icon">✓</span>
-              <span class="uc-done-name" id="ucDoneName"></span>
-              <button type="button" class="uc-remove-btn" id="ucRemove">✕</button>
-            </div>
           </div>
-          <input type="hidden" name="archivo_url" id="ucFileUrl">
-          <input type="hidden" name="archivo_nombre" id="ucFileName">
-          <input type="hidden" name="virustotal_scan" id="ucVtResult">
-          <span id="ucVtDisplay" style="font-size:13px;margin-top:6px;display:block;min-height:18px;"></span>
+          <input type="hidden" name="archivos" id="ucFilesData">
         </div>
         <div class="form-field"><label>Spotify</label><input type="url" name="spotify" placeholder="Ej: https://open.spotify.com/artist/..."></div>
         <div class="form-field"><label>YouTube</label><input type="url" name="youtube" placeholder="Ej: https://youtube.com/@tucanal"></div>
@@ -770,89 +763,108 @@ document.addEventListener('click', e => {
   const progress = document.getElementById('ucProgress');
   const fill     = document.getElementById('ucProgressFill');
   const label    = document.getElementById('ucProgressLabel');
-  const done     = document.getElementById('ucDone');
-  const doneName = document.getElementById('ucDoneName');
-  const remove   = document.getElementById('ucRemove');
-  const urlField = document.getElementById('ucFileUrl');
-  const nameField= document.getElementById('ucFileName');
+  const fileList = document.getElementById('ucFileList');
+  const filesData= document.getElementById('ucFilesData');
   const ALLOWED  = ['mp3','wav','mp4','pdf','zip'];
   const MAX_MB   = 100;
+  const VT_WORKER = 'https://vt-proxy.babidibu-records.workers.dev';
+  var uploading = false;
+  var files = [];
 
-  function reset() {
-    inner.style.display = '';
-    progress.style.display = 'none';
-    done.style.display = 'none';
-    fill.style.width = '0%';
-    urlField.value = '';
-    nameField.value = '';
+  function updateFilesData() {
+    filesData.value = files.map(function(f) {
+      return f.name + ': ' + f.url + ' [' + f.vt + ']';
+    }).join(' | ');
+  }
+
+  function renderFileList() {
+    fileList.innerHTML = '';
+    files.forEach(function(f, i) {
+      var row = document.createElement('div');
+      row.className = 'uc-upload-done';
+      row.style.marginBottom = '6px';
+      var icon = document.createElement('span');
+      icon.className = 'uc-done-icon';
+      icon.textContent = f.vt.indexOf('ALERTA') > -1 ? '⚠️' : '✓';
+      var name = document.createElement('span');
+      name.className = 'uc-done-name';
+      name.textContent = f.name + (f.vt ? ' — ' + f.vt : '');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'uc-remove-btn';
+      btn.textContent = '✕';
+      btn.addEventListener('click', function() { files.splice(i, 1); renderFileList(); updateFilesData(); });
+      row.appendChild(icon); row.appendChild(name); row.appendChild(btn);
+      fileList.appendChild(row);
+    });
   }
 
   function uploadFile(file) {
-    const ext = file.name.split('.').pop().toLowerCase();
+    if (uploading) { alert('Esperá que termine el archivo actual.'); return; }
+    var ext = file.name.split('.').pop().toLowerCase();
     if (!ALLOWED.includes(ext)) { alert('Formato no permitido. Usá MP3, WAV, MP4, PDF o ZIP.'); return; }
     if (file.size > MAX_MB * 1024 * 1024) { alert('El archivo supera los 100 MB.'); return; }
 
+    uploading = true;
     inner.style.display = 'none';
     progress.style.display = '';
-    done.style.display = 'none';
     fill.style.width = '0%';
     label.textContent = 'Subiendo...';
 
-    const fd = new FormData();
+    var fd = new FormData();
     fd.append('UPLOADCARE_PUB_KEY', UPLOADCARE_PK);
     fd.append('UPLOADCARE_STORE', 'auto');
     fd.append('file', file);
 
-    const xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://upload.uploadcare.com/base/');
     xhr.upload.addEventListener('progress', function(ev) {
       if (ev.lengthComputable) {
-        const pct = Math.round(ev.loaded / ev.total * 100);
+        var pct = Math.round(ev.loaded / ev.total * 100);
         fill.style.width = pct + '%';
         label.textContent = pct + '%';
       }
     });
     xhr.addEventListener('load', function() {
       if (xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        const url  = 'https://1pjy13a80e.ucarecd.net/' + data.file + '/';
-        urlField.value  = url;
-        nameField.value = file.name;
-        if (vtField) vtField.value = '';
-        progress.style.display = '';
+        var data = JSON.parse(xhr.responseText);
+        var url = 'https://1pjy13a80e.ucarecd.net/' + data.file + '/';
         fill.style.width = '100%';
         label.textContent = 'Escaneando archivo...';
-        done.style.display = 'none';
         scanWithVT(url, file.name);
       } else {
-        reset();
+        uploading = false;
+        inner.style.display = '';
+        progress.style.display = 'none';
         alert('Error al subir el archivo. Intentá de nuevo.');
       }
     });
-    xhr.addEventListener('error', function() { reset(); alert('Error de red. Intentá de nuevo.'); });
+    xhr.addEventListener('error', function() {
+      uploading = false;
+      inner.style.display = '';
+      progress.style.display = 'none';
+      alert('Error de red. Intentá de nuevo.');
+    });
     xhr.send(fd);
   }
 
-  const vtField = document.getElementById('ucVtResult');
-  const VT_WORKER = 'https://vt-proxy.babidibu-records.workers.dev';
-
-  function scanWithVT(fileUrl, fileName) {
+  function scanWithVT(url, name) {
     fetch(VT_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'scan', url: fileUrl })
+      body: JSON.stringify({ action: 'scan', url: url })
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
       var id = data.data && data.data.id;
-      if (!id) { finishScan('No se pudo escanear', fileName); return; }
-      pollVT(id, fileName, 0);
+      if (!id) { finishScan(url, name, 'No se pudo escanear'); return; }
+      pollVT(id, url, name, 0);
     })
-    .catch(function() { finishScan('Error de conexión', fileName); });
+    .catch(function() { finishScan(url, name, 'Error de conexión'); });
   }
 
-  function pollVT(id, fileName, attempts) {
-    if (attempts > 12) { finishScan('Tiempo agotado', fileName); return; }
+  function pollVT(id, url, name, attempts) {
+    if (attempts > 15) { finishScan(url, name, 'Tiempo agotado'); return; }
     fetch(VT_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -867,31 +879,30 @@ document.addEventListener('click', e => {
         var suspicious = stats.suspicious || 0;
         var total = (stats.harmless||0) + malicious + suspicious + (stats.undetected||0);
         var result = malicious > 0
-          ? '⚠️ ALERTA: ' + malicious + '/' + total + ' motores detectaron amenazas'
-          : suspicious > 0
-            ? '⚠️ Sospechoso: ' + suspicious + '/' + total + ' motores'
-            : '✓ Limpio — ' + total + ' motores analizados';
-        finishScan(result, fileName);
+          ? '⚠️ ALERTA: ' + malicious + '/' + total + ' motores'
+          : suspicious > 0 ? '⚠️ Sospechoso: ' + suspicious + '/' + total
+          : '✓ Limpio — ' + total + ' motores';
+        finishScan(url, name, result);
       } else {
-        setTimeout(function() { pollVT(id, fileName, attempts + 1); }, 4000);
+        setTimeout(function() { pollVT(id, url, name, attempts + 1); }, 4000);
       }
     })
-    .catch(function() { finishScan('Error al obtener resultado', fileName); });
+    .catch(function() { finishScan(url, name, 'Error al obtener resultado'); });
   }
 
-  function finishScan(result, fileName) {
-    if (vtField) vtField.value = result;
+  function finishScan(url, name, result) {
+    files.push({ url: url, name: name, vt: result });
+    renderFileList();
+    updateFilesData();
+    uploading = false;
     progress.style.display = 'none';
-    done.style.display = '';
-    doneName.textContent = fileName;
-    var resultSpan = document.getElementById('ucVtDisplay');
-    if (resultSpan) resultSpan.textContent = result;
+    inner.style.display = '';
+    fill.style.width = '0%';
   }
 
-  zone.addEventListener('click', function(e) {
-    if (e.target === remove || remove.contains(e.target)) { reset(); return; }
-    if (urlField.value) return;
-    const inp = document.createElement('input');
+  zone.addEventListener('click', function() {
+    if (uploading) return;
+    var inp = document.createElement('input');
     inp.type = 'file';
     inp.accept = '.mp3,.wav,.mp4,.pdf,.zip';
     inp.addEventListener('change', function() { if (this.files[0]) uploadFile(this.files[0]); });
@@ -899,13 +910,12 @@ document.addEventListener('click', e => {
   });
 
   zone.addEventListener('dragover', function(e) { e.preventDefault(); zone.classList.add('drag-over'); });
-  zone.addEventListener('dragleave', function()  { zone.classList.remove('drag-over'); });
+  zone.addEventListener('dragleave', function() { zone.classList.remove('drag-over'); });
   zone.addEventListener('drop', function(e) {
     e.preventDefault();
     zone.classList.remove('drag-over');
     if (e.dataTransfer.files[0]) uploadFile(e.dataTransfer.files[0]);
   });
-  remove.addEventListener('click', function(e) { e.stopPropagation(); reset(); });
 })();
 
 // form submit
