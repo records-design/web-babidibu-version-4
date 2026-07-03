@@ -1194,6 +1194,28 @@ section { position: relative; overflow: visible; }
 .form-upload-text { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
 .form-upload-formats { font-size: 12px; color: var(--gris); }
 .form-upload-files { font-size: 12px; color: var(--verde); margin-top: 8px; }
+
+/* Uploadcare custom zone */
+.uc-upload-zone {
+  border: 2px dashed rgba(0,0,0,0.12); border-radius: 16px;
+  cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  overflow: hidden;
+}
+.uc-upload-zone:hover, .uc-upload-zone.drag-over { border-color: var(--turquesa); background: rgba(1,180,188,0.04); }
+.uc-upload-zone.drag-over { border-style: solid; }
+.uc-upload-inner { display: flex; flex-direction: column; align-items: center; padding: 32px 24px; gap: 4px; }
+.uc-upload-icon { font-size: 28px; color: var(--turquesa); }
+.uc-upload-text { font-size: 15px; font-weight: 600; }
+.uc-upload-formats { font-size: 12px; color: var(--gris); }
+.uc-upload-progress { padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.uc-progress-bar { height: 6px; background: rgba(0,0,0,0.08); border-radius: 99px; overflow: hidden; }
+.uc-progress-fill { height: 100%; background: var(--turquesa); border-radius: 99px; transition: width 0.2s; width: 0%; }
+.uc-progress-label { font-size: 13px; color: var(--gris); text-align: center; }
+.uc-upload-done { display: flex; align-items: center; gap: 10px; padding: 16px 20px; }
+.uc-done-icon { color: var(--verde); font-size: 18px; font-weight: 700; flex-shrink: 0; }
+.uc-done-name { font-size: 14px; font-weight: 500; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.uc-remove-btn { background: none; border: none; cursor: pointer; color: var(--gris); font-size: 14px; padding: 4px; flex-shrink: 0; transition: color 0.2s; }
+.uc-remove-btn:hover { color: var(--coral); }
 .wizard-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
 .btn-wizard-next {
   background: var(--turquesa); color: #fff; border: none; border-radius: 100px;
