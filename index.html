@@ -729,8 +729,24 @@ function showPanel(n) {
     s.classList.toggle('done', sn < n);
   });
 }
-document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => showPanel(+btn.dataset.next)));
+document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => {
+  const from = +btn.closest('[data-panel]')?.dataset.panel;
+  if (from === 1) {
+    const nombre = document.querySelector('[name="nombre"]');
+    const email = document.querySelector('[name="email"]');
+    let ok = true;
+    [nombre, email].forEach(field => {
+      const empty = !field.value.trim();
+      const badEmail = field === email && field.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+      field.closest('.form-field').classList.toggle('field-error', empty || badEmail);
+      if (empty || badEmail) ok = false;
+    });
+    if (!ok) return;
+  }
+  showPanel(+btn.dataset.next);
+}));
 document.querySelectorAll('[data-back]').forEach(btn => btn.addEventListener('click', () => showPanel(+btn.dataset.back)));
+document.querySelectorAll('[name="nombre"],[name="email"]').forEach(f => f.addEventListener('input', () => f.closest('.form-field').classList.remove('field-error')));
 
 // category dropdown
 const categoryTrigger = document.getElementById('categoryTrigger');
