@@ -361,6 +361,7 @@ ul { list-style: none; }
   animation: none;
   opacity: 0.95;
 }
+.hero-instrument.hi-extra { display: none; }
 
 /* ── Hero ambient lighting & texture */
 .hero-halo {
@@ -1279,33 +1280,43 @@ section { position: relative; overflow: visible; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
 .footer-bottom p { font-size: 13px; color: rgba(58,63,68,0.4); margin: 0; }
 
-/* ── TABLET */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ── LARGE SCREENS (32" / 1440px+) */
+@media (min-width: 1440px) {
+  .hero-instrument.hi-extra { display: block; }
+  .hero { overflow: hidden; }
+}
+
+/* ── TABLET (768px–1024px, incluye iPad Mini, Air, Pro) */
+@media (min-width: 768px) and (max-width: 1024px) {
   /* Header */
   .header { padding: 0 24px; }
   .header-logo { height: 40px; }
-  .header-nav { gap: 20px; }
+  .header-nav { gap: 16px; }
   .header-cta-btn { font-size: 13px; padding: 10px 18px; }
 
-  /* Hero — compacto con elementos gráficos */
-  .hero { height: auto; min-height: 0; padding-bottom: 80px; overflow: visible; }
+  /* Hero — altura auto, sin vacío, instrumentos al 60% */
+  .hero { height: auto; min-height: 0; padding-bottom: 80px; overflow: hidden; }
   .hero-content { padding: 20px 32px 0; gap: 20px; flex: none; }
   .hero-title { font-size: clamp(28px, 3.8vw, 42px); }
   .hero-sub { font-size: 15px; }
-  .hero-swipe { height: 340px; }
+  .hero-swipe { height: 340px; overflow: hidden; }
   .hero-instrument { width: calc(var(--s) * 0.6) !important; }
+  .hero-instrument.hi-mic { top: 13% !important; }
   .hd-svg { width: calc(var(--s) * 0.55) !important; height: calc(var(--s) * 0.55) !important; }
+  .hero-instrument.hi-extra { display: none; }
 
   /* Sections */
   .section-inner { padding: 60px 32px; }
   .universos .section-inner { padding-top: 60px; padding-bottom: 60px; }
   .lanzamientos .section-inner { padding-top: 90px; padding-bottom: 60px; }
 
-  /* Que-es */
+  /* Que-es — 3 cards en 2 cols, la 3ª centrada */
   .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
 
-  /* Universos — 3 columnas en tablet, la 5ª centrada */
-  .artists-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  /* Universos — flex para que los 5 queden 3+2 centrados */
+  .artists-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .artists-grid .artist-card { width: calc(33.33% - 14px); flex-shrink: 0; }
 
   /* Impacto */
   .impacto-inner { padding: 100px 32px 70px; gap: 32px; }
@@ -1313,8 +1324,9 @@ section { position: relative; overflow: visible; }
   .impacto-grid { grid-template-columns: repeat(3, 1fr); }
   .impacto-stat { padding: 32px 20px; }
 
-  /* Lanzamientos */
+  /* Lanzamientos — 3 items en 2 cols, el 3° centrado */
   .lanz-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .lanz-grid > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
   .yt-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   /* Contacto */
@@ -1330,7 +1342,7 @@ section { position: relative; overflow: visible; }
 }
 
 /* ── MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* Header */
   .header { padding: 0 20px; height: 60px; }
   .header-inner { justify-content: space-between; align-items: center; position: relative; padding: 0; width: 100%; }
