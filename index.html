@@ -314,6 +314,7 @@
     <div style="margin-bottom:56px;">
       <div class="section-title-wrap">
         <h2 class="section-title reveal" style="margin-bottom:0">Últimos <span class="title-squiggle title-squiggle--verde">lanzamientos</span></h2>
+        <p class="lanz-typewriter" id="lanzTypewriter"></p>
         <img src="imagenes-babidibu-records/estrella verde.svg" class="title-deco title-deco--star" style="top:-16px;right:-24px;animation-delay:0s;">
         <img src="imagenes-babidibu-records/SVG/nota musical 2.svg" class="title-deco" style="top:-8px;left:-32px;width:24px;height:24px;animation:floatDecorAlt 4s ease-in-out infinite;animation-delay:0.6s;filter:hue-rotate(130deg) saturate(1.4);">
         <div class="title-deco title-deco--dot" style="bottom:4px;right:40px;background:var(--naranja);animation-delay:1s;"></div>
@@ -617,6 +618,29 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 revealEls.forEach(el => revealObs.observe(el));
 
+
+// ── Lanzamientos typewriter
+(function() {
+  const el = document.getElementById('lanzTypewriter');
+  if (!el) return;
+  const text = 'Lo que estamos creando para vos.';
+  let i = 0, started = false;
+  function type() {
+    if (i <= text.length) {
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 48);
+    }
+  }
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      setTimeout(type, 400);
+      obs.disconnect();
+    }
+  }, { threshold: 0.3 });
+  obs.observe(el);
+})();
 
 // ── Counter animation
 function animateCounter(el) {
