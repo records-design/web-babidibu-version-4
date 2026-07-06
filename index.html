@@ -996,28 +996,43 @@ document.getElementById('formSuccessReset')?.addEventListener('click', () => {
     });
   }
 
-  applyStack(false);
+  const isMobile = () => window.innerWidth <= 768;
+
+  function applyMobileFade() {
+    cards.forEach((card, i) => card.classList.toggle('mobile-active', i === current));
+  }
+
+  if (isMobile()) {
+    applyMobileFade();
+  } else {
+    applyStack(false);
+  }
 
   setInterval(() => {
     if (animating) return;
     animating = true;
 
-    const frontCard = cards[current];
-    frontCard.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.55s ease';
-    frontCard.style.transform = 'translate(30px, -6px) scale(0.96) rotate(2deg)';
-    frontCard.style.opacity   = '0';
-
-    setTimeout(() => {
+    if (isMobile()) {
+      cards[current].classList.remove('mobile-active');
       current = (current + 1) % n;
-      // silently move outgoing card to back position
-      frontCard.style.transition = 'none';
-      frontCard.style.transform  = 'translate(28px, 24px) scale(0.86) rotate(7deg)';
-      frontCard.style.opacity    = '0';
-      frontCard.style.zIndex     = '1';
-      // animate remaining cards into new positions
-      applyStack(true);
+      cards[current].classList.add('mobile-active');
       setTimeout(() => { animating = false; }, 700);
-    }, 420);
+    } else {
+      const frontCard = cards[current];
+      frontCard.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.55s ease';
+      frontCard.style.transform = 'translate(30px, -6px) scale(0.96) rotate(2deg)';
+      frontCard.style.opacity   = '0';
+
+      setTimeout(() => {
+        current = (current + 1) % n;
+        frontCard.style.transition = 'none';
+        frontCard.style.transform  = 'translate(28px, 24px) scale(0.86) rotate(7deg)';
+        frontCard.style.opacity    = '0';
+        frontCard.style.zIndex     = '1';
+        applyStack(true);
+        setTimeout(() => { animating = false; }, 700);
+      }, 420);
+    }
   }, 3200);
 })();
 
