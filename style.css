@@ -323,7 +323,7 @@ ul { list-style: none; }
 .menu-copyright { font-size: 11px; color: rgba(80,80,80,0.45); margin: 0; letter-spacing: 0.01em; }
 
 /* ── HERO */
-.hero { height: 100svh; display: flex; flex-direction: column; padding-top: 88px; background: linear-gradient(155deg, #FFFCF9 0%, #FFF9F3 45%, #FFF3EC 100%); overflow: hidden; }
+.hero { height: 100svh; display: flex; flex-direction: column; padding-top: 88px; background: linear-gradient(155deg, #FFFCF9 0%, #FFF9F3 45%, #FFF3EC 100%); overflow: hidden; position: relative; }
 .hero-content {
   max-width: 1200px; margin: 0 auto; padding: 24px 48px 40px;
   display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center;
