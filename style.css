@@ -1346,7 +1346,7 @@ section { position: relative; overflow: visible; }
   .impacto-stat:not(:last-child)::after { display: none; }
   .impacto-stat:last-child { grid-column: 1 / -1; }
   .impacto-num { font-size: clamp(36px, 9vw, 48px); }
-  .impacto-lbl { font-size: 11px; white-space: nowrap; min-height: auto; display: block; text-align: center; }
+  .impacto-lbl { font-size: 13px; white-space: normal; min-height: 2.6em; display: flex; align-items: center; justify-content: center; text-align: center; }
   .impacto-icon { width: 60px; height: 60px; }
   .impacto-icon-img { width: 52px; height: 52px; }
 
