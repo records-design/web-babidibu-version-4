@@ -1322,6 +1322,11 @@ section { position: relative; overflow: visible; }
   .hs-card--chani img { object-position: center 30% !important; transform: scale(1.25) !important; transform-origin: center 30% !important; }
   .hd-svg { display: none; }
   .hero-instrument { display: none; }
+  .hi-nube       { display: block; --x:70%; --y:8%;  --s:54px; --r:-3deg;  opacity:0.85; }
+  .hi-mic        { display: block; --x:76%; --y:22%; --s:48px; --r:16deg;  opacity:0.9;  }
+  .hi-auriculares{ display: block; --x:72%; --y:38%; --s:52px; --r:-14deg; opacity:0.85; }
+  .hi-osito      { display: block; --x:78%; --y:52%; --s:42px; --r:-7deg;  opacity:0.9;  }
+  .hi-paleta     { display: block; --x:71%; --y:64%; --s:48px; --r:11deg;  opacity:0.85; }
   .lanz-deco { display: none; }
   .lanz-note { display: none; }
   .lanz-star { display: none; }
