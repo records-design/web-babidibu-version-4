@@ -211,10 +211,10 @@ ul { list-style: none; }
   color: var(--negro); padding: 4px; line-height: 0;
 }
 .menu-btn-icon { display: block; transition: transform 0.3s; }
-.menu-btn .bar { transition: transform 0.3s ease, opacity 0.3s ease; transform-box: view-box; transform-origin: center; }
-.menu-open .menu-btn .bar1 { transform: translateY(6px) rotate(45deg); }
+.menu-btn .bar { transition: transform 0.3s ease, opacity 0.3s ease; transform-box: fill-box; transform-origin: center; }
+.menu-open .menu-btn .bar1 { transform: translateY(4.9px) rotate(45deg); }
 .menu-open .menu-btn .bar2 { opacity: 0; }
-.menu-open .menu-btn .bar3 { transform: translateY(-6px) rotate(-45deg); }
+.menu-open .menu-btn .bar3 { transform: translateY(-5.1px) rotate(-45deg); }
 
 /* ── MENU OVERLAY */
 .menu-overlay {
