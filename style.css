@@ -1215,6 +1215,7 @@ section { position: relative; overflow: visible; }
 .uc-progress-bar { height: 6px; background: rgba(0,0,0,0.08); border-radius: 99px; overflow: hidden; }
 .uc-progress-fill { height: 100%; background: var(--turquesa); border-radius: 99px; transition: width 0.2s; width: 0%; }
 .uc-progress-label { font-size: 13px; color: var(--gris); text-align: center; }
+.uc-progress-hint { font-size: 11px; color: var(--gris); text-align: center; opacity: 0.7; margin-top: 4px; }
 .uc-upload-done { display: flex; align-items: center; gap: 10px; padding: 16px 20px; }
 .uc-done-icon { color: var(--verde); font-size: 18px; font-weight: 700; flex-shrink: 0; }
 .uc-done-name { font-size: 14px; font-weight: 500; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

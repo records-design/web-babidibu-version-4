@@ -506,6 +506,7 @@
             <div class="uc-upload-progress" id="ucProgress" style="display:none;">
               <div class="uc-progress-bar"><div class="uc-progress-fill" id="ucProgressFill"></div></div>
               <span class="uc-progress-label" id="ucProgressLabel">Subiendo...</span>
+              <span class="uc-progress-hint" id="ucProgressHint"></span>
             </div>
           </div>
           <input type="hidden" name="archivos" id="ucFilesData">
@@ -780,6 +781,7 @@ document.addEventListener('click', e => {
   const progress = document.getElementById('ucProgress');
   const fill     = document.getElementById('ucProgressFill');
   const label    = document.getElementById('ucProgressLabel');
+  const hint     = document.getElementById('ucProgressHint');
   const fileList = document.getElementById('ucFileList');
   const filesData= document.getElementById('ucFilesData');
   const ALLOWED  = ['mp3','wav','mp4','pdf','zip'];
@@ -848,6 +850,7 @@ document.addEventListener('click', e => {
         var url = 'https://1pjy13a80e.ucarecd.net/' + data.file + '/';
         fill.style.width = '100%';
         label.textContent = 'Escaneando archivo...';
+        hint.textContent = 'Esto puede demorar unos segundos.';
         scanWithVT(url, file.name);
       } else {
         uploading = false;
@@ -912,6 +915,7 @@ document.addEventListener('click', e => {
     renderFileList();
     updateFilesData();
     uploading = false;
+    hint.textContent = '';
     progress.style.display = 'none';
     inner.style.display = '';
     fill.style.width = '0%';
