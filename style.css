@@ -1280,11 +1280,6 @@ section { position: relative; overflow: visible; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
 .footer-bottom p { font-size: 13px; color: rgba(58,63,68,0.4); margin: 0; }
 
-/* ── LARGE SCREENS (32" / 1440px+) */
-@media (min-width: 1440px) {
-  .hero-instrument.hi-extra { display: block; }
-  .hero { overflow: hidden; }
-}
 
 /* ── TABLET (768px–1024px, incluye iPad Mini, Air, Pro) */
 @media (min-width: 768px) and (max-width: 1024px) {
