@@ -884,7 +884,7 @@ document.addEventListener('click', e => {
   }
 
   function pollVT(id, url, name, attempts) {
-    if (attempts > 15) { finishScan(url, name, 'Tiempo agotado'); return; }
+    if (attempts > 30) { finishScan(url, name, 'Tiempo agotado'); return; }
     fetch(VT_WORKER, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
