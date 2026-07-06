@@ -1329,7 +1329,7 @@ section { position: relative; overflow: visible; }
   /* Sections */
   .section-inner { padding: 36px 20px; }
   .universos .section-inner { padding-top: 36px; padding-bottom: 36px; }
-  .lanzamientos .section-inner { padding-top: 68px; padding-bottom: 36px; }
+  .lanzamientos .section-inner { padding-top: 84px; padding-bottom: 36px; }
   .cards-grid-3 { grid-template-columns: 1fr; gap: 16px; }
 
   /* Universos artist cards */
@@ -1346,7 +1346,7 @@ section { position: relative; overflow: visible; }
   .impacto-stat:not(:last-child)::after { display: none; }
   .impacto-stat:last-child { grid-column: 1 / -1; }
   .impacto-num { font-size: clamp(36px, 9vw, 48px); }
-  .impacto-lbl { font-size: 12px; min-height: 2.8em; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .impacto-lbl { font-size: 11px; white-space: nowrap; min-height: auto; display: block; text-align: center; }
   .impacto-icon { width: 60px; height: 60px; }
   .impacto-icon-img { width: 52px; height: 52px; }
 
@@ -1399,8 +1399,8 @@ section { position: relative; overflow: visible; }
   /* Reducir márgenes de títulos y pills en mobile */
   .section-label-pill { margin-bottom: 14px; }
   .section-title { margin-bottom: 24px; }
-  .impacto-pill-wrap { top: 52px; }
-  .impacto-inner { padding-top: 100px; }
+  .impacto-pill-wrap { top: 68px; }
+  .impacto-inner { padding-top: 116px; }
 
   /* Footer: dirección en una sola línea */
   .footer-contact-link { white-space: nowrap; font-size: 13px; }
