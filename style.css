@@ -1288,18 +1288,20 @@ section { position: relative; overflow: visible; }
 
 /* ── TABLET (768px–1024px, incluye iPad Mini, Air, Pro) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* Header */
-  .header { padding: 0 24px; }
-  .header-logo { height: 40px; }
-  .header-nav { gap: 16px; }
-  .header-cta-btn { font-size: 13px; padding: 10px 18px; }
+  /* Header — nav más compacto para que no se parta en 2 líneas */
+  .header { padding: 0 20px; }
+  .header-logo { height: 38px; }
+  .header-inner { gap: 8px; }
+  .header-nav { gap: 12px; }
+  .header-nav a { font-size: 13px; }
+  .header-cta-btn { font-size: 12px; padding: 9px 14px; }
 
-  /* Hero — altura auto, instrumentos solo en zona derecha */
-  .hero { height: auto; min-height: 0; padding-bottom: 60px; overflow: hidden; }
-  .hero-content { padding: 20px 32px 0; gap: 20px; flex: none; }
-  .hero-title { font-size: clamp(28px, 3.8vw, 42px); }
-  .hero-sub { font-size: 15px; }
-  .hero-swipe { height: 340px; overflow: hidden; }
+  /* Hero — sin padding-bottom extra, overflow visible para el carousel */
+  .hero { height: auto; min-height: 0; padding-bottom: 0; overflow: visible; }
+  .hero-content { padding: 20px 28px 0; gap: 20px; flex: none; overflow: hidden; }
+  .hero-title { font-size: clamp(26px, 3.5vw, 40px); }
+  .hero-sub { font-size: 14px; }
+  .hero-swipe { height: 340px; overflow: hidden; margin-right: -4px; }
   .hd-svg { display: none; }
   .hero-instrument { display: none !important; }
   .hero-instrument.hi-nube        { display: block !important; left: 64% !important; top: 14% !important; width: 70px !important; opacity: 0.85; z-index: 2 !important; }
