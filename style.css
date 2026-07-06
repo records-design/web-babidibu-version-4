@@ -1308,7 +1308,7 @@ section { position: relative; overflow: visible; }
   .menu-bottom { margin-top: 0; }
 
   /* Hero */
-  .hero { padding-top: 60px; }
+  .hero { padding-top: 60px; overflow: visible; }
   .hero-halo, .hero-texture { display: none; }
   .hero-content { display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; padding: 24px 20px 0; }
   .hero-text { height: auto; justify-content: flex-start; gap: 14px; }
