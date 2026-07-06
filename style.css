@@ -1393,6 +1393,9 @@ section { position: relative; overflow: visible; }
   .social-btn { width: 38px !important; height: 38px !important; }
   .artist-modal-close { top: 10px; right: 12px; width: 32px; height: 32px; font-size: 16px; }
 
+  /* Anchors: compensar header fijo */
+  #anchor-quees, #anchor-universos, #anchor-lanzamientos { scroll-margin-top: 72px; }
+
   /* Que-es: ocultar decorativos que chocan con el texto en mobile */
   .section-title-wrap .title-deco { display: none; }
   .title-squiggle::after { bottom: -3px; }
