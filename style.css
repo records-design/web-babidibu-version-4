@@ -12,7 +12,7 @@
   --radius-card: 20px;
   --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--negro); line-height: 1.5; overflow-x: hidden; }
 body.menu-open, body.modal-open { overflow: hidden; }
 img { display: block; max-width: 100%; }
