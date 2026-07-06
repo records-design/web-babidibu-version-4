@@ -1287,15 +1287,21 @@ section { position: relative; overflow: visible; }
   .header-nav { gap: 20px; }
   .header-cta-btn { font-size: 13px; padding: 10px 18px; }
 
-  /* Hero */
-  .hero-content { padding: 20px 32px 32px; gap: 20px; }
+  /* Hero — altura auto para que no quede vacío en portrait */
+  .hero { height: auto; min-height: 0; padding-bottom: 60px; }
+  .hero-content { padding: 20px 32px 0; gap: 20px; flex: none; }
   .hero-title { font-size: clamp(28px, 3.8vw, 42px); }
   .hero-sub { font-size: 15px; }
-  .hero-swipe { height: 380px; }
+  .hero-swipe { height: 340px; }
 
-  /* Instrumentos hero — escalar a tamaño tablet */
-  .hero-instrument { width: calc(var(--s) * 0.6); }
-  .hd-svg { width: calc(var(--s) * 0.6); height: calc(var(--s) * 0.6); }
+  /* Instrumentos hero — ocultar los decorativos, mantener los principales más chicos */
+  .hd-svg { display: none; }
+  .hero-instrument { width: calc(var(--s) * 0.55); }
+  .hero-instrument.hi-auriculares { width: 72px !important; }
+  .hero-instrument.hi-nube        { width: 80px !important; }
+  .hero-instrument.hi-mic         { width: 64px !important; }
+  .hero-instrument.hi-osito       { width: 56px !important; }
+  .hero-instrument.hi-paleta      { width: 64px !important; }
 
   /* Sections */
   .section-inner { padding: 60px 32px; }
