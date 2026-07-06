@@ -1328,7 +1328,7 @@ section { position: relative; overflow: visible; }
   /* Sections */
   .section-inner { padding: 36px 20px; }
   .universos .section-inner { padding-top: 36px; padding-bottom: 36px; }
-  .lanzamientos .section-inner { padding-top: 52px; padding-bottom: 36px; }
+  .lanzamientos .section-inner { padding-top: 68px; padding-bottom: 36px; }
   .cards-grid-3 { grid-template-columns: 1fr; gap: 16px; }
 
   /* Universos artist cards */
@@ -1398,8 +1398,8 @@ section { position: relative; overflow: visible; }
   /* Reducir márgenes de títulos y pills en mobile */
   .section-label-pill { margin-bottom: 14px; }
   .section-title { margin-bottom: 24px; }
-  .impacto-pill-wrap { top: 36px; }
-  .impacto-inner { padding-top: 80px; }
+  .impacto-pill-wrap { top: 52px; }
+  .impacto-inner { padding-top: 100px; }
 
   /* Footer: dirección en una sola línea */
   .footer-contact-link { white-space: nowrap; font-size: 13px; }
