@@ -1359,9 +1359,9 @@ section { position: relative; overflow: visible; }
   .menu-bottom { margin-top: 0; }
 
   /* Hero */
-  .hero { padding-top: 60px; overflow: visible; }
+  .hero { padding-top: 60px; overflow: visible; height: auto; min-height: 100svh; }
   .hero-halo, .hero-texture { display: none; }
-  .hero-content { display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; padding: 24px 20px 0; }
+  .hero-content { display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; padding: 24px 20px 32px; }
   .hero-text { height: auto; justify-content: flex-start; gap: 14px; }
   .hero-title { font-size: clamp(26px, 7vw, 34px); }
   .hero-sub { font-size: 15px; margin-top: 2px; }
