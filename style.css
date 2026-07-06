@@ -1395,6 +1395,12 @@ section { position: relative; overflow: visible; }
   /* Que-es: ocultar decorativos que chocan con el texto en mobile */
   .section-title-wrap .title-deco { display: none; }
 
+  /* Reducir márgenes de títulos y pills en mobile */
+  .section-label-pill { margin-bottom: 14px; }
+  .section-title { margin-bottom: 24px; }
+  .impacto-pill-wrap { top: 36px; }
+  .impacto-inner { padding-top: 80px; }
+
   /* Footer: dirección en una sola línea */
   .footer-contact-link { white-space: nowrap; font-size: 13px; }
 
