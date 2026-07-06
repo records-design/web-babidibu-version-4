@@ -1324,7 +1324,7 @@ section { position: relative; overflow: visible; }
   .hero-instrument { display: none; }
   .hero-instrument.hi-nube       { display: block !important; left: 68% !important; top: 12% !important; width: 54px !important; opacity:0.85; z-index:2 !important; }
   .hero-instrument.hi-mic        { display: block !important; left: 74% !important; top: 25% !important; width: 48px !important; opacity:0.9  !important; z-index:2 !important; }
-  .hero-instrument.hi-auriculares{ display: block !important; left: 70% !important; top: 48% !important; width: 52px !important; opacity:0.85; z-index:2 !important; }
+  .hero-instrument.hi-auriculares{ display: block !important; left: 70% !important; top: 44% !important; width: 38px !important; opacity:0.85; z-index:10 !important; }
   .hero-instrument.hi-osito      { display: block !important; left: 4%  !important; top: 74% !important; width: 44px !important; opacity:0.9  !important; z-index:2 !important; }
   .hero-instrument.hi-paleta     { display: block !important; left: 76% !important; top: 76% !important; width: 48px !important; opacity:0.85; z-index:2 !important; }
   .lanz-deco { display: none; }
