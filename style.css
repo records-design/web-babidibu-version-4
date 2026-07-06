@@ -1279,6 +1279,53 @@ section { position: relative; overflow: visible; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
 .footer-bottom p { font-size: 13px; color: rgba(58,63,68,0.4); margin: 0; }
 
+/* ── TABLET */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Header */
+  .header { padding: 0 24px; }
+  .header-logo { height: 40px; }
+  .header-nav { gap: 20px; }
+  .header-cta-btn { font-size: 13px; padding: 10px 18px; }
+
+  /* Hero */
+  .hero-content { padding: 20px 32px 32px; gap: 20px; }
+  .hero-title { font-size: clamp(28px, 3.8vw, 42px); }
+  .hero-sub { font-size: 15px; }
+  .hero-swipe { height: 380px; }
+
+  /* Sections */
+  .section-inner { padding: 60px 32px; }
+  .universos .section-inner { padding-top: 60px; padding-bottom: 60px; }
+  .lanzamientos .section-inner { padding-top: 90px; padding-bottom: 60px; }
+
+  /* Que-es */
+  .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  /* Universos — 3 columnas en tablet, la 5ª centrada */
+  .artists-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  /* Impacto */
+  .impacto-inner { padding: 100px 32px 70px; gap: 32px; }
+  .impacto-pill-wrap { top: 60px; }
+  .impacto-grid { grid-template-columns: repeat(3, 1fr); }
+  .impacto-stat { padding: 32px 20px; }
+
+  /* Lanzamientos */
+  .lanz-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .yt-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  /* Contacto */
+  .contacto { padding: 0 32px 60px; }
+  .form-wrap { padding: 0 32px 60px; }
+
+  /* Footer */
+  .footer-inner { padding: 60px 32px 32px; }
+
+  /* Artist modal */
+  .artist-modal-inner { max-width: 700px; }
+  .artist-modal-left { min-height: 260px; }
+}
+
 /* ── MOBILE */
 @media (max-width: 768px) {
   /* Header */
