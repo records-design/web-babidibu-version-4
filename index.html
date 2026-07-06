@@ -426,8 +426,8 @@
   <div class="form-modal-card">
     <button class="form-modal-close" id="closeFormModal" aria-label="Cerrar">✕</button>
     <div class="form-wrap">
-    <div class="form-header">
-      <img src="imagenes-babidibu-records/logo nuevo babidibu .png" alt="Babidibu Records" style="height:48px; width:auto; margin-bottom:16px; display:block;">
+    <img src="imagenes-babidibu-records/logo nuevo babidibu .png" alt="Babidibu Records" class="form-modal-logo" style="height:48px; width:auto; margin-bottom:16px; display:block;">
+    <div class="form-header" id="formHeader">
       <h2 class="form-heading">Presentá tu proyecto.</h2>
       <p class="form-intro">Artistas, creadores y marcas que quieran ser parte del universo Babidibu Records.</p>
     </div>
@@ -952,12 +952,14 @@ document.getElementById('formWizard')?.addEventListener('submit', async function
     const res = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{ 'Accept':'application/json' }});
     if (res.ok) {
       this.style.display = 'none';
+      document.getElementById('formHeader').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'flex';
     }
   } catch(err) { console.error(err); }
 });
 document.getElementById('formSuccessReset')?.addEventListener('click', () => {
   document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formHeader').style.display = 'block';
   document.getElementById('formWizard').style.display = 'block';
   showPanel(1);
   closeFormModal();
