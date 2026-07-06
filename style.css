@@ -1293,6 +1293,10 @@ section { position: relative; overflow: visible; }
   .hero-sub { font-size: 15px; }
   .hero-swipe { height: 380px; }
 
+  /* Instrumentos hero — escalar a tamaño tablet */
+  .hero-instrument { width: calc(var(--s) * 0.6); }
+  .hd-svg { width: calc(var(--s) * 0.6); height: calc(var(--s) * 0.6); }
+
   /* Sections */
   .section-inner { padding: 60px 32px; }
   .universos .section-inner { padding-top: 60px; padding-bottom: 60px; }
