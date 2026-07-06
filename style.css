@@ -1240,9 +1240,12 @@ section { position: relative; overflow: visible; }
   cursor: pointer; transition: background 0.2s;
 }
 .btn-submit:hover { background: #4d8f49; }
+.form-modal-logo { display: block; }
+.form-modal-card.success-state { max-width: 420px; }
+.form-modal-card.success-state .form-modal-logo { margin: 0 auto 8px; }
 .form-success {
   flex-direction: column; align-items: center; text-align: center;
-  padding: 60px 24px; gap: 16px;
+  padding: 32px 24px 40px; gap: 14px;
 }
 .form-success-icon { font-size: 48px; color: var(--verde); }
 .form-success-title { font-size: 28px; font-weight: 800; }

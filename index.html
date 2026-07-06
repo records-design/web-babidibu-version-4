@@ -954,6 +954,7 @@ document.getElementById('formWizard')?.addEventListener('submit', async function
       this.style.display = 'none';
       document.getElementById('formHeader').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'flex';
+      document.querySelector('.form-modal-card').classList.add('success-state');
     }
   } catch(err) { console.error(err); }
 });
@@ -962,6 +963,7 @@ document.getElementById('formSuccessReset')?.addEventListener('click', () => {
   document.getElementById('formHeader').style.display = 'block';
   document.getElementById('formWizard').style.display = 'block';
   document.getElementById('formWizard').reset();
+  document.querySelector('.form-modal-card').classList.remove('success-state');
   showPanel(1);
 });
 
