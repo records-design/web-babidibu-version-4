@@ -961,8 +961,8 @@ document.getElementById('formSuccessReset')?.addEventListener('click', () => {
   document.getElementById('formSuccess').style.display = 'none';
   document.getElementById('formHeader').style.display = 'block';
   document.getElementById('formWizard').style.display = 'block';
+  document.getElementById('formWizard').reset();
   showPanel(1);
-  closeFormModal();
 });
 
 // Hero stacked-deck carousel
