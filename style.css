@@ -1319,6 +1319,7 @@ section { position: relative; overflow: visible; }
   .hero-swipe { height: 260px; margin-top: 4px; }
   .hero-swipe .hs-card { transform: none !important; opacity: 0 !important; z-index: 1 !important; transition: opacity 0.6s ease !important; }
   .hero-swipe .hs-card.mobile-active { opacity: 1 !important; z-index: 2 !important; }
+  .hs-card--chani img { object-position: center 30% !important; transform: scale(1.25) !important; transform-origin: center 30% !important; }
   .hd-svg { display: none; }
   .hero-instrument { display: none; }
   .lanz-deco { display: none; }
