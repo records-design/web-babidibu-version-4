@@ -1300,7 +1300,7 @@ section { position: relative; overflow: visible; }
   .menu-open .menu-btn .bar3 { transform: none; }
   .header.hide-nav { transform: none; opacity: 1; }
   .menu-overlay { padding: 56px 8vw 36px; justify-content: space-between; }
-  .menu-nav { display: flex; flex-direction: column; gap: 0; }
+  .menu-nav { display: flex; flex-direction: column; gap: 0; margin-top: 28px; }
   .menu-links { gap: 22px; justify-content: flex-start; flex: none; }
   .menu-link { font-size: clamp(28px, 8.5vw, 44px); gap: 14px; }
   .menu-dot { width: 7px; height: 7px; }
@@ -1323,7 +1323,9 @@ section { position: relative; overflow: visible; }
   .lanz-star { display: none; }
 
   /* Sections */
-  .section-inner { padding: 52px 20px; }
+  .section-inner { padding: 36px 20px; }
+  .universos .section-inner { padding-top: 36px; padding-bottom: 36px; }
+  .lanzamientos .section-inner { padding-top: 36px; padding-bottom: 36px; }
   .cards-grid-3 { grid-template-columns: 1fr; gap: 16px; }
 
   /* Universos artist cards */
@@ -1334,7 +1336,7 @@ section { position: relative; overflow: visible; }
   .artist-card-footer { padding: 48px 20px 20px; }
 
   /* Impacto */
-  .impacto-inner { padding: 136px 12px 36px; gap: 16px; }
+  .impacto-inner { padding: 60px 12px 36px; gap: 16px; }
   .impacto-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
   .impacto-stat { padding: 24px 16px; }
   .impacto-stat:not(:last-child)::after { display: none; }
