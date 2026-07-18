@@ -320,34 +320,8 @@
         <div class="title-deco title-deco--dot" style="top:0;left:60px;background:var(--amarillo);width:8px;height:8px;animation-delay:1.8s;"></div>
       </div>
     </div>
-    <div class="lanz-grid">
-      <div class="lanz-item">
-        <div class="lanz-video-wrap">
-          <iframe src="https://www.youtube.com/embed/3z8yO5MOOAk" title="La Sirenita — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="lanz-meta">
-          <span class="lanz-artist">El Mundo de Chani</span>
-          <p class="lanz-name">La Sirenita - Cuentos infantiles</p>
-        </div>
-      </div>
-      <div class="lanz-item">
-        <div class="lanz-video-wrap">
-          <iframe src="https://www.youtube.com/embed/WV40kNYnLxY" title="Vamos Vamos Argentina — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="lanz-meta">
-          <span class="lanz-artist">El Mundo de Chani</span>
-          <p class="lanz-name">Las Hinchadas del Mundial</p>
-        </div>
-      </div>
-      <div class="lanz-item">
-        <div class="lanz-video-wrap">
-          <iframe src="https://www.youtube.com/embed/XhBg5kpoj8E" title="Manualidades Argentina — El Mundo de Chani" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="lanz-meta">
-          <span class="lanz-artist">El Mundo de Chani</span>
-          <p class="lanz-name">Manualidades de Argentina</p>
-        </div>
-      </div>
+    <div class="lanz-grid" id="lanzGrid">
+      <!-- Los lanzamientos se cargan desde Sanity -->
     </div>
   </div>
   <div class="wave-sep"><svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#FFF3F0"/></svg></div>
@@ -1099,6 +1073,35 @@ function closeBbtvModal() {
 document.getElementById('bbtvNavLink')?.addEventListener('click', e => { e.preventDefault(); openBbtvModal(); });
 document.getElementById('bbtvClose')?.addEventListener('click', closeBbtvModal);
 document.getElementById('bbtvBackdrop')?.addEventListener('click', closeBbtvModal);
+</script>
+
+<script>
+// Carga lanzamientos desde Sanity
+(async function() {
+  const PROJECT_ID = '4q7erfki';
+  const DATASET = 'production';
+  const TOKEN = 'skOiVLrx2JenUCquJnCZ33PJNkxvsQZOUennUmK6kNaExy2425h7UVn9zjJWf2X2E4PeJ99thDgLFm7PPIgHfYRkaqv5ZgU8xMBi5AshVltRG6hrXSALGUb0DKDjj4PuXZntGPpPyIjcu5OWR8WzpmOUvsT58M95URK7Cci2wndWPLeTRvjW';
+  const query = encodeURIComponent('*[_type == "lanzamiento"] | order(orden asc) {titulo, artista, youtubeId}');
+  const url = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${query}`;
+
+  try {
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
+    const data = await res.json();
+    const grid = document.getElementById('lanzGrid');
+    if (!data.result || data.result.length === 0) return;
+    grid.innerHTML = data.result.map(item => `
+      <div class="lanz-item">
+        <div class="lanz-video-wrap">
+          <iframe src="https://www.youtube.com/embed/${item.youtubeId}" title="${item.titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="lanz-meta">
+          <span class="lanz-artist">${item.artista}</span>
+          <p class="lanz-name">${item.titulo}</p>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) { console.error('Error cargando lanzamientos:', e); }
+})();
 </script>
 
 </body>
