@@ -526,7 +526,7 @@ ul { list-style: none; }
 }
 .hs-card--chani img {
   object-fit: contain;
-  object-position: center 45%;
+  object-position: center 65%;
   transform: scale(1.15);
   transform-origin: center 8%;
 }
