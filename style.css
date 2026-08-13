@@ -1346,7 +1346,7 @@ section { position: relative; overflow: visible; }
   .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
   .service-card h3 { font-size: 20px; }
-  .service-card p { font-size: 15px; }
+  .service-card p { font-size: 18px; }
   .service-card-img { height: 80px; }
   .service-card-img img.service-card-svg { width: 60px; height: 60px; }
 
