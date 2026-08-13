@@ -1039,6 +1039,9 @@ section { position: relative; overflow: visible; }
 .lanz-info { display: contents; }
 .lanz-artist { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(58,63,68,0.4); }
 .lanz-name { font-size: 16px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; margin: 0; line-height: 1.25; }
+.lanz-item:nth-child(1) .lanz-name { color: var(--verde); }
+.lanz-item:nth-child(2) .lanz-name { color: var(--naranja); }
+.lanz-item:nth-child(3) .lanz-name { color: var(--coral); }
 .yt-lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center; padding: 24px;
