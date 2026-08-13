@@ -1340,15 +1340,16 @@ section { position: relative; overflow: visible; }
   .lanzamientos .section-inner { padding-top: 100px; padding-bottom: 64px; }
 
   /* Sección títulos */
-  .section-title { font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 32px; }
+  .section-title { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 32px; }
 
-  /* Que-es — 3 cards en 2 cols, la 3ª centrada */
-  .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
+  /* Que-es — 3 cards verticales en fila */
+  .cards-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: auto; max-width: none; margin: 0; }
+  .service-card { flex-direction: column; justify-content: flex-start; }
   .service-card h3 { font-size: 20px; }
-  .service-card p { font-size: 18px; }
-  .service-card-img { height: 80px; }
-  .service-card-img img.service-card-svg { width: 60px; height: 60px; }
+  .service-card p { font-size: 16px; }
+  .service-card-img { height: 100px; }
+  .service-card-img img.service-card-svg { width: 64px; height: 64px; }
 
   /* Universos — 3 columnas primera fila, 2 centradas segunda */
   .artists-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
