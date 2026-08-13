@@ -57,6 +57,7 @@ ul { list-style: none; }
               inset 0 -2px 0 rgba(0,0,0,0.12);
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
+.br-tablet { display: none; }
 .section-title {
   font-size: clamp(22px, 2.6vw, 38px); font-weight: 900;
   line-height: 1.15; letter-spacing: -0.02em;
@@ -1341,6 +1342,7 @@ section { position: relative; overflow: visible; }
 
   /* Sección títulos */
   .section-title { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 32px; }
+  .br-tablet { display: block; }
 
   /* Que-es — 3 cards verticales en fila */
   .cards-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
