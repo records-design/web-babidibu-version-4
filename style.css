@@ -1351,9 +1351,9 @@ section { position: relative; overflow: visible; }
   .service-card-img { height: 100px; }
   .service-card-img img.service-card-svg { width: 64px; height: 64px; }
 
-  /* Universos — 3 columnas primera fila, 2 centradas segunda */
-  .artists-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-  .artists-grid .artist-card { width: calc(33.33% - 14px); flex-shrink: 0; }
+  /* Universos — 5 en una sola fila */
+  .artists-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .artists-grid .artist-card { width: auto; }
 
   /* Impacto */
   .impacto-inner { padding: 100px 40px 70px; gap: 32px; }
