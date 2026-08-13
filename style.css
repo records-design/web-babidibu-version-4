@@ -1298,23 +1298,6 @@ section { position: relative; overflow: visible; }
 .footer-bottom p { font-size: 13px; color: rgba(58,63,68,0.4); margin: 0; }
 
 
-/* ── LARGE SCREENS (1440px+) */
-@media (min-width: 1440px) {
-  .section-inner { max-width: 1440px; padding: 100px 80px; }
-  .header-inner { max-width: 1440px; padding: 0 80px; }
-  .hero-content { max-width: 1440px; padding: 40px 80px 60px; }
-  .universos .section-inner { max-width: 1600px; }
-  .artists-grid { max-width: 1600px; gap: 40px; }
-  .footer-inner { max-width: 1440px; padding: 80px 80px 40px; }
-  .impacto-inner { max-width: 1440px; }
-  .lanz-grid { max-width: 1440px; }
-
-  .section-title { font-size: clamp(36px, 2.4vw, 48px); }
-  .hero-title { font-size: clamp(48px, 3.6vw, 64px); }
-  .hero-sub { font-size: clamp(17px, 1.2vw, 22px); }
-  .hs-card-bottom span { font-size: clamp(22px, 1.6vw, 32px); }
-}
-
 /* ── TABLET (768px–1024px, incluye iPad Mini, Air, Pro) */
 @media (min-width: 768px) and (max-width: 1024px) {
 
