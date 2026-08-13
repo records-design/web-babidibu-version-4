@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *');
 require_once '../php-admin/config.php';
 
 try {
-  $stmt = db()->query("SELECT imagen, alt FROM hero_slides WHERE publicado=1 ORDER BY orden ASC, id ASC");
+  $stmt = db()->query("SELECT imagen, alt, nombre, subtitulo, color FROM hero_slides WHERE publicado=1 ORDER BY orden ASC, id ASC");
   $rows = $stmt->fetchAll();
   $upload_url = '../imagenes-babidibu-records/cms/';
   foreach ($rows as &$r) {

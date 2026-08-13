@@ -10,8 +10,11 @@ $id = (int)($_GET['id'] ?? 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   csrf_check();
-  $alt      = trim($_POST['alt'] ?? '');
-  $orden    = (int)($_POST['orden'] ?? 0);
+  $nombre    = trim($_POST['nombre'] ?? '');
+  $subtitulo = trim($_POST['subtitulo'] ?? '');
+  $color     = trim($_POST['color'] ?? '#F6D51F');
+  $alt       = trim($_POST['alt'] ?? '');
+  $orden     = (int)($_POST['orden'] ?? 0);
   $publicado = isset($_POST['publicado']) ? 1 : 0;
 
   if ($_POST['form_action'] === 'delete' && $id) {
@@ -35,12 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$id]);
     $old = $stmt->fetch();
     $imagen = $imagen ?? $old['imagen'];
-    db()->prepare("UPDATE hero_slides SET imagen=?,alt=?,orden=?,publicado=? WHERE id=?")
-       ->execute([$imagen,$alt,$orden,$publicado,$id]);
+    db()->prepare("UPDATE hero_slides SET imagen=?,alt=?,nombre=?,subtitulo=?,color=?,orden=?,publicado=? WHERE id=?")
+       ->execute([$imagen,$alt,$nombre,$subtitulo,$color,$orden,$publicado,$id]);
     header('Location: hero.php?ok=1'); exit;
   } elseif ($imagen) {
-    db()->prepare("INSERT INTO hero_slides (imagen,alt,orden,publicado) VALUES (?,?,?,?)")
-       ->execute([$imagen,$alt,$orden,$publicado]);
+    db()->prepare("INSERT INTO hero_slides (imagen,alt,nombre,subtitulo,color,orden,publicado) VALUES (?,?,?,?,?,?,?)")
+       ->execute([$imagen,$alt,$nombre,$subtitulo,$color,$orden,$publicado]);
     header('Location: hero.php?ok=1'); exit;
   } else {
     $msg = 'Tenes que subir una imagen.';
@@ -78,17 +81,32 @@ layout_sidebar('hero');
       <input type="hidden" name="csrf" value="<?= csrf_token() ?>">
       <input type="hidden" name="form_action" value="save">
       <div class="form-group">
-        <label>Imagen <?= $action === 'new' ? '*' : '' ?></label>
+        <label>Foto del artista <?= $action === 'new' ? '*' : '' ?></label>
         <input type="file" name="imagen" accept="image/*" <?= $action === 'new' ? 'required' : '' ?>>
-        <div class="form-hint">JPG, PNG o WebP. Se muestra en el carrusel del hero.</div>
+        <div class="form-hint">JPG, PNG o WebP. Se muestra en la card del hero.</div>
         <?php if (!empty($row['imagen'])): ?>
           <img src="<?= $UPLOAD_URL . htmlspecialchars($row['imagen']) ?>" style="height:120px;margin-top:12px;border-radius:10px;object-fit:cover;">
         <?php endif; ?>
       </div>
       <div class="form-row">
         <div class="form-group">
+          <label>Nombre del artista *</label>
+          <input type="text" name="nombre" value="<?= htmlspecialchars($row['nombre'] ?? '') ?>" placeholder="ej: Las Trillizas de Oro" required>
+        </div>
+        <div class="form-group">
+          <label>Subtitulo</label>
+          <input type="text" name="subtitulo" value="<?= htmlspecialchars($row['subtitulo'] ?? 'Artistas · Babidibu Records') ?>" placeholder="ej: Artistas · Babidibu Records">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Color de la card</label>
+          <input type="color" name="color" value="<?= htmlspecialchars($row['color'] ?? '#F6D51F') ?>">
+          <div class="form-hint">Color de fondo de la card en el hero.</div>
+        </div>
+        <div class="form-group">
           <label>Descripcion de la imagen (alt)</label>
-          <input type="text" name="alt" value="<?= htmlspecialchars($row['alt'] ?? '') ?>" placeholder="ej: El Mundo de Chani en concierto">
+          <input type="text" name="alt" value="<?= htmlspecialchars($row['alt'] ?? '') ?>" placeholder="ej: Foto de Las Trillizas de Oro">
         </div>
         <div class="form-group">
           <label>Orden</label>
@@ -121,7 +139,7 @@ layout_sidebar('hero');
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Imagen</th><th>Descripcion</th><th>Orden</th><th>Estado</th><th>Acciones</th></tr>
+          <tr><th>Imagen</th><th>Artista</th><th>Subtitulo</th><th>Orden</th><th>Estado</th><th>Acciones</th></tr>
         </thead>
         <tbody>
           <?php
@@ -130,7 +148,8 @@ layout_sidebar('hero');
           ?>
           <tr>
             <td><img class="thumb" src="<?= $UPLOAD_URL . htmlspecialchars($r['imagen']) ?>" alt=""></td>
-            <td><?= htmlspecialchars($r['alt'] ?: '—') ?></td>
+            <td><?= htmlspecialchars($r['nombre'] ?: '—') ?></td>
+            <td><?= htmlspecialchars($r['subtitulo'] ?: '—') ?></td>
             <td><?= $r['orden'] ?></td>
             <td><span class="badge <?= $r['publicado'] ? 'badge-verde' : 'badge-coral' ?>"><?= $r['publicado'] ? 'Publicado' : 'Oculto' ?></span></td>
             <td><a href="hero.php?action=edit&id=<?= $r['id'] ?>" class="btn btn-outline btn-sm">Editar</a></td>

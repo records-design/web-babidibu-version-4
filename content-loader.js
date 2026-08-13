@@ -26,4 +26,26 @@
     }
   } catch (e) { /* fallback al HTML hardcodeado */ }
 
+  // Hero cards
+  try {
+    const res = await fetch(BASE + 'hero.php');
+    const json = await res.json();
+    if (json.ok && json.data.length) {
+      const wrap = document.getElementById('heroSwipe');
+      if (wrap) {
+        wrap.innerHTML = json.data.map(item => `
+          <div class="hs-card" style="--c:${item.color}">
+            <img src="${item.imagen}" alt="${item.alt || item.nombre}">
+            <div class="hs-card-bottom">
+              <div class="hs-card-icon"></div>
+              <div>
+                <span>${item.nombre}</span>
+                <em>${item.subtitulo || 'Artistas · Babidibu Records'}</em>
+              </div>
+            </div>
+          </div>`).join('');
+      }
+    }
+  } catch (e) { /* fallback al HTML hardcodeado */ }
+
 })();
