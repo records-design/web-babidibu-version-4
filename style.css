@@ -521,6 +521,9 @@ ul { list-style: none; }
 .hs-card--chani {
   background: linear-gradient(135deg, #FFE980, #FFB3A0);
 }
+.hs-card--chani::after {
+  background: linear-gradient(to top, rgba(220, 90, 70, 0.85) 0%, rgba(220, 90, 70, 0.4) 40%, transparent 70%);
+}
 .hs-card--chani::before {
   content: '';
   position: absolute;
