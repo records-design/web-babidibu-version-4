@@ -26,6 +26,51 @@
     }
   } catch (e) { /* fallback al HTML hardcodeado */ }
 
+  // Artistas
+  try {
+    const res = await fetch(BASE + 'artistas.php');
+    const json = await res.json();
+    if (json.ok && json.data.length) {
+      const newData = {};
+      json.data.forEach(a => {
+        newData[a.slug] = {
+          num:        a.num || '',
+          tags:       a.tags ? a.tags.split(',').map(t => t.trim()) : [],
+          logo:       a.logo || '',
+          photo:      a.foto || '',
+          photoPos:   a.photo_pos || 'center top',
+          photoScale: a.photo_scale || '',
+          desc:       a.bio || '',
+          spotify:    a.spotify_embed || '',
+          ig:         a.link_instagram || '',
+          tk:         a.link_tiktok || '',
+          yt:         a.link_youtube || '',
+          sp:         a.link_spotify || '',
+          g1:         a.color_g1 || '#8B5CF6',
+          g2:         a.color_g2 || '#60A5FA',
+        };
+      });
+      window.artistData = newData;
+
+      const grid = document.querySelector('.artists-grid');
+      if (grid) {
+        grid.innerHTML = json.data.map((a, i) => `
+          <div class="artist-card reveal reveal-delay-${i + 1}" data-artist="${a.slug}" style="--g1:${a.color_g1 || '#8B5CF6'};--g2:${a.color_g2 || '#60A5FA'}">
+            <div class="artist-card-inner">
+              <div class="artist-card-photo-wrap">
+                <img src="${a.foto}" class="artist-card-photo" alt="${a.nombre}"
+                  ${a.photo_pos ? `style="object-position:${a.photo_pos}${a.photo_scale ? `;transform:scale(${a.photo_scale})` : ''}"` : ''}>
+              </div>
+              <div class="artist-card-footer">
+                <span class="artist-card-name">${a.nombre}</span>
+                <span class="artist-card-cta">Conocé más →</span>
+              </div>
+            </div>
+          </div>`).join('');
+      }
+    }
+  } catch (e) { /* fallback al HTML hardcodeado */ }
+
   // Hero cards
   try {
     const res = await fetch(BASE + 'hero.php');

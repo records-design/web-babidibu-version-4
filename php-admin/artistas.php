@@ -28,14 +28,22 @@ function upload_img(string $field, string $dir): ?string {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   csrf_check();
-  $nombre   = trim($_POST['nombre'] ?? '');
-  $bio      = trim($_POST['bio'] ?? '');
-  $slug     = slugify($nombre);
-  $orden    = (int)($_POST['orden'] ?? 0);
-  $publicado = isset($_POST['publicado']) ? 1 : 0;
+  $nombre         = trim($_POST['nombre'] ?? '');
+  $bio            = trim($_POST['bio'] ?? '');
+  $slug           = slugify($nombre);
+  $num            = trim($_POST['num'] ?? '');
+  $tags           = trim($_POST['tags'] ?? '');
+  $spotify_embed  = trim($_POST['spotify_embed'] ?? '');
   $link_spotify   = trim($_POST['link_spotify'] ?? '');
   $link_youtube   = trim($_POST['link_youtube'] ?? '');
   $link_instagram = trim($_POST['link_instagram'] ?? '');
+  $link_tiktok    = trim($_POST['link_tiktok'] ?? '');
+  $color_g1       = trim($_POST['color_g1'] ?? '#8B5CF6');
+  $color_g2       = trim($_POST['color_g2'] ?? '#60A5FA');
+  $photo_pos      = trim($_POST['photo_pos'] ?? '');
+  $photo_scale    = trim($_POST['photo_scale'] ?? '');
+  $orden          = (int)($_POST['orden'] ?? 0);
+  $publicado      = isset($_POST['publicado']) ? 1 : 0;
 
   if ($_POST['form_action'] === 'delete' && $id) {
     db()->prepare("DELETE FROM artistas WHERE id=?")->execute([$id]);
@@ -43,20 +51,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if ($nombre) {
-    $foto = upload_img('foto', $UPLOAD_DIR);
+    $foto          = upload_img('foto', $UPLOAD_DIR);
     $foto_carousel = upload_img('foto_carousel', $UPLOAD_DIR);
+    $logo          = upload_img('logo', $UPLOAD_DIR);
 
     if ($id) {
-      $stmt = db()->prepare("SELECT foto, foto_carousel FROM artistas WHERE id=?");
+      $stmt = db()->prepare("SELECT foto, foto_carousel, logo FROM artistas WHERE id=?");
       $stmt->execute([$id]);
       $old = $stmt->fetch();
-      $foto = $foto ?? $old['foto'];
+      $foto          = $foto ?? $old['foto'];
       $foto_carousel = $foto_carousel ?? $old['foto_carousel'];
-      db()->prepare("UPDATE artistas SET nombre=?,slug=?,bio=?,foto=?,foto_carousel=?,link_spotify=?,link_youtube=?,link_instagram=?,orden=?,publicado=? WHERE id=?")
-         ->execute([$nombre,$slug,$bio,$foto,$foto_carousel,$link_spotify,$link_youtube,$link_instagram,$orden,$publicado,$id]);
+      $logo          = $logo ?? $old['logo'];
+      db()->prepare("UPDATE artistas SET nombre=?,slug=?,bio=?,num=?,tags=?,foto=?,foto_carousel=?,logo=?,spotify_embed=?,link_spotify=?,link_youtube=?,link_instagram=?,link_tiktok=?,color_g1=?,color_g2=?,photo_pos=?,photo_scale=?,orden=?,publicado=? WHERE id=?")
+         ->execute([$nombre,$slug,$bio,$num,$tags,$foto,$foto_carousel,$logo,$spotify_embed,$link_spotify,$link_youtube,$link_instagram,$link_tiktok,$color_g1,$color_g2,$photo_pos,$photo_scale,$orden,$publicado,$id]);
     } else {
-      db()->prepare("INSERT INTO artistas (nombre,slug,bio,foto,foto_carousel,link_spotify,link_youtube,link_instagram,orden,publicado) VALUES (?,?,?,?,?,?,?,?,?,?)")
-         ->execute([$nombre,$slug,$bio,$foto,$foto_carousel,$link_spotify,$link_youtube,$link_instagram,$orden,$publicado]);
+      db()->prepare("INSERT INTO artistas (nombre,slug,bio,num,tags,foto,foto_carousel,logo,spotify_embed,link_spotify,link_youtube,link_instagram,link_tiktok,color_g1,color_g2,photo_pos,photo_scale,orden,publicado) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
+         ->execute([$nombre,$slug,$bio,$num,$tags,$foto,$foto_carousel,$logo,$spotify_embed,$link_spotify,$link_youtube,$link_instagram,$link_tiktok,$color_g1,$color_g2,$photo_pos,$photo_scale,$orden,$publicado]);
     }
     header('Location: artistas.php?ok=1'); exit;
   }
@@ -99,25 +109,43 @@ layout_sidebar('artistas');
           <input type="text" name="nombre" required value="<?= htmlspecialchars($row['nombre'] ?? '') ?>">
         </div>
         <div class="form-group">
+          <label>Numero (ej: 01)</label>
+          <input type="text" name="num" value="<?= htmlspecialchars($row['num'] ?? '') ?>" placeholder="01">
+        </div>
+        <div class="form-group">
           <label>Orden</label>
           <input type="number" name="orden" value="<?= $row['orden'] ?? 0 ?>" min="0">
         </div>
       </div>
       <div class="form-group">
-        <label>Bio</label>
+        <label>Tags (separados por coma, ej: ARTISTA,PERSONAJE)</label>
+        <input type="text" name="tags" value="<?= htmlspecialchars($row['tags'] ?? '') ?>" placeholder="ARTISTAS">
+      </div>
+      <div class="form-group">
+        <label>Descripcion</label>
         <textarea name="bio"><?= htmlspecialchars($row['bio'] ?? '') ?></textarea>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Foto de perfil</label>
+          <label>Foto de la card y modal</label>
           <input type="file" name="foto" accept="image/*">
+          <div class="form-hint">Foto principal que aparece en la card y en el popup.</div>
           <?php if (!empty($row['foto'])): ?>
-            <img src="<?= $UPLOAD_URL . htmlspecialchars($row['foto']) ?>" style="height:60px;margin-top:8px;border-radius:8px;">
+            <img src="<?= $UPLOAD_URL . htmlspecialchars($row['foto']) ?>" style="height:80px;margin-top:8px;border-radius:8px;object-fit:cover;">
           <?php endif; ?>
         </div>
         <div class="form-group">
-          <label>Foto para carrusel</label>
+          <label>Logo del artista</label>
+          <input type="file" name="logo" accept="image/*">
+          <div class="form-hint">Logo o marca que aparece en el popup (PNG con transparencia).</div>
+          <?php if (!empty($row['logo'])): ?>
+            <img src="<?= $UPLOAD_URL . htmlspecialchars($row['logo']) ?>" style="height:60px;margin-top:8px;border-radius:8px;object-fit:contain;background:#f3f4f6;padding:4px;">
+          <?php endif; ?>
+        </div>
+        <div class="form-group">
+          <label>Foto para carrusel hero</label>
           <input type="file" name="foto_carousel" accept="image/*">
+          <div class="form-hint">Foto que aparece en el carrusel del hero.</div>
           <?php if (!empty($row['foto_carousel'])): ?>
             <img src="<?= $UPLOAD_URL . htmlspecialchars($row['foto_carousel']) ?>" style="height:60px;margin-top:8px;border-radius:8px;">
           <?php endif; ?>
@@ -125,17 +153,53 @@ layout_sidebar('artistas');
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Link Spotify</label>
+          <label>Posicion de la foto (CSS)</label>
+          <input type="text" name="photo_pos" value="<?= htmlspecialchars($row['photo_pos'] ?? '') ?>" placeholder="center 22%">
+          <div class="form-hint">Opcional. Ej: center top, center 20%</div>
+        </div>
+        <div class="form-group">
+          <label>Escala de la foto</label>
+          <input type="text" name="photo_scale" value="<?= htmlspecialchars($row['photo_scale'] ?? '') ?>" placeholder="1.2">
+          <div class="form-hint">Opcional. Ej: 1.2 para agrandar la foto.</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Color 1 de la card</label>
+          <input type="color" name="color_g1" value="<?= htmlspecialchars($row['color_g1'] ?? '#8B5CF6') ?>">
+        </div>
+        <div class="form-group">
+          <label>Color 2 de la card</label>
+          <input type="color" name="color_g2" value="<?= htmlspecialchars($row['color_g2'] ?? '#60A5FA') ?>">
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:8px">
+        <div class="form-hint">Los dos colores forman el degradado de fondo de la card y del popup del artista.</div>
+      </div>
+      <div class="form-group">
+        <label>URL del embed de Spotify</label>
+        <input type="text" name="spotify_embed" value="<?= htmlspecialchars($row['spotify_embed'] ?? '') ?>" placeholder="https://open.spotify.com/embed/track/...">
+        <div class="form-hint">El reproductor que aparece en el popup. Tiene que ser un link embed de Spotify (open.spotify.com/embed/...).</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Link Spotify (icono)</label>
           <input type="text" name="link_spotify" value="<?= htmlspecialchars($row['link_spotify'] ?? '') ?>" placeholder="https://open.spotify.com/artist/...">
         </div>
         <div class="form-group">
-          <label>Link YouTube</label>
+          <label>Link YouTube (icono)</label>
           <input type="text" name="link_youtube" value="<?= htmlspecialchars($row['link_youtube'] ?? '') ?>" placeholder="https://youtube.com/@...">
         </div>
       </div>
-      <div class="form-group">
-        <label>Link Instagram</label>
-        <input type="text" name="link_instagram" value="<?= htmlspecialchars($row['link_instagram'] ?? '') ?>" placeholder="https://instagram.com/...">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Link Instagram (icono)</label>
+          <input type="text" name="link_instagram" value="<?= htmlspecialchars($row['link_instagram'] ?? '') ?>" placeholder="https://instagram.com/...">
+        </div>
+        <div class="form-group">
+          <label>Link TikTok (icono)</label>
+          <input type="text" name="link_tiktok" value="<?= htmlspecialchars($row['link_tiktok'] ?? '') ?>" placeholder="https://tiktok.com/@...">
+        </div>
       </div>
       <div class="form-group">
         <label><input type="checkbox" name="publicado" <?= ($row['publicado'] ?? 1) ? 'checked' : '' ?>> &nbsp;Publicado</label>
