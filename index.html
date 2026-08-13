@@ -1101,35 +1101,6 @@ document.getElementById('bbtvClose')?.addEventListener('click', closeBbtvModal);
 document.getElementById('bbtvBackdrop')?.addEventListener('click', closeBbtvModal);
 </script>
 
-<script>
-// Carga lanzamientos desde Sanity
-(async function() {
-  const PROJECT_ID = '4q7erfki';
-  const DATASET = 'production';
-  const TOKEN = 'skOiVLrx2JenUCquJnCZ33PJNkxvsQZOUennUmK6kNaExy2425h7UVn9zjJWf2X2E4PeJ99thDgLFm7PPIgHfYRkaqv5ZgU8xMBi5AshVltRG6hrXSALGUb0DKDjj4PuXZntGPpPyIjcu5OWR8WzpmOUvsT58M95URK7Cci2wndWPLeTRvjW';
-  const query = encodeURIComponent('*[_type == "lanzamiento"] | order(orden asc) {titulo, artista, youtubeId}');
-  const url = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${query}`;
-
-  try {
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
-    const data = await res.json();
-    const grid = document.getElementById('lanzGrid');
-    if (!data.result || data.result.length === 0) return;
-    grid.innerHTML = data.result.map(item => `
-      <div class="lanz-item">
-        <div class="lanz-video-wrap">
-          <iframe src="https://www.youtube.com/embed/${item.youtubeId}" title="${item.titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="lanz-meta">
-          <span class="lanz-artist">${item.artista}</span>
-          <p class="lanz-name">${item.titulo}</p>
-        </div>
-      </div>
-    `).join('');
-  } catch(e) { console.error('Error cargando lanzamientos:', e); }
-})();
-</script>
-
 <script src="content-loader.js"></script>
 </body>
 </html>
