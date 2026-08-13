@@ -1339,9 +1339,16 @@ section { position: relative; overflow: visible; }
   .universos .section-inner { padding-top: 64px; padding-bottom: 64px; }
   .lanzamientos .section-inner { padding-top: 100px; padding-bottom: 64px; }
 
+  /* Sección títulos */
+  .section-title { font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 32px; }
+
   /* Que-es — 3 cards en 2 cols, la 3ª centrada */
   .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
+  .service-card h3 { font-size: 20px; }
+  .service-card p { font-size: 15px; }
+  .service-card-img { height: 80px; }
+  .service-card-img img.service-card-svg { width: 60px; height: 60px; }
 
   /* Universos — 3 columnas primera fila, 2 centradas segunda */
   .artists-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
