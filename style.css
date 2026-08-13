@@ -530,8 +530,8 @@ ul { list-style: none; }
   pointer-events: none;
 }
 .hs-card--chani img {
-  object-position: center 65%;
-  transform: none;
+  object-fit: contain;
+  object-position: center bottom;
 }
 .hs-card::after {
   content: '';
@@ -1398,7 +1398,7 @@ section { position: relative; overflow: visible; }
   .hero-swipe { height: 260px; margin-top: 4px; }
   .hero-swipe .hs-card { transform: none !important; opacity: 0 !important; z-index: 1 !important; transition: opacity 0.6s ease !important; }
   .hero-swipe .hs-card.mobile-active { opacity: 1 !important; z-index: 2 !important; }
-  .hs-card--chani img { object-position: center 65% !important; transform: none !important; }
+  .hs-card--chani img { object-fit: contain !important; object-position: center bottom !important; transform: none !important; }
   .hd-svg { display: none; }
   .hero-instrument { display: none; }
   .hero-instrument.hi-nube       { display: block !important; left: 68% !important; top: 12% !important; width: 54px !important; opacity:0.85; z-index:2 !important; }
