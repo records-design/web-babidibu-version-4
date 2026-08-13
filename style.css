@@ -1299,61 +1299,73 @@ section { position: relative; overflow: visible; }
 
 /* ── TABLET (768px–1024px, incluye iPad Mini, Air, Pro) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* Header — nav más compacto para que no se parta en 2 líneas */
-  .header { padding: 0 20px; }
+
+  /* Header */
+  .header { padding: 0 24px; }
   .header-logo { height: 38px; }
   .header-inner { gap: 8px; }
-  .header-nav { gap: 12px; }
+  .header-nav { gap: 14px; }
   .header-nav a { font-size: 13px; }
   .header-cta-btn { font-size: 12px; padding: 9px 14px; }
 
-  /* Hero — sin padding-bottom extra, overflow visible para el carousel */
-  .hero { height: auto; min-height: 0; padding-bottom: 0; overflow: visible; }
-  .hero-content { padding: 20px 28px 0; gap: 20px; flex: none; overflow: hidden; }
-  .hero-title { font-size: clamp(26px, 3.5vw, 40px); }
-  .hero-sub { font-size: 14px; }
-  .hero-swipe { height: 340px; overflow: hidden; margin-right: -4px; }
+  /* Hero — columna única: texto arriba, carousel centrado abajo */
+  .hero { height: auto; min-height: 100svh; padding-bottom: 40px; overflow: hidden; }
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 40px 40px 0;
+    gap: 32px;
+    align-items: start;
+  }
+  .hero-text { text-align: center; align-items: center; }
+  .hero-title { font-size: clamp(32px, 5vw, 52px); }
+  .hero-sub { font-size: 16px; max-width: 520px; }
+  .hero-stats { justify-content: center; }
+  .hero-swipe {
+    max-width: 420px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    margin: 0 auto;
+  }
   .hd-svg { display: none; }
   .hero-instrument { display: none !important; }
-  .hero-instrument.hi-nube        { display: block !important; left: 64% !important; top: 14% !important; width: 70px !important; opacity: 0.85; z-index: 2 !important; }
-  .hero-instrument.hi-mic         { display: block !important; left: 86% !important; top: 18% !important; width: 60px !important; opacity: 0.9  !important; z-index: 2 !important; }
-  .hero-instrument.hi-auriculares { display: block !important; left: 78% !important; top: 52% !important; width: 56px !important; opacity: 0.85; z-index: 2 !important; }
-  .hero-instrument.hi-extra { display: none !important; }
 
   /* Sections */
-  .section-inner { padding: 60px 32px; }
-  .universos .section-inner { padding-top: 60px; padding-bottom: 60px; }
-  .lanzamientos .section-inner { padding-top: 90px; padding-bottom: 60px; }
+  .section-inner { padding: 64px 40px; }
+  .universos .section-inner { padding-top: 64px; padding-bottom: 64px; }
+  .lanzamientos .section-inner { padding-top: 100px; padding-bottom: 64px; }
 
   /* Que-es — 3 cards en 2 cols, la 3ª centrada */
   .cards-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .cards-grid-3 > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
 
-  /* Universos — flex para que los 5 queden 3+2 centrados */
+  /* Universos — 3 columnas primera fila, 2 centradas segunda */
   .artists-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
   .artists-grid .artist-card { width: calc(33.33% - 14px); flex-shrink: 0; }
 
   /* Impacto */
-  .impacto-inner { padding: 100px 32px 70px; gap: 32px; }
+  .impacto-inner { padding: 100px 40px 70px; gap: 32px; }
   .impacto-pill-wrap { top: 60px; }
   .impacto-grid { grid-template-columns: repeat(3, 1fr); }
   .impacto-stat { padding: 32px 20px; }
 
-  /* Lanzamientos — 3 items en 2 cols, el 3° centrado */
+  /* Lanzamientos — 2 cols, el 3° centrado */
   .lanz-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .lanz-grid > *:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); margin: 0 auto; }
   .yt-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   /* Contacto */
-  .contacto { padding: 0 32px 60px; }
-  .form-wrap { padding: 0 32px 60px; }
+  .contacto { padding: 0 40px 64px; }
+  .form-wrap { padding: 64px 40px; }
 
   /* Footer */
-  .footer-inner { padding: 60px 32px 32px; }
+  .footer-inner { padding: 60px 40px 32px; }
+  .footer-top { grid-template-columns: 1fr 1.5fr; gap: 40px; }
+  .footer-links-wrap { grid-template-columns: repeat(2, 1fr); gap: 32px; }
 
   /* Artist modal */
   .artist-modal-inner { max-width: 700px; }
-  .artist-modal-left { min-height: 260px; }
+  .artist-modal-left { min-height: 280px; }
 }
 
 /* ── MOBILE */
