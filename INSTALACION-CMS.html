@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Instalación CMS — Babidibu Records</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 24px; color: #333; line-height: 1.6; }
+  h1 { color: #FA5457; }
+  h2 { color: #5FA55A; margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+  code { background: #f4f4f4; padding: 2px 8px; border-radius: 4px; font-size: 14px; }
+  pre { background: #f4f4f4; padding: 16px; border-radius: 8px; overflow-x: auto; }
+  .warning { background: #FFF3F0; border-left: 4px solid #FA5457; padding: 12px 16px; border-radius: 4px; }
+  .success { background: #EDFAF1; border-left: 4px solid #5FA55A; padding: 12px 16px; border-radius: 4px; }
+  ol li { margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Instalación del CMS — Babidibu Records</h1>
+<p>Este documento explica cómo instalar el panel de administración del sitio <strong>babidiburecords.com</strong>.</p>
+
+<h2>Paso 1 — Editar el archivo de configuración</h2>
+<p>Antes de subir, abrí el archivo <code>php-admin/config.php</code> con cualquier editor de texto y reemplazá estas líneas con los datos de la base de datos de Hostinger:</p>
+<pre>define('DB_HOST', 'localhost');
+define('DB_NAME', 'NOMBRE_DE_TU_BASE_DE_DATOS');
+define('DB_USER', 'USUARIO_DE_TU_BASE_DE_DATOS');
+define('DB_PASS', 'CONTRASEÑA_DE_TU_BASE_DE_DATOS');</pre>
+
+<p>Hacé lo mismo en <code>setup/install.php</code>, reemplazando estas líneas:</p>
+<pre>'host' => 'localhost',
+'db'   => 'NOMBRE_DE_TU_BASE_DE_DATOS',
+'user' => 'USUARIO_DE_TU_BASE_DE_DATOS',
+'pass' => 'CONTRASEÑA_DE_TU_BASE_DE_DATOS',</pre>
+
+<h2>Paso 2 — Ejecutar el instalador</h2>
+<p>Abrí en el navegador:</p>
+<pre>https://babidiburecords.com/setup/install.php</pre>
+<p>Si la instalación es exitosa, vas a ver un mensaje verde con el email y contraseña del panel.</p>
+
+<div class="success">
+  <strong>Credenciales iniciales del panel:</strong><br>
+  Email: <code>info@babidiburecords.com</code><br>
+  Contraseña: <code>BabidibuAdmin2024!</code><br>
+  <em>(Cambiarla después del primer login)</em>
+</div>
+
+<h2>Paso 3 — Eliminar el instalador</h2>
+<div class="warning">
+  <strong>Importante:</strong> Después de instalar, eliminá el archivo <code>setup/install.php</code> del servidor. Es un riesgo de seguridad dejarlo ahí.
+</div>
+
+<h2>Paso 4 — Acceder al panel</h2>
+<p>El panel de administración queda disponible en:</p>
+<pre>https://babidiburecords.com/php-admin/login.php</pre>
+
+<h2>¿Problemas?</h2>
+<p>Si aparece un error rojo, probablemente los datos de la base de datos no son correctos. Verificar nombre, usuario y contraseña en Hostinger → Bases de datos MySQL.</p>
+
+</body>
+</html>
