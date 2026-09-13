@@ -1015,6 +1015,38 @@ section { position: relative; overflow: visible; }
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .babidibutv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px color-mix(in srgb, var(--amarillo) 50%, transparent), inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(0,0,0,0.1); }
+/* ── Acordeón lanzamientos ──────────────────────────────────────── */
+.lanz-accordion { display: flex; flex-direction: column; gap: 16px; }
+.lanz-acc-section {
+  background: #fff; border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+.lanz-acc-header {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 24px; background: none; border: none; cursor: pointer;
+  font-family: inherit; text-align: left; transition: background 0.2s;
+}
+.lanz-acc-header:hover { background: rgba(0,0,0,0.02); }
+.lanz-acc-info { display: flex; align-items: center; gap: 16px; }
+.lanz-acc-logo { height: 36px; width: auto; object-fit: contain; flex-shrink: 0; }
+.lanz-acc-show { display: block; font-size: 15px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; }
+.lanz-acc-season { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(58,63,68,0.4); margin-top: 2px; }
+.lanz-acc-arrow {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%;
+  background: #F4F5F7; display: flex; align-items: center; justify-content: center;
+  color: var(--negro); transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1), background 0.2s;
+}
+.lanz-acc-section.is-open .lanz-acc-arrow { transform: rotate(180deg); background: var(--verde); color: #fff; }
+.lanz-acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.lanz-acc-section.is-open .lanz-acc-body { max-height: 2400px; }
+.lanz-acc-grid-wrap { padding: 0 24px 24px; }
+/* 4to episodio color */
+.lanz-acc-body .lanz-item:nth-child(4) .lanz-name { color: var(--turquesa); }
+
 .lanz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* ── Microinteracciones premium ───────────────────────────────── */
@@ -1376,8 +1408,9 @@ section { position: relative; overflow: visible; }
   .impacto-stat { padding: 32px 20px; }
 
   /* Lanzamientos — 3 cols verticales */
-  .lanz-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .lanz-grid > *:last-child:nth-child(odd) { grid-column: auto; max-width: none; margin: 0; }
+  .lanz-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .lanz-acc-grid-wrap { padding: 0 16px 20px; }
+  .lanz-acc-header { padding: 16px 18px; }
   .yt-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   /* Contacto */
