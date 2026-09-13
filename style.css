@@ -1074,6 +1074,8 @@ section { position: relative; overflow: visible; }
   transition: background 0.2s;
 }
 .lanz-promo-wrap:hover .lanz-promo-btn { background: rgba(255,255,255,0.28); }
+.lanz-promo-meta { flex-direction: row; align-items: center; gap: 10px; }
+.lanz-promo-show-logo { height: 32px; width: auto; object-fit: contain; }
 
 .lanz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
