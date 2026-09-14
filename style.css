@@ -1048,7 +1048,7 @@ section { position: relative; overflow: visible; }
 .lanz-acc-body .lanz-item:nth-child(4) .lanz-name { color: var(--turquesa); }
 
 /* Card promo "Nuevos episodios" */
-.lanz-item--promo { cursor: pointer; }
+.lanz-item--promo { cursor: pointer; align-self: start; background: transparent; box-shadow: none; }
 .lanz-promo-card {
   display: block; position: relative; text-decoration: none;
   width: 100%; padding-top: 56.25%; background: #0a0520; overflow: hidden;
