@@ -1049,12 +1049,20 @@ section { position: relative; overflow: visible; }
 
 /* Card promo "Nuevos episodios" */
 .lanz-album-btn {
-  display: inline-block; margin-top: 6px;
-  font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #fff; background: var(--verde); text-decoration: none;
-  padding: 6px 14px; border-radius: 100px; transition: background 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 10px; width: 100%;
+  font-size: 12px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 100px;
+  background: linear-gradient(135deg, #5FA55A 0%, #3d8c38 100%);
+  box-shadow: 0 4px 14px rgba(95,165,90,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.lanz-album-btn:hover { background: #4a8f46; }
+.lanz-album-btn::before { content: "▶"; font-size: 10px; }
+.lanz-album-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(95,165,90,0.45);
+}
 .lanz-item--promo { cursor: pointer; position: relative; }
 .lanz-promo-cover {
   position: absolute; inset: 0;
