@@ -1048,11 +1048,11 @@ section { position: relative; overflow: visible; }
 .lanz-acc-body .lanz-item:nth-child(4) .lanz-name { color: var(--turquesa); }
 
 /* Card promo "Nuevos episodios" */
-.lanz-item--promo { cursor: pointer; align-self: start; background: transparent; box-shadow: none; }
+.lanz-item--promo { cursor: pointer; padding: 0; display: flex; }
 .lanz-promo-card {
   display: block; position: relative; text-decoration: none;
-  width: 100%; padding-top: 56.25%; background: #0a0520; overflow: hidden;
-  border-radius: 16px;
+  width: 100%; height: 100%; min-height: 0; background: #0a0520; overflow: hidden;
+  border-radius: 0;
 }
 .lanz-promo-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
