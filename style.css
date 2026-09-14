@@ -1030,8 +1030,8 @@ section { position: relative; overflow: visible; }
 .lanz-acc-header:hover { background: rgba(0,0,0,0.02); }
 .lanz-acc-info { display: flex; align-items: center; gap: 16px; }
 .lanz-acc-logo { height: 36px; width: auto; object-fit: contain; flex-shrink: 0; }
-.lanz-acc-show { display: block; font-size: 15px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; }
-.lanz-acc-season { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(58,63,68,0.4); margin-top: 2px; }
+.lanz-acc-show { display: block; font-size: 18px; font-weight: 800; color: var(--negro); letter-spacing: -0.02em; }
+.lanz-acc-season { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(58,63,68,0.4); margin-top: 2px; }
 .lanz-acc-arrow {
   width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%;
   background: #F4F5F7; display: flex; align-items: center; justify-content: center;
@@ -1048,20 +1048,22 @@ section { position: relative; overflow: visible; }
 .lanz-acc-body .lanz-item:nth-child(4) .lanz-name { color: var(--turquesa); }
 
 /* Card promo "Nuevos episodios" */
-.lanz-album-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 10px; width: 100%;
-  font-size: 12px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff; text-decoration: none;
-  padding: 10px 16px; border-radius: 100px;
-  background: linear-gradient(135deg, #5FA55A 0%, #3d8c38 100%);
-  box-shadow: 0 4px 14px rgba(95,165,90,0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
+.lanz-album-wrap { text-decoration: none; }
+.lanz-album-overlay {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 16px;
+  background: linear-gradient(to bottom, transparent 40%, rgba(10,5,32,0.72) 100%);
+  opacity: 0; transition: opacity 0.2s;
 }
-.lanz-album-btn::before { content: "▶"; font-size: 10px; }
-.lanz-album-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(95,165,90,0.45);
+.lanz-album-wrap:hover .lanz-album-overlay { opacity: 1; }
+.lanz-album-btn-overlay {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff;
+  padding: 9px 20px; border-radius: 100px;
+  background: linear-gradient(135deg, #5FA55A 0%, #3d8c38 100%);
+  box-shadow: 0 4px 14px rgba(95,165,90,0.45);
 }
 .lanz-item--promo { cursor: pointer; position: relative; }
 .lanz-promo-cover {
