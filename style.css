@@ -1559,6 +1559,7 @@ section { position: relative; overflow: visible; }
   .yt-grid { grid-template-columns: 1fr; }
   .lanz-grid { grid-template-columns: 1fr; }
   .lanz-item--promo { padding-top: 56.25%; }
+  .lanz-album-wrap { padding-top: 56.25%; }
 
   /* Contacto */
   .contacto { padding: 0 16px 60px; }
