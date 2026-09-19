@@ -1139,6 +1139,8 @@ section { position: relative; overflow: visible; }
 .lanz-item:nth-child(1) .lanz-name { color: var(--verde); }
 .lanz-item:nth-child(2) .lanz-name { color: var(--naranja); }
 .lanz-item:nth-child(3) .lanz-name { color: var(--coral); }
+.lanz-item:nth-child(5) .lanz-name { color: var(--amarillo); }
+.lanz-item:nth-child(6) .lanz-name { color: var(--verde); }
 .yt-lightbox {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: flex; align-items: center; justify-content: center; padding: 24px;
